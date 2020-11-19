@@ -191,6 +191,7 @@
     <Compile Include="Converters\AgencyIdentifierToStringConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
     <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
+    <Compile Include="Converters\RatioConverter.cs" />
     <Compile Include="Model\AgenciesModel.cs" />
     <Compile Include="Model\EmployeesModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
@@ -206,7 +207,7 @@
     </Compile>
     <Compile Include="View\FlyoutContent.xaml.cs">
       <DependentUpon>FlyoutContent.xaml</DependentUpon>
-    <Compile Include="Converter\RatioConverter.cs" />
+    </Compile>
     <Compile Include="View\ChiNhanhScreens\ChiNhanhMain.xaml.cs">
       <DependentUpon>ChiNhanhMain.xaml</DependentUpon>
     </Compile>
@@ -220,6 +221,14 @@
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\AgenciesContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,9 +238,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FlyoutContent.xaml">
-    <Page Include="Resource\ResourceDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChiNhanhScreens\ChiNhanhMain.xaml">
       <SubType>Designer</SubType>
@@ -260,7 +266,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

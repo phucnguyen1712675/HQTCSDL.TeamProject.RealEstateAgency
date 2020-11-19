@@ -1,12 +1,11 @@
 ﻿<metro:MetroWindow
-        xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converter"
+        xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ChiNhanhMain"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
@@ -17,7 +16,7 @@
         >
 
     <metro:MetroWindow.Resources>
-        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resource/ResourceDictionary.xaml"/>
+        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml"/>
     </metro:MetroWindow.Resources>
 
     <Canvas>

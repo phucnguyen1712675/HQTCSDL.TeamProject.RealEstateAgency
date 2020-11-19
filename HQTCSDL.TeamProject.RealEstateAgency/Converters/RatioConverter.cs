@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace HQTCSDL.TeamProject.RealEstateAgency.Converter
+namespace HQTCSDL.TeamProject.RealEstateAgency.Converters
 {
     class RatioConverter : MarkupExtension, IValueConverter
     {
