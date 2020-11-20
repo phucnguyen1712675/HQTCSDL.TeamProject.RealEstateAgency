@@ -1,0 +1,98 @@
+﻿<metro:MetroWindow
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens.NhanVienMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+        Title="CHI NHANH" 
+        WindowStartupLocation="CenterScreen"
+        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+        Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+        >
+
+    <metro:MetroWindow.Resources>
+        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml">
+        </ResourceDictionary>
+    </metro:MetroWindow.Resources>
+    <Grid>
+        <metro:MetroTabControl HorizontalAlignment="Center" VerticalAlignment="Center"
+        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+        Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+        >
+            <TabItem Header="Danh sách Nhà" >
+                <Grid Background="AliceBlue">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+                    <Grid   Margin="10,0,0,0" Background="White" Grid.Row="0"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Button  
+                                            Name="SearchHouseOwnerButton"
+                            
+                                            Style="{DynamicResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                              Kind="Search"
+                                              Opacity=".56" 
+                                              />
+                        </Button>
+                        <TextBox Name="SearchHouseOwnerTextBox"
+                                        Grid.Column="1"
+                                        Margin="8 0 0 0"
+                                        FontSize="15"
+                                        FontFamily="Segeo ui light"
+                                        materialDesign:HintAssist.Hint="Search here"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        BorderThickness="0"
+                                        MinWidth="400"
+                                        VerticalAlignment="Center" />
+                        <Button
+                                        Style="{DynamicResource MaterialDesignToolButton}"
+                                        Grid.Column="2">
+                            <materialDesign:PackIcon
+                                              Kind="Microphone"
+                                              Opacity=".56"
+                                              Margin="8 0 0 0" />
+                        </Button>
+                        <Button Grid.Column="3" BorderBrush="AliceBlue"
+                           Style="{StaticResource MaterialDesignOutlinedButton}"
+                           ToolTip="MaterialDesignOutlinedButton"
+                           Content="Tất cả nhà" />
+                    </Grid>
+                    <DataGrid Grid.Row="1" Name="dataGrid1"
+                         AlternatingRowBackground = "LightBlue"  
+                         AlternationCount = "2" AutoGenerateColumns = "False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header = "Mã số" Binding = "{Binding Code}" />
+                            <DataGridCheckBoxColumn Header = "Còn trống" Binding = "{Binding WasEmpty}"/>
+                            <DataGridTextColumn Header = "Định vị" Binding = "{Binding Address}" />
+                            <DataGridTextColumn Header = "Loại nhà" Binding = "{Binding Type}" />
+                            <DataGridTextColumn Header = "Số phòng" Binding = "{Binding NumerRoom}" />
+                            <DataGridTextColumn Header = "Tiền thuê" Binding = "{Binding Price}" />
+                            <DataGridTextColumn Header = "Ngày đăng" Binding = "{Binding StartDate}" />
+                            <DataGridTextColumn Header = "Ngày hết hạn" Binding = "{Binding EndDate}" />
+                            <DataGridTextColumn Header = "Số lượt xem" Binding = "{Binding NumberView}" />
+                            <DataGridTextColumn Header = "Chủ nhà" Binding = "{Binding Owner}" />
+                            <DataGridTextColumn Header = "Chi nhánh" Binding = "{Binding Brand}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Chi tiết Nhà" VerticalAlignment="Bottom"/>
+            <TabItem Header="Đổi thông tin tài khoản" VerticalAlignment="Bottom"/>
+        </metro:MetroTabControl>
+
+    </Grid>
+</metro:MetroWindow>
