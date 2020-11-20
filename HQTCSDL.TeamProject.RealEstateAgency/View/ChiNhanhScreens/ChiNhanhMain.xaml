@@ -75,7 +75,7 @@
                                         </Button>
                                     </Grid>
 
-                                    <Label Content="Tất cả chủ nhà"
+                                    <Label Content="tất cả chủ nhà"
                                        Style="{StaticResource fontStyle}"
                                        Grid.Column="1"
                                        FontSize="20"
