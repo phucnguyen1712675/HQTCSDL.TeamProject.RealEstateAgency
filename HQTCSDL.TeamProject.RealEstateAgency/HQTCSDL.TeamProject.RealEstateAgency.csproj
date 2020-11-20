@@ -202,6 +202,12 @@
     <Compile Include="View\AgenciesContent.xaml.cs">
       <DependentUpon>AgenciesContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml.cs">
+      <DependentUpon>StaffNotMeetTarget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChuNhaScreens\ChuNhaMain.xaml.cs">
+      <DependentUpon>ChuNhaMain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EmployeesContent.xaml.cs">
       <DependentUpon>EmployeesContent.xaml</DependentUpon>
     </Compile>
@@ -226,6 +232,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\AgenciesContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChuNhaScreens\ChuNhaMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

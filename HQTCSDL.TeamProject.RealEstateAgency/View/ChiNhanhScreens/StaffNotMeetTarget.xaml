@@ -1,0 +1,39 @@
+﻿<metro:MetroWindow
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.StaffNotMeetTarget"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+        mc:Ignorable="d"
+        Title="StaffNotMeetTarget"
+        WindowStartupLocation="CenterScreen"
+        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+        Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+    >
+
+    <metro:MetroWindow.Resources>
+        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml"/>
+    </metro:MetroWindow.Resources>
+    
+    <StackPanel Background="AliceBlue">
+        
+        <Label Content="Danh sách các nhân viên chưa đạt chỉ tiêu tháng" 
+               Margin="20"
+               FontSize="20"
+               Style="{StaticResource fontStyle}"/>
+        <Label
+            Content="tháng 2"
+            Style="{StaticResource fontStyle}"
+            FontSize=" 15"/>
+        <Label
+            Content="Tổng số nhân viên : x"
+            Style="{StaticResource fontStyle}"
+            FontSize="15"/>
+        <DataGrid Margin="15" Height="529">
+            
+        </DataGrid>
+    </StackPanel>
+</metro:MetroWindow>
