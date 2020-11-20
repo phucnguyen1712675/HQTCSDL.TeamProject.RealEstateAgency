@@ -1,4 +1,4 @@
-﻿using MahApps.Metro.Controls;
+﻿using MaterialDesignExtensions.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +11,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HQTCSDL.TeamProject.RealEstateAgency.View
+namespace HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView
 {
     /// <summary>
-    /// Interaction logic for HomeScreen.xaml
+    /// Interaction logic for EmployeesContent.xaml
     /// </summary>
-    public partial class HomeScreen : MetroWindow
+    public partial class EmployeesContent : UserControl
     {
-        public HomeScreen()
+        public EmployeesContent()
         {
             InitializeComponent();
         }
+
+        
     }
 }
