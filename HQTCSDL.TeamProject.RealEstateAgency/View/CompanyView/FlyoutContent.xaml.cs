@@ -1,5 +1,4 @@
-﻿using MaterialDesignExtensions.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HQTCSDL.TeamProject.RealEstateAgency.View
+namespace HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView
 {
     /// <summary>
-    /// Interaction logic for AgenciesContent.xaml
+    /// Interaction logic for FlyoutContent.xaml
     /// </summary>
-    public partial class AgenciesContent : UserControl
+    public partial class FlyoutContent : UserControl
     {
-        public AgenciesContent()
+        public FlyoutContent()
         {
             InitializeComponent();
         }
-
-
     }
 }
