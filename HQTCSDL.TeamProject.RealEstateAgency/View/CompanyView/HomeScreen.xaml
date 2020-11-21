@@ -29,17 +29,17 @@
         <metro:WindowButtonCommands Style="{DynamicResource MahApps.Styles.WindowButtonCommands.Win10}" />
     </metro:MetroWindow.WindowButtonCommands>
 
-    <metro:MetroWindow.Flyouts>
+    <!--<metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl>
             <metro:Flyout
                 x:Name="LeftFlyout"
-                materialDesign:FlyoutAssist.HeaderColorMode="SecondaryMid"
+                 MaterialDesign:FlyoutAssist.HeaderColorMode="SecondaryMid"
                 Header="Settings"
                 Position="Left">
                 <local:FlyoutContent />
             </metro:Flyout>
         </metro:FlyoutsControl>
-    </metro:MetroWindow.Flyouts>
+    </metro:MetroWindow.Flyouts>-->
 
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
@@ -78,7 +78,7 @@
         </materialDesign:ColorZone>
 
         <TabControl x:Name="mainTabControl" Style="{DynamicResource MaterialDesignTabControl}">
-            <TabItem Header="CHI NHÁNH">
+            <!--<TabItem Header="CHI NHÁNH">
                 <local:AgenciesContent Margin="8">
                     <local:AgenciesContent.DataContext>
                         <viewModel:AgenciesViewModel />
