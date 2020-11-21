@@ -187,47 +187,6 @@
                                                 <ColumnDefinition Width="3*"/>
                                                 <ColumnDefinition Width="7*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Chủ nhà"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <ComboBox Name="HouseOwnerNameComboBox"
-                                                  FontFamily="Segeo ui light"
-                                                  FontSize="15"
-                                                  Background="White"
-                                                  Grid.Column="1"
-                                                  materialDesign:HintAssist.Hint="chủ nhà"
-                                                  materialDesign:HintAssist.HintOpacity=".7"
-                                                  IsEditable="True">
-                                            </ComboBox>
-                                            <!--<ComboBox  Name="HouseOwnerkjhk"
-                                                Grid.Column="1" Height="40"  Background="White" >
-                                                <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Name="bookComboBoxImage" Source="{Binding Image, Converter={StaticResource fileConverter}}" Margin="5, 0 , 5, 0" Width="20" Height="20" />
-                                                <StackPanel Orientation="Vertical">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Red"/>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Year}"/>
-                                                        <TextBlock Text=" - "/>
-                                                        <TextBlock Text="{Binding AuthorName}" Foreground="Blue"/>
-                                                    </StackPanel>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                                -->
-                                            <!--TODO binding chủ nhà - mã chủ nhà-->
-                                            <!--
-                                            </ComboBox>-->
-                                            <!--TODO Binding số lượng xem-->
-                                        </Grid>
-                                        <Grid Margin="10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
-                                            </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" Content="Tình trạng"
                                                FontSize="15"
                                                VerticalAlignment="Center"
