@@ -192,6 +192,7 @@
     <Compile Include="Converters\AgencyIdentifierToStringConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
     <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
+    <Compile Include="Converters\IntegerToPercentConverter.cs" />
     <Compile Include="Converters\NumberToCurrencyConverter.cs" />
     <Compile Include="Converters\RatioConverter.cs" />
     <Compile Include="Model\AgenciesModel.cs" />
@@ -201,11 +202,14 @@
     <Compile Include="ViewModel\AddNewAgencyDialogViewModel.cs" />
     <Compile Include="ViewModel\AddNewEmployeeDialogViewModel.cs" />
     <Compile Include="ViewModel\AgenciesViewModel.cs" />
+    <Compile Include="ViewModel\ChangeAllSalaryByPercentDialogViewModel.cs" />
+    <Compile Include="ViewModel\ChangeSalaryOfAEmployeeByPercentDialogViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\DeleteAgencyViewModel.cs" />
     <Compile Include="ViewModel\DeleteEmployeeViewModel.cs" />
     <Compile Include="ViewModel\DialogsHelperClasses\AnotherCommandImplementation.cs" />
     <Compile Include="ViewModel\DialogsViewModel.cs" />
+    <Compile Include="ViewModel\EachMonthCharityMoneyDialogViewModel.cs" />
     <Compile Include="ViewModel\EmployeesViewModel.cs" />
     <Compile Include="ViewModel\KindsOfHouseViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
@@ -218,8 +222,11 @@
     <Compile Include="View\CompanyView\AgenciesContent.xaml.cs">
       <DependentUpon>AgenciesContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\AnotherProgressDialog.xaml.cs">
-      <DependentUpon>AnotherProgressDialog.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\ChangeAllSalaryByPercentDialog.xaml.cs">
+      <DependentUpon>ChangeAllSalaryByPercentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\ChangeSalaryOfAEmployeeByPercentDialog.xaml.cs">
+      <DependentUpon>ChangeSalaryOfAEmployeeByPercentDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CompanyView\DeleteAgencyDialog.xaml.cs">
       <DependentUpon>DeleteAgencyDialog.xaml</DependentUpon>
@@ -228,6 +235,9 @@
       <DependentUpon>DeleteEmployeeDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CompanyView\DialogHelperClasses\NotEmptyValidationRule.cs" />
+    <Compile Include="View\CompanyView\EachMonthCharityMoneyDialog.xaml.cs">
+      <DependentUpon>EachMonthCharityMoneyDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyView\EmployeesContent.xaml.cs">
       <DependentUpon>EmployeesContent.xaml</DependentUpon>
     </Compile>
@@ -261,6 +271,9 @@
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NhanVienScreens\NhanVienMain.xaml.cs">
+      <DependentUpon>NhanVienMain.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\ResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -277,10 +290,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\AnotherProgressDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -289,11 +298,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CompanyView\ChangeAllSalaryByPercentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\ChangeSalaryOfAEmployeeByPercentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CompanyView\DeleteAgencyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\DeleteEmployeeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\EachMonthCharityMoneyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -320,6 +341,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NhanVienScreens\NhanVienMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,11 +13,5 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
 #pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore 67
-
-        public AgenciesModel ToDeleteAgency { get; set; }
-        public DeleteAgencyViewModel(AgenciesModel agency)
-        {
-            this.ToDeleteAgency = agency;
-        }
     }
 }

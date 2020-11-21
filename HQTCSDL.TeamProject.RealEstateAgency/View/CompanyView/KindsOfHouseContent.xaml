@@ -16,7 +16,7 @@
         VerticalAlignment="Center"
         DialogClosing="KindsOfHouse_DialogHost_OnDialogClosing"
         DialogMargin="8"
-        Identifier="RootDialog"
+        Identifier="HouseRootDialog"
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <materialDesign:DialogHost.DialogContent>
             <StackPanel Margin="16">
@@ -88,5 +88,4 @@
             </Grid>
         </Border>
     </materialDesign:DialogHost>
-
 </UserControl>

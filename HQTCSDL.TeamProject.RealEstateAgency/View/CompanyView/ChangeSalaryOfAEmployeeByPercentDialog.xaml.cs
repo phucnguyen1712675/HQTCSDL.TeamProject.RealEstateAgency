@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView
 {
     /// <summary>
-    /// Interaction logic for AnotherProgressDialog.xaml
+    /// Interaction logic for ChangeSalaryOfAEmployeeByPercentDialog.xaml
     /// </summary>
-    public partial class AnotherProgressDialog : UserControl
+    public partial class ChangeSalaryOfAEmployeeByPercentDialog : UserControl
     {
-        public AnotherProgressDialog()
+        public ChangeSalaryOfAEmployeeByPercentDialog()
         {
             InitializeComponent();
         }
