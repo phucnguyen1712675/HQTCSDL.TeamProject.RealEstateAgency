@@ -14,10 +14,21 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converter:AgencyIdentifierToStringConverter x:Key="AgencyIdToStringConverter" />
-        <converter:EmployeeIdentifierToStringConverter x:Key="EmployeeIdToStringConverter" />
-        <converter:BooleanToStringConverter x:Key="BoolToStringConverter" />
-        <converter:NumberToCurrencyConverter x:Key="NumberToCurrencyConverter" />
+        <ResourceDictionary>
+
+            <converter:AgencyIdentifierToStringConverter x:Key="AgencyIdToStringConverter" />
+            <converter:EmployeeIdentifierToStringConverter x:Key="EmployeeIdToStringConverter" />
+            <converter:BooleanToStringConverter x:Key="BoolToStringConverter" />
+            <converter:NumberToCurrencyConverter x:Key="NumberToCurrencyConverter" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <!--  throw in some extra colour for our floating action button  -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
     </UserControl.Resources>
 
     <materialDesign:DialogHost
@@ -25,21 +36,29 @@
         DialogTheme="Inherit"
         Identifier="EmployeesRootDialog">
 
-        <DockPanel LastChildFill="True">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
             <StackPanel
+                Grid.Row="2"
                 HorizontalAlignment="Center"
-                DockPanel.Dock="Bottom"
                 Orientation="Horizontal">
                 <Button
                     x:Name="previousButton"
-                    Width="80"
+                    Width="100"
+                    Height="45"
                     Margin="0,0,10,0"
                     Click="previousButton_Click"
                     Content="Previous" />
                 <ComboBox
                     Name="pagingInfoComboBox"
                     Width="100"
+                    Height="{Binding ActualHeight, ElementName=previousButton}"
                     SelectionChanged="pagingInfoComboBox_SelectionChanged"
                     Style="{StaticResource MaterialDesignFilledComboBox}">
                     <ComboBox.ItemTemplate>
@@ -54,33 +73,18 @@
                 </ComboBox>
                 <Button
                     x:Name="nextButton"
-                    Width="80"
+                    Width="100"
+                    Height="45"
                     Margin="10,0,0,0"
                     Click="nextButton_Click"
                     Content="Next" />
             </StackPanel>
 
-            <Button
-                x:Name="addNewEmployeeButton"
-                Margin="0,0,40,-40"
-                HorizontalAlignment="Right"
-                Command="{Binding RunExtendedDialogCommand}"
-                DockPanel.Dock="Bottom"
-                Style="{StaticResource MaterialDesignFloatingActionButton}"
-                ToolTip="Add new employee">
-                <materialDesign:PackIcon Kind="Add">
-                    <materialDesign:PackIcon.LayoutTransform>
-                        <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2" ScaleY="2" />
-                    </materialDesign:PackIcon.LayoutTransform>
-                </materialDesign:PackIcon>
-            </Button>
-
             <ComboBox
                 x:Name="FilledComboBox"
+                Grid.Row="0"
                 Width="256"
-                Margin="0,0,0,0"
                 materialDesign:HintAssist.Hint="Chi nhánh"
-                DockPanel.Dock="Top"
                 SelectedIndex="0"
                 SelectionChanged="FilledComboBox_SelectionChanged"
                 Style="{StaticResource MaterialDesignFilledComboBox}">
@@ -93,6 +97,7 @@
 
             <ListView
                 x:Name="EmployeeListView"
+                Grid.Row="1"
                 Width="900"
                 Height="450"
                 HorizontalAlignment="Center"
@@ -134,7 +139,7 @@
                                             Style="{StaticResource MaterialDesignFlatButton}" />
                                         <Button
                                             Margin="0,4,0,0"
-                                            Command="{Binding RunDeleteExtendedDialogCommand}"
+                                            Command="{Binding DataContext.RunDeleteExtendedDialogCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}"
                                             Content="DELETE"
                                             Style="{StaticResource MaterialDesignFlatButton}" />
                                     </StackPanel>
@@ -224,6 +229,24 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </DockPanel>
+
+            <materialDesign:PopupBox
+                Grid.Row="2"
+                Margin="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+                <StackPanel>
+                    <Button Command="{Binding RunSalaryExtendedDialogCommand}" Content="{materialDesign:PackIcon Kind=CashUsd, Size=20}" />
+
+                    <Button
+                        Background="{DynamicResource PrimaryHueMidBrush}"
+                        Command="{Binding RunExtendedDialogCommand}"
+                        Content="{materialDesign:PackIcon Kind=AccountPlus,
+                                                          Size=20}"
+                        Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </Grid>
     </materialDesign:DialogHost>
 </UserControl>
