@@ -1,10 +1,8 @@
-﻿using HQTCSDL.TeamProject.RealEstateAgency.Model;
-using HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView;
+﻿using HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView;
 using HQTCSDL.TeamProject.RealEstateAgency.ViewModel.DialogsHelperClasses;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,28 +11,11 @@ using System.Windows.Input;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
 {
-    public class AgenciesViewModel : INotifyPropertyChanged
+    public class DialogsViewModel : INotifyPropertyChanged
     {
-        public static int NextId = 1;
-        public ObservableCollection<AgenciesModel> AgenciesList { get; set; } =
-            new ObservableCollection<AgenciesModel>()
-        {
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS"),
-                new AgenciesModel("123456789", "0985897654", "HCMUS")
-        };
-
 #pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore 67
-
-        public void AddNewAgency(AgenciesModel newAgency) => this.AgenciesList.Add(newAgency);
-        public void RemoveAgency(AgenciesModel oldAgency) => this.AgenciesList.Remove(oldAgency);
 
         public ICommand RunDialogCommand => new AnotherCommandImplementation(ExecuteRunDialog);
 
@@ -43,9 +24,9 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
         private async void ExecuteRunDialog(object o)
         {
             //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new AddNewAgencyDialog
+            var view = new AddNewEmployeeDialog
             {
-                DataContext = new AddNewAgencyDialogViewModel()
+                DataContext = new AddNewEmployeeDialogViewModel()
             };
 
             //show the dialog
@@ -61,9 +42,9 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
         private async void ExecuteRunExtendedDialog(object o)
         {
             //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new AddNewAgencyDialog
+            var view = new AddNewEmployeeDialog
             {
-                DataContext = new AddNewAgencyDialogViewModel()
+                DataContext = new AddNewEmployeeDialogViewModel()
             };
 
             //show the dialog
@@ -80,18 +61,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
         {
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
-
-            /*var viewModel = new AddNewEmployeeDialogViewModel();
-            AddNewEmployee(new EmployeesModel
-                (
-                    viewModel.AgencyId,
-                    viewModel.FullName,
-                    viewModel.PhoneNumber,
-                    viewModel.Address,
-                    viewModel.Sex,
-                    viewModel.DOB,
-                    viewModel.Salary
-                ));*/
 
             //OK, lets cancel the close...
             eventArgs.Cancel();
