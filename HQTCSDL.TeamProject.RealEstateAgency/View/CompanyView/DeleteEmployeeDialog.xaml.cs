@@ -1,8 +1,4 @@
-﻿using HQTCSDL.TeamProject.RealEstateAgency.Model;
-using HQTCSDL.TeamProject.RealEstateAgency.ViewModel;
-using MaterialDesignExtensions.Controls;
-using MaterialDesignThemes.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +16,13 @@ using System.Windows.Shapes;
 namespace HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView
 {
     /// <summary>
-    /// Interaction logic for AgenciesContent.xaml
+    /// Interaction logic for DeleteEmployeeDialog.xaml
     /// </summary>
-    public partial class AgenciesContent : UserControl
+    public partial class DeleteEmployeeDialog : UserControl
     {
-        public AgenciesContent() => InitializeComponent();
+        public DeleteEmployeeDialog()
+        {
+            InitializeComponent();
+        }
     }
 }

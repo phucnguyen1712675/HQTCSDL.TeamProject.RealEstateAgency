@@ -92,6 +92,13 @@
                     </local:EmployeesContent.DataContext>
                 </local:EmployeesContent>
             </TabItem>
+            <TabItem Header="LOẠI NHÀ">
+                <local:KindsOfHouseContent>
+                    <local:KindsOfHouseContent.DataContext>
+                        <viewModel:KindsOfHouseViewModel />
+                    </local:KindsOfHouseContent.DataContext>
+                </local:KindsOfHouseContent>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </metro:MetroWindow>

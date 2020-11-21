@@ -10,144 +10,220 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.ViewModel"
     d:DataContext="{d:DesignInstance viewModel:EmployeesViewModel}"
-    d:DesignHeight="600"
-    d:DesignWidth="1200"
+    Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <converter:EmployeeIdentifierToStringConverter x:Key="IdToStringConverter" />
+        <converter:AgencyIdentifierToStringConverter x:Key="AgencyIdToStringConverter" />
+        <converter:EmployeeIdentifierToStringConverter x:Key="EmployeeIdToStringConverter" />
         <converter:BooleanToStringConverter x:Key="BoolToStringConverter" />
+        <converter:NumberToCurrencyConverter x:Key="NumberToCurrencyConverter" />
     </UserControl.Resources>
 
-    <DockPanel LastChildFill="True">
+    <materialDesign:DialogHost
+        CloseOnClickAway="True"
+        DialogTheme="Inherit"
+        Identifier="EmployeesRootDialog">
 
-        <ListView
-            Width="900"
-            Height="550"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            ItemsSource="{Binding EmployeesList}"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <DockPanel LastChildFill="True">
 
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+            <StackPanel
+                HorizontalAlignment="Center"
+                DockPanel.Dock="Bottom"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="previousButton"
+                    Width="80"
+                    Margin="0,0,10,0"
+                    Click="previousButton_Click"
+                    Content="Previous" />
+                <ComboBox
+                    Name="pagingInfoComboBox"
+                    Width="100"
+                    SelectionChanged="pagingInfoComboBox_SelectionChanged"
+                    Style="{StaticResource MaterialDesignFilledComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Page}" />
+                                <TextBlock Text=" of " />
+                                <TextBlock Text="{Binding TotalPages}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button
+                    x:Name="nextButton"
+                    Width="80"
+                    Margin="10,0,0,0"
+                    Click="nextButton_Click"
+                    Content="Next" />
+            </StackPanel>
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <materialDesign:Flipper materialDesign:ShadowAssist.ShadowDepth="Depth0">
-                        <materialDesign:Flipper.FrontContent>
-                            <Grid Width="200" Height="256">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="160" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <materialDesign:ColorZone VerticalAlignment="Stretch" Mode="PrimaryLight">
-                                    <materialDesign:PackIcon
-                                        Width="128"
-                                        Height="128"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Kind="AccountCircle" />
-                                </materialDesign:ColorZone>
-                                <StackPanel
-                                    Grid.Row="1"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding EmployeeId, Converter={StaticResource IdToStringConverter}}" />
-                                    <Button
-                                        Margin="0,4,0,0"
-                                        Command="{x:Static materialDesign:Flipper.FlipCommand}"
-                                        Content="EDIT"
-                                        Style="{StaticResource MaterialDesignFlatButton}" />
-                                </StackPanel>
-                            </Grid>
-                        </materialDesign:Flipper.FrontContent>
-                        <materialDesign:Flipper.BackContent>
-                            <Grid Width="200" Height="256">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <materialDesign:ColorZone Padding="6" Mode="SecondaryMid">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button
-                                            HorizontalAlignment="Left"
-                                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
-                                            Style="{StaticResource MaterialDesignToolForegroundButton}">
-                                            <materialDesign:PackIcon HorizontalAlignment="Right" Kind="ArrowLeft" />
-                                        </Button>
-                                        <TextBlock
-                                            Margin="8,0,0,0"
-                                            VerticalAlignment="Center"
-                                            Text="EDIT EMPLOYEE" />
-                                    </StackPanel>
-                                </materialDesign:ColorZone>
-                                <Grid
-                                    Grid.Row="1"
-                                    Width="172"
-                                    Margin="0,6,0,0"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Top">
+            <Button
+                x:Name="addNewEmployeeButton"
+                Margin="0,0,40,-40"
+                HorizontalAlignment="Right"
+                Command="{Binding RunExtendedDialogCommand}"
+                DockPanel.Dock="Bottom"
+                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                ToolTip="Add new employee">
+                <materialDesign:PackIcon Kind="Add">
+                    <materialDesign:PackIcon.LayoutTransform>
+                        <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2" ScaleY="2" />
+                    </materialDesign:PackIcon.LayoutTransform>
+                </materialDesign:PackIcon>
+            </Button>
+
+            <ComboBox
+                x:Name="FilledComboBox"
+                Width="256"
+                Margin="0,0,0,0"
+                materialDesign:HintAssist.Hint="Chi nhánh"
+                DockPanel.Dock="Top"
+                SelectedIndex="0"
+                SelectionChanged="FilledComboBox_SelectionChanged"
+                Style="{StaticResource MaterialDesignFilledComboBox}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource AgencyIdToStringConverter}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <ListView
+                x:Name="EmployeeListView"
+                Width="900"
+                Height="450"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Flipper materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                            <materialDesign:Flipper.FrontContent>
+                                <Grid Width="200" Height="430">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <!--<RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />-->
+                                        <RowDefinition Height="160" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <TextBox
-                                        Grid.Row="0"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Agency ID"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding AgencyId}" />
-                                    <TextBox
+                                    <materialDesign:ColorZone VerticalAlignment="Stretch" Mode="PrimaryLight">
+                                        <materialDesign:PackIcon
+                                            Width="128"
+                                            Height="128"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Kind="AccountCircle" />
+                                    </materialDesign:ColorZone>
+                                    <StackPanel
                                         Grid.Row="1"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Full Name"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding FullName}" />
-                                    <TextBox
-                                        Grid.Row="2"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Phone Number"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding PhoneNumber}" />
-                                    <!--<TextBox
-                                        Grid.Row="3"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Address"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding Address}" />
-                                    <TextBox
-                                        Grid.Row="4"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Sex"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding Sex, Converter={StaticResource BoolToStringConverter}}" />
-                                    <TextBox
-                                        Grid.Row="5"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Date of birth"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding DOB, StringFormat=d}" />
-                                    <TextBox
-                                        Grid.Row="6"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Salary"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding Salary, StringFormat=N2}" />-->
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding EmployeeId, Converter={StaticResource EmployeeIdToStringConverter}}" />
+                                        <Button
+                                            Margin="0,4,0,0"
+                                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                            Content="EDIT"
+                                            Style="{StaticResource MaterialDesignFlatButton}" />
+                                        <Button
+                                            Margin="0,4,0,0"
+                                            Command="{Binding RunDeleteExtendedDialogCommand}"
+                                            Content="DELETE"
+                                            Style="{StaticResource MaterialDesignFlatButton}" />
+                                    </StackPanel>
                                 </Grid>
-                            </Grid>
-                        </materialDesign:Flipper.BackContent>
-                    </materialDesign:Flipper>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </DockPanel>
+                            </materialDesign:Flipper.FrontContent>
+                            <materialDesign:Flipper.BackContent>
+                                <Grid Width="200" Height="430">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <materialDesign:ColorZone Padding="6" Mode="SecondaryMid">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button
+                                                HorizontalAlignment="Left"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                                <materialDesign:PackIcon HorizontalAlignment="Right" Kind="ArrowLeft" />
+                                            </Button>
+                                            <TextBlock
+                                                Margin="8,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Text="EDIT EMPLOYEE" />
+                                        </StackPanel>
+                                    </materialDesign:ColorZone>
+                                    <Grid
+                                        Grid.Row="1"
+                                        Width="172"
+                                        Margin="0,6,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox
+                                            Grid.Row="0"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Agency ID"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding AgencyId}" />
+                                        <TextBox
+                                            Grid.Row="1"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Full Name"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding FullName}" />
+                                        <TextBox
+                                            Grid.Row="2"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Phone Number"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding PhoneNumber}" />
+                                        <TextBox
+                                            Grid.Row="3"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Address"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding Address}" />
+                                        <TextBox
+                                            Grid.Row="4"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Sex"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding Sex, Converter={StaticResource BoolToStringConverter}}" />
+                                        <TextBox
+                                            Grid.Row="5"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Date of birth"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding DOB, StringFormat=d}" />
+                                        <TextBox
+                                            Grid.Row="6"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Salary"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding Salary, StringFormat=N2}" />
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:Flipper.BackContent>
+                        </materialDesign:Flipper>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </DockPanel>
+    </materialDesign:DialogHost>
 </UserControl>
