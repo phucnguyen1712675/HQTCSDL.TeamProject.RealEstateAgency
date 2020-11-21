@@ -36,13 +36,13 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens
         {
             private string code;
             private string comment;
-               private string Address      ;
-               private string Type         ;
-              private string NumberRoom    ;
-              private string Price         ;
-              private string StarDate      ;
-              private string EndDate       ;
-            private string NumberView;
+           /* private string Address;
+            private string Type;
+            private string NumberRoom;
+            private string Price;
+            private string StarDate;
+            private string EndDate;
+            private string NumberView;*/
             public string Comment
             {
                 get { return comment; }
@@ -96,8 +96,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens
                     Code = "NHA001",
                     Title = "Minister",
                     WasEmpty = true,
-                    Comment ="test comment 1"
-                });      
+                    Comment = "test comment 1"
+                });
 
                 return employees;
             }
