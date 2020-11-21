@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
 {
-    class AddNewEmployeeDialogViewModel : INotifyPropertyChanged
+    public class AddNewEmployeeDialogViewModel : INotifyPropertyChanged
     {
 #pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
@@ -21,11 +21,11 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
         public bool Sex { get; set; } //true - Nam || false - Nu
         public DateTime DOB { get; set; }
         public double Salary { get; set; }
-        public ObservableCollection<int> HasEmployeesAgencyList { get; set; }
+        public ObservableCollection<int> AgenciesList { get; set; }
         public AddNewEmployeeDialogViewModel()
         {
-            var viewModel = new EmployeesViewModel();
-            HasEmployeesAgencyList = new ObservableCollection<int>(viewModel.HasEmployeesAgencyList);
+            var viewModel = new AgenciesViewModel();
+            this.AgenciesList = new ObservableCollection<int>(viewModel.AgenciesList.Select(c => c.AgencyId));
         }
     }
 }

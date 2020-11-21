@@ -1,7 +1,8 @@
 ﻿<UserControl
-    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.DeleteAgencyDialog"
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.ChangeAllSalaryByPercentDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -9,6 +10,10 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     Background="White"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converter:IntegerToPercentConverter x:Key="IntToPercentConvert" />
+    </UserControl.Resources>
 
     <Grid Width="200" Margin="16">
 
@@ -23,27 +28,52 @@
             Padding="6"
             Mode="SecondaryMid">
             <StackPanel Orientation="Horizontal">
-                <Button
-                    HorizontalAlignment="Left"
-                    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                    materialDesign:ButtonProgressAssist.Value="-1"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
-                    <materialDesign:PackIcon Kind="Delete" />
+                <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                    <materialDesign:PackIcon Kind="CashUsd" />
                 </Button>
                 <TextBlock
                     Margin="8,0,0,0"
                     VerticalAlignment="Center"
-                    Text="DELETE THIS AGENCY" />
+                    Text="ADJUSTED SALARY" />
             </StackPanel>
         </materialDesign:ColorZone>
 
-        <TextBlock
-            x:Name="AskTextBox"
+        <Grid
             Grid.Row="1"
-            Margin="0,12,0,0"
+            Width="172"
+            Margin="0,6,0,0"
             HorizontalAlignment="Center"
-            Text="Delete this agency?" />
+            VerticalAlignment="Top">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <ListBox
+                x:Name="SexListBox"
+                Grid.Row="0"
+                Margin="0,10"
+                HorizontalAlignment="Center"
+                Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineListBox}">
+                <ListBoxItem Content="Tăng" IsSelected="True" />
+                <ListBoxItem Content="Giảm" />
+            </ListBox>
+            <ComboBox
+                x:Name="PercentComboBox"
+                Grid.Row="1"
+                Width="172"
+                materialDesign:HintAssist.Hint="Percent"
+                ItemsSource="{Binding AllPercents}"
+                SelectedIndex="0"
+                Style="{StaticResource MaterialDesignFilledComboBox}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource IntToPercentConvert}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
 
         <StackPanel
             Grid.Row="3"
