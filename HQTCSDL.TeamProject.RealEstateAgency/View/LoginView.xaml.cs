@@ -42,6 +42,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View
             bool result = VerifyUser(txtUsername.Text, txtPassword.Password);
             if (result)
             {
+
                 var homeScreen = new HomeScreen();
                 App.Current.MainWindow = homeScreen;
                 this.Close();

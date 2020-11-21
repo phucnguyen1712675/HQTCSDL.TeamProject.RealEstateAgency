@@ -202,6 +202,8 @@
     <Compile Include="ViewModel\AddNewEmployeeDialogViewModel.cs" />
     <Compile Include="ViewModel\AgenciesViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
+    <Compile Include="ViewModel\DeleteAgencyViewModel.cs" />
+    <Compile Include="ViewModel\DeleteEmployeeViewModel.cs" />
     <Compile Include="ViewModel\DialogsHelperClasses\AnotherCommandImplementation.cs" />
     <Compile Include="ViewModel\DialogsViewModel.cs" />
     <Compile Include="ViewModel\EmployeesViewModel.cs" />
@@ -219,9 +221,15 @@
     <Compile Include="View\CompanyView\AnotherProgressDialog.xaml.cs">
       <DependentUpon>AnotherProgressDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CompanyView\DeleteAgencyDialog.xaml.cs">
+      <DependentUpon>DeleteAgencyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\DeleteEmployeeDialog.xaml.cs">
+      <DependentUpon>DeleteEmployeeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyView\DialogHelperClasses\NotEmptyValidationRule.cs" />
     <Compile Include="View\CompanyView\EmployeesContent.xaml.cs">
-	      <DependentUpon>EmployeesContent.xaml</DependentUpon>
+      <DependentUpon>EmployeesContent.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml.cs">
       <DependentUpon>StaffNotMeetTarget.xaml</DependentUpon>
@@ -278,6 +286,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChuNhaScreens\ChuNhaMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\DeleteAgencyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\DeleteEmployeeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
