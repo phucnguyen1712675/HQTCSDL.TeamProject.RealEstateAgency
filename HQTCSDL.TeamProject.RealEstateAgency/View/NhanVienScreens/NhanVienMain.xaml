@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
-        Title="CHI NHANH" 
+        Title="NHAN VIEN" 
         WindowStartupLocation="CenterScreen"
         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
         Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
@@ -20,35 +20,47 @@
         </ResourceDictionary>
     </metro:MetroWindow.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <metro:MetroTabControl HorizontalAlignment="Center" VerticalAlignment="Center"
         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-        Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+        Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}" Grid.ColumnSpan="2" Margin="-3,7,-3.4,7.2"
         >
-            <TabItem Header="Danh sách Nhà" >
-                <Grid Background="AliceBlue">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="9*"/>
-                    </Grid.RowDefinitions>
-                    <Grid   Margin="10,0,0,0" Background="White" Grid.Row="0"
+            <TabItem Header="Tác vụ" >
+                <Grid>
+                    <metro:MetroTabControl
+                        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+                        VerticalAlignment="Top">
+                        <!--  Xem Danh sách nhà trong công ty  -->
+                        <TabItem Header="Danh sách">
+                            <Grid Background="AliceBlue">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="7*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid   Margin="10,0,0,0" Background="White" Grid.Row="0"
                                     HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Button  
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button  
                                             Name="SearchHouseOwnerButton"
                             
                                             Style="{DynamicResource MaterialDesignToolButton}">
-                            <materialDesign:PackIcon
+                                        <materialDesign:PackIcon
                                               Kind="Search"
                                               Opacity=".56" 
                                               />
-                        </Button>
-                        <TextBox Name="SearchHouseOwnerTextBox"
+                                    </Button>
+                                    <TextBox Name="SearchHouseOwnerTextBox"
                                         Grid.Column="1"
                                         Margin="8 0 0 0"
                                         FontSize="15"
@@ -58,40 +70,501 @@
                                         BorderThickness="0"
                                         MinWidth="400"
                                         VerticalAlignment="Center" />
-                        <Button
+                                    <Button
                                         Style="{DynamicResource MaterialDesignToolButton}"
                                         Grid.Column="2">
-                            <materialDesign:PackIcon
+                                        <materialDesign:PackIcon
                                               Kind="Microphone"
                                               Opacity=".56"
                                               Margin="8 0 0 0" />
-                        </Button>
-                        <Button Grid.Column="3" BorderBrush="AliceBlue"
+                                    </Button>
+                                    <Button Grid.Column="3" BorderBrush="AliceBlue"
                            Style="{StaticResource MaterialDesignOutlinedButton}"
                            ToolTip="MaterialDesignOutlinedButton"
                            Content="Tất cả nhà" />
-                    </Grid>
-                    <DataGrid Grid.Row="1" Name="dataGrid1"
+                                </Grid>
+                                <DataGrid Grid.Row="1" Name="dataGrid1"
                          AlternatingRowBackground = "LightBlue"  
                          AlternationCount = "2" AutoGenerateColumns = "False" >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header = "Mã số" Binding = "{Binding Code}" />
-                            <DataGridCheckBoxColumn Header = "Còn trống" Binding = "{Binding WasEmpty}"/>
-                            <DataGridTextColumn Header = "Định vị" Binding = "{Binding Address}" />
-                            <DataGridTextColumn Header = "Loại nhà" Binding = "{Binding Type}" />
-                            <DataGridTextColumn Header = "Số phòng" Binding = "{Binding NumerRoom}" />
-                            <DataGridTextColumn Header = "Tiền thuê" Binding = "{Binding Price}" />
-                            <DataGridTextColumn Header = "Ngày đăng" Binding = "{Binding StartDate}" />
-                            <DataGridTextColumn Header = "Ngày hết hạn" Binding = "{Binding EndDate}" />
-                            <DataGridTextColumn Header = "Số lượt xem" Binding = "{Binding NumberView}" />
-                            <DataGridTextColumn Header = "Chủ nhà" Binding = "{Binding Owner}" />
-                            <DataGridTextColumn Header = "Chi nhánh" Binding = "{Binding Brand}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header = "Mã số" Binding = "{Binding Code}" />
+                                        <DataGridCheckBoxColumn Header = "Còn trống" Binding = "{Binding WasEmpty}"/>
+                                        <DataGridTextColumn Header = "Định vị" Binding = "{Binding Address}" />
+                                        <DataGridTextColumn Header = "Loại nhà" Binding = "{Binding Type}" />
+                                        <DataGridTextColumn Header = "Số phòng" Binding = "{Binding  NumerRoom}" />
+                                        <DataGridTextColumn Header = "Tiền thuê" Binding = "{Binding Price}" />
+                                        <DataGridTextColumn Header = "Ngày đăng" Binding = "{Binding StartDate}" />
+                                        <DataGridTextColumn Header = "Ngày hết hạn" Binding = "{Binding EndDate}" />
+                                        <DataGridTextColumn Header = "Số lượt xem" Binding = "{Binding NumberView}" />
+                                        <DataGridTextColumn Header = "Chủ nhà" Binding = "{Binding Owner}" />
+                                        <DataGridTextColumn Header = "Chi nhánh" Binding = "{Binding Brand}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                                <Button Grid.Row="3"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,10,0"
+                                     Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                     ToolTip="MaterialDesignFlatMidButton"
+                                     Content="Nhận quản lý" />
+                            </Grid>
+                        </TabItem>
+                        <!--  Xem Chi tiết nhà đang quản lý  -->
+                        <TabItem Header="Nhà quản lý">
+                            <Grid Background="AliceBlue">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid   Margin="10,13,0,12.4" Background="AliceBlue" Grid.Row="0"
+                                    VerticalAlignment="Center" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Chọn nhà" Grid.Column="0"  HorizontalAlignment="Center"
+                                           Style="{StaticResource fontStyle}"/>
+                                    <ComboBox Grid.Column="1" Background="White" Margin="0,0,5,0" SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBoxItem Content="NHA001" HorizontalAlignment="Left" Width="583.2"/>
+                                        <ComboBoxItem Content="NHA002" HorizontalAlignment="Left" Width="583.2"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!--  Thông tin về nhà  -->
+                                <DataGrid Grid.Row="1" Name="dataGrid2"
+                         AlternatingRowBackground = "LightBlue"  
+                         AlternationCount = "2" AutoGenerateColumns = "False" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header = "Mã số" Binding = "{Binding Code}" />
+                                        <DataGridTextColumn Header = "Định vị" Binding = "{Binding Address}" />
+                                        <DataGridTextColumn Header = "Loại nhà" Binding = "{Binding Type}" />
+                                        <DataGridTextColumn Header = "Số phòng" Binding = "{Binding NumerRoom}" />
+                                        <DataGridTextColumn Header = "Tiền thuê" Binding = "{Binding Price}" />
+                                        <DataGridTextColumn Header = "Ngày đăng" Binding = "{Binding StartDate}" />
+                                        <DataGridTextColumn Header = "Ngày hết hạn" Binding = "{Binding EndDate}" />
+                                        <DataGridTextColumn Header = "Số lượt xem" Binding = "{Binding NumberView}" />
+                                        <DataGridTextColumn Header = "Chủ nhà" Binding = "{Binding Owner}" />
+                                        <DataGridTextColumn Header = "Chi nhánh" Binding = "{Binding Brand}" />
+                                        <DataGridCheckBoxColumn Header = "Còn trống" Binding = "{Binding WasEmpty}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Grid.Row="2"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,10,0"
+                                     Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                     ToolTip="MaterialDesignFlatMidButton"
+                                     Content="Hủy đăng ký" />
+                                <!--  Comment về nhà  -->
+                                <DataGrid Grid.Row="3" Name="dataGrid3"
+                         AlternatingRowBackground = "LightBlue" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header = "Mã số" Binding = "{Binding Code}" />
+                                        <DataGridTextColumn Header = "Mã Khách hàng" Binding = "{Binding KHCode}" />
+                                        <DataGridTextColumn Header="Nhận xét" Binding="{Binding Comment}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Border Grid.Row="3" BorderThickness="1" Background="White">
+                                    <TextBox  Margin="3,3,3,3" VerticalAlignment="Stretch" />
+                                </Border>
+                                <Button Grid.Row="4"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,0,10,0"
+                                     Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                     ToolTip="MaterialDesignFlatMidButton"
+                                     Content="Thêm nhận xét" />
+                                
+                            </Grid>
+                        </TabItem>
+                        <!--  Tìm nhà phù hợp  -->
+                        <TabItem Header="Tìm nhà phù hợp">
+                                
+                            <Grid Background="AliceBlue">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <!-- Chọn khách hàng -->
+                                <Grid Margin="10,10,20,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Khách hàng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="CustomerListComboBox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="ComboBox1" Content="KH001" HorizontalAlignment="Left" Width="514.4"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!-- Chọn Giá bán -->
+                                <Grid Margin="10,10,20,10" Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Giá bán/thuê"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="PriceListCombox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="ComboBox2" Content="5000000" HorizontalAlignment="Left" Width="514.4"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!-- Chọn khu vực -->
+                                <Grid Margin="10,10,20,10" Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Khu vực"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="AddressListCombox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="ComboBox3" Content="Quận 5" HorizontalAlignment="Left" Width="514.4"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!-- Chọn số phòng -->
+                                <Grid Margin="10,10,20,10" Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Số phòng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="NumberRoomComboBox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="ComboBox4" Content="2" HorizontalAlignment="Left" Width="514.4"/>
+                                        <ComboBoxItem Name="ComboBox5" Content="3" HorizontalAlignment="Left" Width="514.4"/>
+
+                                    </ComboBox>
+                                </Grid>
+                                <!-- Kết quả tìm kiếm-->
+                                <DataGrid Grid.Row="5" Name="dataGrid4"
+                         AlternatingRowBackground = "LightBlue"  
+                         AlternationCount = "2" AutoGenerateColumns = "False" Margin="0,0.4,0,0.6" Grid.RowSpan="2" HorizontalContentAlignment="Center">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header = "Mã số Nhà" Binding = "{Binding Code}"/>
+                                        <DataGridTextColumn Header = "Giá" Binding = "{Binding Price}" />
+                                        <DataGridTextColumn Header="Khu vực" Binding="{Binding Address}"/>
+                                        <DataGridTextColumn Header="Số phòng" Binding="{Binding Address}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Grid.Row="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0"
+                                        Name="SearchHouseButton"
+                                        HorizontalAlignment="Center"
+                                        Content="Tìm kiếm" />
+                                    <Button Grid.Column="1"
+                                        Name="AddNoteButton"
+                                        HorizontalAlignment="Center"
+                                        Content="Ghi chú nhà phù hợp" />
+                                </Grid>
+                                
+                            </Grid>
+                        </TabItem>
+                        <!-- Lập hợp đồng-->
+                        <TabItem Header="Lập hợp đồng">
+
+                            <Grid Background="AliceBlue">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <!-- Chọn khách hàng -->
+                                <Grid Margin="10,10,20,10" Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Khách hàng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="HopDongListComboBox1"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="HopDongComboBox1" Content="NHA001" HorizontalAlignment="Left" Width="514.4"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!--Chọn chủ nhà-->
+                                <Grid Margin="10,10,20,10" Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Nhà"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="HopDongListComboBox2"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="HopDongComboBox2" Content="KH001" HorizontalAlignment="Left" Width="514.4"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!--Chủ nhà-->
+                                <Grid Margin="10,10,20,10" Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Chủ nhà"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <Label Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Content="CN001"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                </Grid>
+
+                                <!--Nhân viên-->
+                                <Grid Margin="10,10,20,10" Grid.Row="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Nhân viên"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <Label Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Content="NV001"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                </Grid>
+                                <!---->
+                                <Grid Margin="10,10,20,10" Grid.Row="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Ngày lập hợp đồng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        FontSize="20" 
+                                             Background="White"/>
+                                </Grid>
+                                <!---->
+                                <Grid Margin="10,10,20,10" Grid.Row="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Thời hạn hợp đồng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="HopDongListComboBox3"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBoxItem Name="HopDongComboBox3" Content="12 Tháng" HorizontalAlignment="Left" Width="514.4"/>
+                                    </ComboBox>
+                                </Grid>
+                                <!---->
+                                <Button Grid.Row="6"
+                                        Name="HopDongButton"
+                                        HorizontalAlignment="Center"
+                                        Content="Xác nhận" />
+                            </Grid>
+                        </TabItem>
+
+                    </metro:MetroTabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Chi tiết Nhà" VerticalAlignment="Bottom"/>
-            <TabItem Header="Đổi thông tin tài khoản" VerticalAlignment="Bottom"/>
+            <TabItem Header="Tài khoản" VerticalAlignment="Bottom">
+
+                <StackPanel Background="AliceBlue">
+                    <Label
+                        Margin="20"
+                        Content="Đổi mật khẩu"
+                        FontSize="20"
+                        Style="{StaticResource fontStyle}" />
+                    <StackPanel HorizontalAlignment="Center">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Content="Mật khẩu cũ"
+                                FontSize="15"
+                                Style="{StaticResource fontStyle}" />
+                            <PasswordBox
+                                x:Name="OldPassWordTextBox"
+                                Grid.Column="1"
+                                Width="300"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Top"
+                                materialDesign:HintAssist.Hint="Password"
+                                Background="White"
+                                Style="{StaticResource MaterialDesignFilledPasswordBox}" />
+                        </Grid>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Content="Mật khẩu mới"
+                                FontSize="15"
+                                Style="{StaticResource fontStyle}" />
+                            <PasswordBox
+                                x:Name="NewPassWord"
+                                Grid.Column="1"
+                                Width="300"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Top"
+                                materialDesign:HintAssist.Hint="Password"
+                                Background="White"
+                                Style="{StaticResource MaterialDesignFilledPasswordBox}" />
+                        </Grid>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button
+                                Name="OkChangePasswordButton"
+                                Width="70"
+                                Margin="10"
+                                Content="Ok" />
+                            <Button
+                                Name="CancelChangePasswordButton"
+                                Width="70"
+                                Margin="10"
+                                Content="Hủy" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Label Name="Info"  Margin="20"
+                        Content="Đổi thông tin"
+                        FontSize="20"
+                        Style="{StaticResource fontStyle}"/>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Content="Địa chỉ"
+                                FontSize="15"
+                                Style="{StaticResource fontStyle}" />
+                            <TextBox
+                                x:Name="NVAddressTextBox"
+                                Grid.Column="1"
+                                Width="300"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Top"
+                                Background="White"
+                                 />
+                        </Grid>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Content="Giới tính"
+                                FontSize="15"
+                                Style="{StaticResource fontStyle}" />
+                            <ComboBox
+                                x:Name="GenderComboBox"
+                                Grid.Column="1"
+                                Width="300"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Top"
+                                Background="White" >
+                                <ComboBoxItem Name="Gender1" Content="Nam"/>
+                                <ComboBoxItem Name="Gender2" Content="Nữ"/>
+                                <ComboBoxItem Name="Gender3" Content="Khác"/>
+                            </ComboBox>
+                        </Grid>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button
+                                Name="OKButton"
+                                Width="70"
+                                Margin="10"
+                                Content="Ok" />
+                            <Button
+                                Name="CancelButton"
+                                Width="70"
+                                Margin="10"
+                                Content="Hủy" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </TabItem>
         </metro:MetroTabControl>
 
     </Grid>

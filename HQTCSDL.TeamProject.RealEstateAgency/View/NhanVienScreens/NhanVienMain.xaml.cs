@@ -26,12 +26,32 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens
         {
             InitializeComponent();
             dataGrid1.ItemsSource = Employee.GetEmployees();
+            dataGrid2.ItemsSource = Employee.GetEmployees();
+            dataGrid3.ItemsSource = Employee.GetEmployees();
+            dataGrid4.ItemsSource = Employee.GetEmployees();
+
         }
 
         public class Employee : INotifyPropertyChanged
         {
             private string code;
-
+            private string comment;
+               private string Address      ;
+               private string Type         ;
+              private string NumberRoom    ;
+              private string Price         ;
+              private string StarDate      ;
+              private string EndDate       ;
+            private string NumberView;
+            public string Comment
+            {
+                get { return comment; }
+                set
+                {
+                    comment = value;
+                    RaiseProperChanged();
+                }
+            }
             public string Code
             {
                 get { return code; }
@@ -73,19 +93,11 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens
 
                 employees.Add(new Employee()
                 {
-                    Code = "Ali",
+                    Code = "NHA001",
                     Title = "Minister",
                     WasEmpty = true,
-                });
-
-                employees.Add(new Employee()
-                {
-                    Code = "Ahmed",
-                    Title = "CM",
-                    WasEmpty = false,
-                });
-
-                
+                    Comment ="test comment 1"
+                });      
 
                 return employees;
             }
@@ -100,6 +112,11 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens
                     PropertyChanged(this, new PropertyChangedEventArgs(caller));
                 }
             }
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
