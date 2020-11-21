@@ -121,14 +121,11 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, "AgenciesRootDialog", DeleteExtendedOpenedEventHandler, DeleteExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, "AgenciesRootDialog", ExtendedOpenedEventHandler, DeleteExtendedClosingEventHandler);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
         }
-
-        private void DeleteExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
-            => Console.WriteLine("You could intercept the open and affect the dialog using eventArgs.Session.");
 
         private void DeleteExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {

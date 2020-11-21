@@ -206,12 +206,14 @@
     <Compile Include="ViewModel\ChangeSalaryOfAEmployeeByPercentDialogViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\DeleteAgencyViewModel.cs" />
+    <Compile Include="ViewModel\DeleteAKindOfHouseDialogViewModel.cs" />
     <Compile Include="ViewModel\DeleteEmployeeViewModel.cs" />
     <Compile Include="ViewModel\DialogsHelperClasses\AnotherCommandImplementation.cs" />
     <Compile Include="ViewModel\DialogsViewModel.cs" />
     <Compile Include="ViewModel\EachMonthCharityMoneyDialogViewModel.cs" />
     <Compile Include="ViewModel\EmployeesViewModel.cs" />
     <Compile Include="ViewModel\KindsOfHouseViewModel.cs" />
+    <Compile Include="ViewModel\UpdateAKindOfHouseDialogViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\CompanyView\AddNewAgencyDialog.xaml.cs">
       <DependentUpon>AddNewAgencyDialog.xaml</DependentUpon>
@@ -267,6 +269,12 @@
     <Compile Include="View\CompanyView\PagingHelperClasses\Paging.cs" />
     <Compile Include="View\CompanyView\SampleProgressDialog.xaml.cs">
       <DependentUpon>SampleProgressDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\UpdateAKindOfHouseDialog.xaml.cs">
+      <DependentUpon>UpdateAKindOfHouseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\DeleteAKindOfHouseDialog.xaml.cs">
+      <DependentUpon>DeleteAKindOfHouseDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -337,6 +345,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\SampleProgressDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\UpdateAKindOfHouseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\DeleteAKindOfHouseDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

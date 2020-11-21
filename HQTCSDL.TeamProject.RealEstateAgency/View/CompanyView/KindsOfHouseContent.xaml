@@ -10,6 +10,18 @@
     d:DataContext="{d:DesignInstance viewModel:KindsOfHouseViewModel}"
     mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <!--  throw in some extra colour for our floating action button  -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <materialDesign:DialogHost
         Width="320"
         HorizontalAlignment="Center"
@@ -76,7 +88,35 @@
                     Mode="PrimaryMid">
                     <TextBlock Margin="16" Text="Loại nhà" />
                 </materialDesign:ColorZone>
-                <Button
+                <materialDesign:PopupBox
+                    Grid.Row="0"
+                    Margin="0,0,28,-20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+                    <StackPanel>
+                        <Button Command="{Binding RunDeleteExtendedDialogCommand}" Content="{materialDesign:PackIcon Kind=Delete, Size=20}" />
+
+                        <Button
+                            Background="{DynamicResource PrimaryHueMidBrush}"
+                            Command="{Binding RunUpdateExtendedDialogCommand}"
+                            Content="{materialDesign:PackIcon Kind=Edit,
+                                                              Size=20}"
+                            Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
+
+                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Content="{materialDesign:PackIcon Kind=HomePlus, Size=20}">
+                            <!--  mix up the colours by bringing in a named palette (see merged dictionaries at top)  -->
+                            <Button.Background>
+                                <SolidColorBrush Color="{StaticResource GreenPrimary500}" />
+                            </Button.Background>
+
+                            <Button.Foreground>
+                                <SolidColorBrush Color="{StaticResource GreenPrimary500Foreground}" />
+                            </Button.Foreground>
+                        </Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <!--<Button
                     Grid.Row="0"
                     Margin="0,0,28,-20"
                     HorizontalAlignment="Right"
@@ -84,7 +124,7 @@
                     Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                     Content="{materialDesign:PackIcon Kind=Plus,
                                                       Size=22}"
-                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" />
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" />-->
             </Grid>
         </Border>
     </materialDesign:DialogHost>
