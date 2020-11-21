@@ -23,7 +23,7 @@
     <materialDesign:DialogHost
         CloseOnClickAway="True"
         DialogTheme="Inherit"
-        Identifier="RootDialog">
+        Identifier="EmployeesRootDialog">
 
         <DockPanel LastChildFill="True">
 
@@ -109,7 +109,7 @@
                     <DataTemplate>
                         <materialDesign:Flipper materialDesign:ShadowAssist.ShadowDepth="Depth0">
                             <materialDesign:Flipper.FrontContent>
-                                <Grid Width="200" Height="256">
+                                <Grid Width="200" Height="430">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="160" />
                                         <RowDefinition Height="*" />
@@ -132,11 +132,16 @@
                                             Command="{x:Static materialDesign:Flipper.FlipCommand}"
                                             Content="EDIT"
                                             Style="{StaticResource MaterialDesignFlatButton}" />
+                                        <Button
+                                            Margin="0,4,0,0"
+                                            Command="{Binding RunDeleteExtendedDialogCommand}"
+                                            Content="DELETE"
+                                            Style="{StaticResource MaterialDesignFlatButton}" />
                                     </StackPanel>
                                 </Grid>
                             </materialDesign:Flipper.FrontContent>
                             <materialDesign:Flipper.BackContent>
-                                <Grid Width="200" Height="256">
+                                <Grid Width="200" Height="430">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
@@ -165,10 +170,10 @@
                                             <RowDefinition />
                                             <RowDefinition />
                                             <RowDefinition />
-                                            <!--<RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />-->
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
                                         </Grid.RowDefinitions>
                                         <TextBox
                                             Grid.Row="0"
@@ -188,30 +193,30 @@
                                             materialDesign:HintAssist.Hint="Phone Number"
                                             materialDesign:HintAssist.IsFloating="True"
                                             Text="{Binding PhoneNumber}" />
-                                        <!--<TextBox
-                                        Grid.Row="3"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Address"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding Address}" />
-                                    <TextBox
-                                        Grid.Row="4"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Sex"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding Sex, Converter={StaticResource BoolToStringConverter}}" />
-                                    <TextBox
-                                        Grid.Row="5"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Date of birth"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding DOB, StringFormat=d}" />
-                                    <TextBox
-                                        Grid.Row="6"
-                                        Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="Salary"
-                                        materialDesign:HintAssist.IsFloating="True"
-                                        Text="{Binding Salary, StringFormat=N2}" />-->
+                                        <TextBox
+                                            Grid.Row="3"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Address"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding Address}" />
+                                        <TextBox
+                                            Grid.Row="4"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Sex"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding Sex, Converter={StaticResource BoolToStringConverter}}" />
+                                        <TextBox
+                                            Grid.Row="5"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Date of birth"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding DOB, StringFormat=d}" />
+                                        <TextBox
+                                            Grid.Row="6"
+                                            Margin="0,12,0,0"
+                                            materialDesign:HintAssist.Hint="Salary"
+                                            materialDesign:HintAssist.IsFloating="True"
+                                            Text="{Binding Salary, StringFormat=N2}" />
                                     </Grid>
                                 </Grid>
                             </materialDesign:Flipper.BackContent>

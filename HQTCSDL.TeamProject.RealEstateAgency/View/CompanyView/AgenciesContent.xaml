@@ -21,7 +21,7 @@
     <materialDesign:DialogHost
         CloseOnClickAway="True"
         DialogTheme="Inherit"
-        Identifier="RootDialog">
+        Identifier="AgenciesRootDialog">
 
         <DockPanel LastChildFill="True">
 

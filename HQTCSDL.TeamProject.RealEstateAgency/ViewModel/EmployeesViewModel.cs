@@ -43,8 +43,46 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
         public DateTime Today { get; set; } = DateTime.Now;
 
         public ICommand RunDialogCommand => new AnotherCommandImplementation(ExecuteRunDialog);
-
         public ICommand RunExtendedDialogCommand => new AnotherCommandImplementation(ExecuteRunExtendedDialog);
+        public ICommand RunDeleteExtendedDialogCommand => new AnotherCommandImplementation(ExecuteDeleteRunExtendedDialog);
+
+        private async void ExecuteDeleteRunExtendedDialog(object obj)
+        {
+            //let's set up a little MVVM, cos that's what the cool kids are doing:
+            var view = new DeleteEmployeeDialog()
+            {
+                //DataContext = new DeleteAgencyViewModel()
+            };
+
+            //show the dialog
+            var result = await DialogHost.Show(view, "EmployeesRootDialog", DeleteExtendedOpenedEventHandler, DeleteExtendedClosingEventHandler);
+
+            //check the result...
+            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+        }
+
+        private void DeleteExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
+            => Console.WriteLine("You could intercept the open and affect the dialog using eventArgs.Session.");
+
+        private void DeleteExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (eventArgs.Parameter is bool parameter &&
+                parameter == false) return;
+
+            //----------------------------------
+
+            //OK, lets cancel the close...
+            eventArgs.Cancel();
+
+            //...now, lets update the "session" with some new content!
+            eventArgs.Session.UpdateContent(new SampleProgressDialog());
+            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+
+            //lets run a fake operation for 3 seconds then close this baby.
+            Task.Delay(TimeSpan.FromSeconds(3))
+                .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
+                    TaskScheduler.FromCurrentSynchronizationContext());
+        }
 
         private async void ExecuteRunDialog(object o)
         {
@@ -55,7 +93,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, "RootDialog", ClosingEventHandler);
+            var result = await DialogHost.Show(view, "EmployeesRootDialog", ClosingEventHandler);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
@@ -73,7 +111,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, "RootDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, "EmployeesRootDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));

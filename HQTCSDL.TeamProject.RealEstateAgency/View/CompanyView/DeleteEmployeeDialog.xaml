@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.DeleteEmployeeDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d">
+    <Grid Width="200" Margin="16">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone
+            Grid.Row="0"
+            Padding="6"
+            Mode="SecondaryMid">
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    HorizontalAlignment="Left"
+                    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    materialDesign:ButtonProgressAssist.Value="-1"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                    <materialDesign:PackIcon Kind="Delete" />
+                </Button>
+                <TextBlock
+                    Margin="8,0,0,0"
+                    VerticalAlignment="Center"
+                    Text="DELETE THIS EMPLOYEE" />
+            </StackPanel>
+        </materialDesign:ColorZone>
+
+        <TextBlock
+            x:Name="AskTextBox"
+            Grid.Row="1"
+            Margin="0,12,0,0"
+            HorizontalAlignment="Center"
+            Text="Delete this employee?" />
+
+        <StackPanel
+            Grid.Row="3"
+            Margin="0,16,0,0"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                IsDefault="True"
+                Style="{DynamicResource MaterialDesignFlatButton}">
+                <Button.CommandParameter>
+                    <system:Boolean>True</system:Boolean>
+                </Button.CommandParameter>
+                ACCEPT
+            </Button>
+            <Button
+                Margin="8,0,0,0"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                IsCancel="True"
+                Style="{DynamicResource MaterialDesignFlatButton}">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+                CANCEL
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
