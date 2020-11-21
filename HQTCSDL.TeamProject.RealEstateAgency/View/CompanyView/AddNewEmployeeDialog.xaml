@@ -9,6 +9,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Background="White"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -128,7 +129,7 @@
                 Grid.Row="5"
                 Width="140"
                 Margin="0,0,0,10"
-                materialDesign:HintAssist.Hint="Pick Date"
+                materialDesign:HintAssist.Hint="Pick DOB"
                 Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
             <StackPanel Grid.Row="6" Margin="0,16,0,0">
                 <TextBlock
@@ -144,11 +145,11 @@
                 <Slider
                     x:Name="SalarySlider"
                     Width="100"
-                    Maximum="100000000"
+                    Maximum="10000000"
                     Minimum="0"
                     Orientation="Horizontal"
                     Style="{StaticResource MaterialDesignDiscreteSlider}"
-                    TickFrequency="100000"
+                    TickFrequency="1000000"
                     TickPlacement="BottomRight"
                     ToolTip="Salary"
                     Value="1000000" />

@@ -35,19 +35,89 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
 
         public void AddNewAgency(AgenciesModel newAgency) => this.AgenciesList.Add(newAgency);
         public void RemoveAgency(AgenciesModel oldAgency) => this.AgenciesList.Remove(oldAgency);
+        public AgenciesModel SelectedAgency { get; set; }
 
         public ICommand RunDialogCommand => new AnotherCommandImplementation(ExecuteRunDialog);
-
         public ICommand RunExtendedDialogCommand => new AnotherCommandImplementation(ExecuteRunExtendedDialog);
-
         public ICommand RunDeleteExtendedDialogCommand => new AnotherCommandImplementation(ExecuteDeleteRunExtendedDialog);
+        public ICommand RunCharityExtendedDialogCommand => new AnotherCommandImplementation(ExecuteCharityRunExtendedDialog);
+        public ICommand RunSalaryExtendedDialogCommand => new AnotherCommandImplementation(ExecuteSalaryRunExtendedDialog);
+
+        private async void ExecuteSalaryRunExtendedDialog(object obj)
+        {
+            var view = new ChangeAllSalaryByPercentDialog
+            {
+                DataContext = new ChangeAllSalaryByPercentDialogViewModel()
+            };
+
+            //show the dialog
+            var result = await DialogHost.Show(view, "AgenciesRootDialog", ExtendedOpenedEventHandler, SalaryExtendedClosingEventHandler);
+
+            //check the result...
+            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+        }
+
+        private void SalaryExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (eventArgs.Parameter is bool parameter &&
+                parameter == false) return;
+
+            //OK, lets cancel the close...
+            eventArgs.Cancel();
+
+            //...now, lets update the "session" with some new content!
+            eventArgs.Session.UpdateContent(new SampleProgressDialog());
+            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+
+            //---------------------------------------
+
+            //lets run a fake operation for 3 seconds then close this baby.
+            Task.Delay(TimeSpan.FromSeconds(3))
+                .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
+                    TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private async void ExecuteCharityRunExtendedDialog(object obj)
+        {
+            var view = new EachMonthCharityMoneyDialog()
+            {
+                DataContext = new EachMonthCharityMoneyDialogViewModel()
+            };
+
+            //show the dialog
+            var result = await DialogHost.Show(view, "AgenciesRootDialog", ExtendedOpenedEventHandler, CharityExtendedClosingEventHandler);
+
+            //check the result...
+            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+        }
+
+        private void CharityExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (eventArgs.Parameter is bool parameter &&
+                parameter == false) return;
+
+            //OK, lets cancel the close...
+            eventArgs.Cancel();
+
+            //...now, lets update the "session" with some new content!
+            eventArgs.Session.UpdateContent(new SampleProgressDialog());
+            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+
+            //---------------------------------------
+
+            //lets run a fake operation for 3 seconds then close this baby.
+            Task.Delay(TimeSpan.FromSeconds(3))
+                .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
+                    TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
 
         private async void ExecuteDeleteRunExtendedDialog(object obj)
         {
             //let's set up a little MVVM, cos that's what the cool kids are doing:
             var view = new DeleteAgencyDialog
             {
-                //DataContext = new DeleteAgencyViewModel()
+                DataContext = new DeleteAgencyViewModel()
             };
 
             //show the dialog
@@ -65,14 +135,15 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
 
-            //----------------------------------
-
             //OK, lets cancel the close...
             eventArgs.Cancel();
 
             //...now, lets update the "session" with some new content!
             eventArgs.Session.UpdateContent(new SampleProgressDialog());
             //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+
+            //Delete agency
+            RemoveAgency(this.SelectedAgency);
 
             //lets run a fake operation for 3 seconds then close this baby.
             Task.Delay(TimeSpan.FromSeconds(3))
