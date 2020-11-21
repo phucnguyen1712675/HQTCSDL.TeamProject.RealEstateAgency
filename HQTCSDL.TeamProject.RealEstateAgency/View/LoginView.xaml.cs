@@ -1,10 +1,12 @@
 ﻿using HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView;
 using HQTCSDL.TeamProject.RealEstateAgency.ViewModel;
 using MahApps.Metro.Controls;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,31 +35,46 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View
 
         private void btnExit_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e) => CheckForLogin();
+        private bool VerifyUser(string username, string password) => this.viewModel.ContainUser(username, password);
 
-        private void CheckForLogin()
+        private bool CheckForLogin()
         {
-            if (VerifyUser(txtUsername.Text, txtPassword.Password))
+            bool result = VerifyUser(txtUsername.Text, txtPassword.Password);
+            if (result)
             {
                 var homeScreen = new HomeScreen();
                 App.Current.MainWindow = homeScreen;
                 this.Close();
                 homeScreen.Show();
             }
-            else
+            return result;
+        }
+
+        private void ManuallyLoginAccountChecking()
+        {
+            bool result = CheckForLogin();
+            if (!result)
             {
                 MessageBox.Show("Username or password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private bool VerifyUser(string username, string password) => this.viewModel.ContainUser(username, password);
+        private void AutoLoginAccountChecking() => CheckForLogin();
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e) => ManuallyLoginAccountChecking();
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                CheckForLogin();
+                ManuallyLoginAccountChecking();
             }
         }
+
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e) => AutoLoginAccountChecking();
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e) => AutoLoginAccountChecking();
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e) => txtUsername.Focus();
     }
 }

@@ -3,6 +3,7 @@
   <Import Project="..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8B92D7F8-D7BD-46AC-8FDD-1C92E67A9D1B}</ProjectGuid>
@@ -191,17 +192,34 @@
     <Compile Include="Converters\AgencyIdentifierToStringConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
     <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
+    <Compile Include="Converters\NumberToCurrencyConverter.cs" />
     <Compile Include="Converters\RatioConverter.cs" />
     <Compile Include="Model\AgenciesModel.cs" />
     <Compile Include="Model\EmployeesModel.cs" />
+    <Compile Include="Model\KindsOfHouseModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
+    <Compile Include="ViewModel\AddNewAgencyDialogViewModel.cs" />
+    <Compile Include="ViewModel\AddNewEmployeeDialogViewModel.cs" />
     <Compile Include="ViewModel\AgenciesViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
+    <Compile Include="ViewModel\DialogsHelperClasses\AnotherCommandImplementation.cs" />
+    <Compile Include="ViewModel\DialogsViewModel.cs" />
     <Compile Include="ViewModel\EmployeesViewModel.cs" />
+    <Compile Include="ViewModel\KindsOfHouseViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\CompanyView\AddNewAgencyDialog.xaml.cs">
+      <DependentUpon>AddNewAgencyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\AddNewEmployeeDialog.xaml.cs">
+      <DependentUpon>AddNewEmployeeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyView\AgenciesContent.xaml.cs">
       <DependentUpon>AgenciesContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CompanyView\AnotherProgressDialog.xaml.cs">
+      <DependentUpon>AnotherProgressDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\DialogHelperClasses\NotEmptyValidationRule.cs" />
     <Compile Include="View\CompanyView\EmployeesContent.xaml.cs">
 	      <DependentUpon>EmployeesContent.xaml</DependentUpon>
     </Compile>
@@ -224,6 +242,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\CompanyView\KindsOfHouseContent.xaml.cs">
+      <DependentUpon>KindsOfHouseContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\PagingHelperClasses\PageInfo.cs" />
+    <Compile Include="View\CompanyView\PagingHelperClasses\Paging.cs" />
+    <Compile Include="View\CompanyView\SampleProgressDialog.xaml.cs">
+      <DependentUpon>SampleProgressDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -231,7 +257,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\CompanyView\AddNewAgencyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\AddNewEmployeeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CompanyView\AgenciesContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\AnotherProgressDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +292,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\HomeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\KindsOfHouseContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\SampleProgressDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
