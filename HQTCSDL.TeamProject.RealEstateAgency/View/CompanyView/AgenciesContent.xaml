@@ -45,6 +45,7 @@
 
                 <ListView
                     Width="900"
+                    Height="550"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     ItemsSource="{Binding AgenciesList}"
