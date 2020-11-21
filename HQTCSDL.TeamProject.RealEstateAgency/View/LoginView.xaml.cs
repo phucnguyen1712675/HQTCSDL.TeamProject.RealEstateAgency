@@ -1,4 +1,5 @@
-﻿using HQTCSDL.TeamProject.RealEstateAgency.ViewModel;
+﻿using HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView;
+using HQTCSDL.TeamProject.RealEstateAgency.ViewModel;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
