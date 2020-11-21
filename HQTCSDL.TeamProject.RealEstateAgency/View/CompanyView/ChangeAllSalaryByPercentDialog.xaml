@@ -9,13 +9,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     Background="White"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Width="250.371">
 
     <UserControl.Resources>
         <converter:IntegerToPercentConverter x:Key="IntToPercentConvert" />
     </UserControl.Resources>
 
-    <Grid Width="200" Margin="16">
+    <Grid Width="230" Margin="10">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -34,7 +34,7 @@
                 <TextBlock
                     Margin="8,0,0,0"
                     VerticalAlignment="Center"
-                    Text="ADJUSTED SALARY" />
+                    Text="ADJUSTED HOUSE PRICE" />
             </StackPanel>
         </materialDesign:ColorZone>
 
