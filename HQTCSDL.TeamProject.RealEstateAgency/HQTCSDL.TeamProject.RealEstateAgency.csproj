@@ -215,6 +215,9 @@
     <Compile Include="ViewModel\KindsOfHouseViewModel.cs" />
     <Compile Include="ViewModel\UpdateAKindOfHouseDialogViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml.cs">
+      <DependentUpon>Agency_IsHousePriceIncreases.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml.cs">
       <DependentUpon>SearchHouseByTypeRequest.xaml</DependentUpon>
     </Compile>
@@ -285,6 +288,10 @@
     <Page Include="Resources\ResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml">
       <SubType>Designer</SubType>
