@@ -238,6 +238,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Button 
                                             Name="HouseSearchButton"
+                                            Click="HouseSearchButton_Click"
                                             Style="{DynamicResource MaterialDesignToolButton}">
                                             <materialDesign:PackIcon
                                           Kind="Search"
@@ -419,7 +420,6 @@
                                             <!--TODO Binding tình trạng-->
                                             <CheckBox
                                             Grid.Column="1"
-                                            IsChecked="True"
                                             Content="Còn trống"
                                             FontFamily="Segeo Ui light"
                                             FontSize="15"
@@ -472,29 +472,15 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
-                                            <!--selectedvalue binding số lượng phòng ở-->
-                                            <ComboBox 
-                                            Name="NumberOfRoomsComboBox"
-                                            FontSize="15"
-                                            Background="White"
-                                            Grid.Column="1"
-                                              materialDesign:HintAssist.Hint="số lượng"
-                                              MinWidth="72"
-                                              SelectedValue="{Binding SelectedValueOne}">
-                                                <ComboBox.SelectedItem>
-                                                    <Binding
-                                                      Path="SelectedValueOne"
-                                                      Mode="TwoWay"
-                                                      UpdateSourceTrigger="PropertyChanged">
-                                                        <!---->
-                                                    </Binding>
-                                                </ComboBox.SelectedItem>
-                                                <ComboBox.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <VirtualizingStackPanel />
-                                                    </ItemsPanelTemplate>
-                                                </ComboBox.ItemsPanel>
-                                            </ComboBox>
+                                            <!--binding số lượng phòng ở-->
+                                            <TextBox x:Name="NumberOfRoomsTextBox"
+                                                       Margin="5"
+                                                       Background="White"
+                                                       Grid.Column="1"
+                                                       FontSize="15"
+                                                       materialDesign:HintAssist.Hint="số lượng"
+                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                       VerticalAlignment="Center" />
                                         </Grid>
                                         <StackPanel Margin="10">
                                             <Label Content="Định vị"
@@ -651,7 +637,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Name="HouseAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
                                     <!-- todo, kiểm tra là sửa tình trạng hay sửa loại nhà mà chạy procedure phù hợp-->
-                                    <Button Name="HouseUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button Name="HouseUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150" Click="HouseUpdateButon_Click"/>
                                     <Button Name="HouseDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
                                 </Grid>
                             </Grid>
@@ -730,7 +716,7 @@
                                         </Grid>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,20,5">
                                             <!--TODO bấm ok chạy hàm - có xuất kết quả trả về là số lượng nhà đổi giá - messagebox-->
-                                            <Button x:Name="OKUpdateAllHouseOfTypeButton" Content="OK" Margin="0,0,10,0" Width="60"/>
+                                            <Button x:Name="OKUpdatePriceAllHouseOfTypeButton" Content="OK" Margin="0,0,10,0" Width="60" Click="OKUpdatePriceAllHouseOfTypeButton_Click"/>
                                             <Button x:Name="CancelUpdateAllHouseOfTypeButton" Content="Hủy" Margin="0,0,10,0" Width="60"/>
                                         </StackPanel>
                                     </StackPanel>
@@ -779,7 +765,7 @@
                                         </Grid>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,20,5">
                                             <!-- xuất kết quả trong một window khác-->
-                                            <Button x:Name="OKSearchHouseByTypeButton" Content="OK" Margin="0,0,10,0" Width="60"/>
+                                            <Button x:Name="OKSearchHouseByTypeButton" Content="OK" Margin="0,0,10,0" Width="60" Click="OKSearchHouseByTypeButton_Click"/>
                                             <Button x:Name="CancelSearchHouseByTypeButton" Content="Hủy" Margin="0,0,10,0" Width="60"/>
                                         </StackPanel>
                                     </StackPanel>
@@ -1029,7 +1015,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Name="StaffAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
                                     <!--TODO update lương nhân viên thôi-->
-                                    <Button Name="StaffUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button Name="StaffUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150" Click="StaffUpdateButon_Click"/>
                                     <Button Name="StaffDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
                                 </Grid>
                             </StackPanel>
@@ -1146,7 +1132,6 @@
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
                                     <Label Name="CustomerCodeLable"
-                                            Content="ADDADSFADS"
                                                Grid.Column="1"
                                                FontSize="20"
                                                Style="{StaticResource fontStyle}"/>
@@ -1286,15 +1271,21 @@
                                                 Margin="5,0,5,0"/>
                                         </Grid>
                                         
-                                        <Grid Margin="5,10,0,0">
+                                        <StackPanel Margin="5,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
                                             <Button
                                                 HorizontalAlignment="Center"
                                                 Width="100"
                                                 Name="DeleteHouseTypeRequestCustomerButton"
                                                 Content="Xóa"
-                                                Grid.Column="2"
                                                 Margin="5,0,5,0"/>
-                                        </Grid>
+                                            <Button
+                                                Click="UpdateHouseTypeRequestCustomerButton_Click"
+                                                HorizontalAlignment="Center"
+                                                Width="100"
+                                                Name="UpdateHouseTypeRequestCustomerButton"
+                                                Content="OK"
+                                                Margin="5,0,5,0"/>
+                                        </StackPanel>
                                     </StackPanel>
                                 </Grid>
 

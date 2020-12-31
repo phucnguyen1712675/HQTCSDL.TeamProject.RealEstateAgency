@@ -245,28 +245,15 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
-                                            <!--selectedvalue binding số lượng phòng ở-->
-                                            <ComboBox 
-                                            Name="NumberOfRoomsComboBox"
-                                            FontSize="15"
-                                            Background="White"
-                                            Grid.Column="1"
-                                            materialDesign:HintAssist.Hint="số lượng"
-                                            MinWidth="72">
-                                                <ComboBox.SelectedItem>
-                                                    <Binding
-                                                      Path="SelectedValueOne"
-                                                      Mode="TwoWay"
-                                                      UpdateSourceTrigger="PropertyChanged">
-                                                        <!---->
-                                                    </Binding>
-                                                </ComboBox.SelectedItem>
-                                                <ComboBox.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <VirtualizingStackPanel />
-                                                    </ItemsPanelTemplate>
-                                                </ComboBox.ItemsPanel>
-                                            </ComboBox>
+                                            <!--binding số lượng phòng ở-->
+                                            <TextBox x:Name="NumberOfRoomsTextBox"
+                                                       Margin="5"
+                                                       Background="White"
+                                                       Grid.Column="1"
+                                                       FontSize="15"
+                                                       materialDesign:HintAssist.Hint="số lượng"
+                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                       VerticalAlignment="Center" />
                                         </Grid>
                                         <StackPanel Margin="10">
                                             <Label Content="Định vị"
@@ -424,10 +411,10 @@
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
                                     <!-- todo chỉ thêm nhà thuê mới-->
-                                    <Button Name="HouseAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
+                                    <Button Name="HouseAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150" Click="HouseAddButon_Click"/>
                                     <!-- todo, kiểm tra là sửa tình trạng hay sửa loại nhà mà chạy procedure phù hợp-->
-                                    <Button Name="HouseUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150"/>
-                                    <Button Name="HouseDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button Name="HouseUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150" Click="HouseUpdateButon_Click"/>
+                                    <Button Name="HouseDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150" Click="HouseDeteleButon_Click"/>
                                 </Grid>
                             </Grid>
                         </TabItem>
