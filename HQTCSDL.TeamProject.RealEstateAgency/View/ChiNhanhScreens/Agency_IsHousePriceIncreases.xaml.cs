@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens
     /// <summary>
     /// Interaction logic for Agency_IsHousePriceIncreases.xaml
     /// </summary>
-    public partial class Agency_IsHousePriceIncreases : Window
+    public partial class Agency_IsHousePriceIncreases : MetroWindow
     {
         public Agency_IsHousePriceIncreases()
         {
