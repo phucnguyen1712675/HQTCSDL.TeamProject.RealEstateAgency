@@ -29,6 +29,7 @@
 
         <!--Binding danh sách truyền vào-->
         <DataGrid Margin="15" Height="529"
+                  Name="ResultDataGrid"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
 
