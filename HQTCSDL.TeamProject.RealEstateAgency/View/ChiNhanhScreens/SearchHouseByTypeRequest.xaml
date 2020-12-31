@@ -1,5 +1,4 @@
-﻿<metro:MetroWindow
-    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.StaffNotMeetTarget"
+﻿<metro:MetroWindow x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.SearchHouseByTypeRequest"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,32 +7,31 @@
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
         mc:Ignorable="d"
-        Title="StaffNotMeetTarget"
-        WindowStartupLocation="CenterScreen"
+        Title="SearchHouseByTypeRequest" 
         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-        Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-    >
-
+        Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}">
     <metro:MetroWindow.Resources>
         <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml"/>
     </metro:MetroWindow.Resources>
-    
+
     <StackPanel Background="AliceBlue">
-        
-        <Label Content="Danh sách các nhân viên chưa đạt chỉ tiêu tháng" 
-               Margin="20"
+
+        <Label Content="Danh sách các nhà phù hợp yêu cầu" 
+               Margin="20,10"
                FontSize="20"
                Style="{StaticResource fontStyle}"/>
-        <Label
-            Content="tháng 2"
-            Style="{StaticResource fontStyle}"
-            FontSize=" 15"/>
-        <Label
-            Content="Tổng số nhân viên : x"
-            Style="{StaticResource fontStyle}"
-            FontSize="15"/>
-        <DataGrid Margin="15" Height="529">
-            
+        <StackPanel Orientation="Horizontal" Margin="20,10" TextElement.FontSize="15">
+            <Label
+             Content="Mã chi nhánh:       "/>
+            <!-- binding mã chi nhánh để test-->
+            <Label />
+        </StackPanel>
+
+        <!--Binding danh sách truyền vào-->
+        <DataGrid Margin="15" Height="529"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+
         </DataGrid>
     </StackPanel>
 </metro:MetroWindow>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens
 {
     /// <summary>
-    /// Interaction logic for StaffNotMeetTarget.xaml
+    /// Interaction logic for SearchHouseByTypeRequest.xaml
     /// </summary>
-    public partial class StaffNotMeetTarget : MetroWindow
+    public partial class SearchHouseByTypeRequest : MetroWindow
     {
-        public StaffNotMeetTarget()
+        public SearchHouseByTypeRequest()
         {
             InitializeComponent();
         }

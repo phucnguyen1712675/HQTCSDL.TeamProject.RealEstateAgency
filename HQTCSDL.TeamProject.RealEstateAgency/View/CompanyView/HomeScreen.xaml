@@ -29,7 +29,7 @@
         <metro:WindowButtonCommands Style="{DynamicResource MahApps.Styles.WindowButtonCommands.Win10}" />
     </metro:MetroWindow.WindowButtonCommands>
 
-    <metro:MetroWindow.Flyouts>
+    <!--<metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl>
             <metro:Flyout
                 x:Name="LeftFlyout"
@@ -39,7 +39,7 @@
                 <local:FlyoutContent />
             </metro:Flyout>
         </metro:FlyoutsControl>
-    </metro:MetroWindow.Flyouts>
+    </metro:MetroWindow.Flyouts>-->
 
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
