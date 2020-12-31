@@ -28,7 +28,7 @@
                         Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
                         VerticalAlignment="Top">
 
-                        <!--tất cả nhà-->
+                        <!--Chỉ cần hiện tất cả danh sách nhà thôi, tất cả nhà không cần làm gì trong này-->
                         <TabItem Header="Danh sách">
                             <StackPanel Background="AliceBlue">
                                 <Grid>
@@ -106,11 +106,11 @@
                                 </Grid>
                                 <DataGrid Name="HouseListDataGrid"
                                     Background="White" VerticalAlignment="Center" Margin="5,20,5,20" Height="500"/>
-                                <!-- TODO Binding tất cả nhà-->
+                                <!-- TODO Binding tất cả nhà do ko cần thiết-->
                             </StackPanel>
                         </TabItem>
 
-                        <!--Thêm xóa sửa nhà-->
+                        <!--Thêm xóa sửa nhà TODO-->
                         <TabItem Header="Thêm/ sửa/ xóa">
                             <Grid Background="AliceBlue">
                                 <Grid.RowDefinitions>
@@ -128,29 +128,30 @@
                                            Grid.Column="0"
                                            FontSize="15"
                                            Style="{StaticResource fontStyle}"/>
+                                    <!--Binding nhà đang có-->
                                     <ComboBox  Name="HouseListComboBox"
                                         Grid.Column="1" Height="40"  Background="White" >
                                         <!--<ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Image Name="bookComboBoxImage" Source="{Binding Image, Converter={StaticResource fileConverter}}" Margin="5, 0 , 5, 0" Width="20" Height="20" />
-                                                <StackPanel Orientation="Vertical">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Red"/>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Year}"/>
-                                                        <TextBlock Text=" - "/>
-                                                        <TextBlock Text="{Binding AuthorName}" Foreground="Blue"/>
-                                                    </StackPanel>
-                                                </StackPanel>
+                                                <TextBlock Text="{Binding MANHA}"/>
+                                                <TextBlock Text=" - "/>
+                                                <TextBlock Text="{Binding DUONG}"/>
+                                                <TextBlock Text=" - "/>
+                                                <TextBlock Text="{Binding QUAN}"/>
+                                                <TextBlock Text=" - "/>
+                                                <TextBlock Text="{Binding KHUVUC}"/>
+                                                <TextBlock Text=" - "/>
+                                                <TextBlock Text="{Binding THANHPHO}"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>-->
                                     </ComboBox>
                                 </Grid>
-
-                                <ScrollViewer Grid.Row="1" Height="500">
+                                <!--Height="500"-->
+                                <ScrollViewer Grid.Row="1">
                                     <StackPanel>
-                                        <Grid Margin="10">
+                                        <Grid Margin="10" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="3*"/>
                                                 <ColumnDefinition Width="7*"/>
@@ -159,12 +160,11 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
+                                            <!--Binding mã nhà-->
                                             <Label Name="HouseCodeLable"
-                                               Content="ADDADSFADS"
                                                Grid.Column="1"
                                                FontSize="20"
                                                Style="{StaticResource fontStyle}"/>
-                                            <!--Binding mã nhà-->
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
@@ -175,12 +175,11 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
+                                            <!--Binding số lượng xem-->
                                             <Label Name="HouseViewLable"
-                                               Content="4"
                                                Grid.Column="1"
                                                FontSize="20"
                                                Style="{StaticResource fontStyle}"/>
-                                            <!--Binding số lượng xem-->
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
@@ -191,14 +190,13 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
+                                            <!--TODO Binding tình trạng-->
                                             <CheckBox
                                             Grid.Column="1"
-                                            IsChecked="True"
                                             Content="Còn trống"
                                             FontFamily="Segeo Ui light"
                                             FontSize="15"
                                             materialDesign:CheckBoxAssist.CheckBoxSize="30" />
-                                            <!--TODO Binding tình trạng-->
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
@@ -210,6 +208,7 @@
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
                                             <StackPanel Background="White" Grid.Column="1" Margin="0,5,0,5">
+                                                <!--Binding ngày đăng-->
                                                 <DatePicker Name="HousePostDatePicker"
                                             VerticalAlignment="Center"
                                             FontFamily="Segeo Ui light"
@@ -228,6 +227,7 @@
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
                                             <StackPanel Background="White" Grid.Column="1" Margin="0,5,0,5">
+                                                <!--binding ngày hết hạn-->
                                                 <DatePicker Name="HouseExpirationDatePicker"
                                             VerticalAlignment="Center"
                                             FontFamily="Segeo Ui light"
@@ -245,13 +245,14 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
-                                            <ComboBox Name="NumberOfRoomsComboBox"
+                                            <!--selectedvalue binding số lượng phòng ở-->
+                                            <ComboBox 
+                                            Name="NumberOfRoomsComboBox"
                                             FontSize="15"
                                             Background="White"
                                             Grid.Column="1"
-                                              materialDesign:HintAssist.Hint="số lượng"
-                                              MinWidth="72"
-                                              SelectedValue="{Binding SelectedValueOne}">
+                                            materialDesign:HintAssist.Hint="số lượng"
+                                            MinWidth="72">
                                                 <ComboBox.SelectedItem>
                                                     <Binding
                                                       Path="SelectedValueOne"
@@ -272,6 +273,7 @@
                                                 FontSize="15"
                                                 VerticalAlignment="Center"
                                                 Style="{StaticResource fontStyle}"/>
+                                            <!--binding địa chỉ các kiểu-->
                                             <Grid Margin="5,0,5,0" >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="1*"/>
@@ -322,23 +324,20 @@
                                                        FontSize="15"
                                                        VerticalAlignment="Center"
                                                        Style="{StaticResource fontStyle}"/>
+                                            <!--Binding itemsource các loại nhà hiện có-->
+                                            <!--Binding loại nhà nếu có-->
                                             <ComboBox Name="HouseTypeCombox" 
+                                                      TextElement.FontSize="14"
                                                     Grid.Column="1" Height="40"  Background="White" >
                                                 <!--<ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Name="bookComboBoxImage" Source="{Binding Image, Converter={StaticResource fileConverter}}" Margin="5, 0 , 5, 0" Width="20" Height="20" />
-                                                <StackPanel Orientation="Vertical">
-                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Red"/>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Year}"/>
-                                                        <TextBlock Text=" - "/>
-                                                        <TextBlock Text="{Binding AuthorName}" Foreground="Blue"/>
-                                                    </StackPanel>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>-->
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding MALOAI}" Foreground="Blue"/>
+                                                            <TextBlock Text=" - "/>
+                                                            <TextBlock Text="{Binding TEN}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>-->
                                             </ComboBox>
                                             <!--TODO Binding Loại nhà-->
                                         </Grid>
@@ -352,25 +351,27 @@
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
 
+                                            <!--Binding loại nhà thuê/hay bán-->
                                             <Grid Grid.Column="1">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="1*"/>
                                                     <ColumnDefinition Width="1*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <RadioButton
-                                                        Width="100"
-                                                        HorizontalAlignment="Center"
-                                                        Grid.Column="0"
-                                                          Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
-                                                          GroupName="HouseTypeRatioButton"
-                                                          Content="Nhà bán" />
+                                                    x:Name="HouseForSaleRadioButotn"
+                                                    Width="100"
+                                                    HorizontalAlignment="Center"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
+                                                    GroupName="HouseTypeRatioButton"
+                                                    Content="Nhà bán" />
                                                 <RadioButton
-                                                        Width="100"
-                                                        HorizontalAlignment="Center"
-                                                        Grid.Column="1"
-                                                          Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
-                                                          GroupName="HouseTypeRatioButton"
-                                                          Content="Nhà thuê" />
+                                                     Width="100"
+                                                     HorizontalAlignment="Center"
+                                                     Grid.Column="1"
+                                                     Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
+                                                     GroupName="HouseTypeRatioButton"
+                                                     Content="Nhà thuê" />
                                             </Grid>
                                         </Grid>
                                         <Grid Margin="10">
@@ -382,6 +383,7 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
+                                            <!--Binding giá bán/thuê - này để riêng, ko trong class nhà, do chua wbik nó thêu hay bán-->
                                             <TextBox Name="HousePriceTextBox"
                                                       Background="White"
                                                       Grid.Column="1"
@@ -399,12 +401,14 @@
                                                FontSize="15"
                                                VerticalAlignment="Center"
                                                Style="{StaticResource fontStyle}"/>
+                                            <!--Binding điều kiện nếu có là nhà bán-->
                                             <TextBox x:Name="HouseTermOfSaleTextBox"
                                                       Background="White"
                                                       Grid.Column="1"
                                                       TextWrapping="Wrap"
                                                       VerticalAlignment="Stretch"
                                                       AcceptsReturn="True"
+                                                      IsEnabled="{Binding ElementName=HouseForSaleRadioButotn, Path=IsChecked}"
                                                       VerticalScrollBarVisibility="Auto"
                                                       materialDesign:HintAssist.Hint="Điều kiện bán"
                                                       Height="80"
@@ -419,7 +423,9 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
+                                    <!-- todo chỉ thêm nhà thuê mới-->
                                     <Button Name="HouseAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
+                                    <!-- todo, kiểm tra là sửa tình trạng hay sửa loại nhà mà chạy procedure phù hợp-->
                                     <Button Name="HouseUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150"/>
                                     <Button Name="HouseDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
                                 </Grid>
@@ -429,7 +435,7 @@
                 </Grid>
             </TabItem>
 
-            <!-- Quản lý tài khoản-->
+            <!-- Quản lý tài khoản không cần làm gì trong này-->
             <TabItem Header="Tài khoản" VerticalAlignment="Bottom">
                 <StackPanel>
                     <metro:MetroTabControl

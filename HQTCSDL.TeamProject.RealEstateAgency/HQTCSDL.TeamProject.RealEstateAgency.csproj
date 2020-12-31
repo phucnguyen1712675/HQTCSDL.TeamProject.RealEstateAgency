@@ -215,6 +215,9 @@
     <Compile Include="ViewModel\KindsOfHouseViewModel.cs" />
     <Compile Include="ViewModel\UpdateAKindOfHouseDialogViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml.cs">
+      <DependentUpon>SearchHouseByTypeRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyView\AddNewAgencyDialog.xaml.cs">
       <DependentUpon>AddNewAgencyDialog.xaml</DependentUpon>
     </Compile>
@@ -242,9 +245,6 @@
     </Compile>
     <Compile Include="View\CompanyView\EmployeesContent.xaml.cs">
       <DependentUpon>EmployeesContent.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml.cs">
-      <DependentUpon>StaffNotMeetTarget.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChuNhaScreens\ChuNhaMain.xaml.cs">
       <DependentUpon>ChuNhaMain.xaml</DependentUpon>
@@ -286,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CompanyView\AddNewAgencyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -295,10 +299,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\AgenciesContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
