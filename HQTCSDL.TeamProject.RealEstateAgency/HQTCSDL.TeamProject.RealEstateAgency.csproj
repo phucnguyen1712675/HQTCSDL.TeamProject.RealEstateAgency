@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,6 +46,12 @@
   <ItemGroup>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.3.4\lib\net46\MahApps.Metro.dll</HintPath>
@@ -165,6 +172,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
@@ -189,16 +198,67 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CHINHANH.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHITIETNHABAN.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHITIETNHATHUE.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHUNHA.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Converters\AgencyIdentifierToStringConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
     <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
     <Compile Include="Converters\IntegerToPercentConverter.cs" />
     <Compile Include="Converters\NumberToCurrencyConverter.cs" />
     <Compile Include="Converters\RatioConverter.cs" />
+    <Compile Include="HOPDONG.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KEHOACHXEMNHA.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHACHHANG.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAINHA.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\AgenciesModel.cs" />
     <Compile Include="Model\EmployeesModel.cs" />
     <Compile Include="Model\KindsOfHouseModel.cs" />
     <Compile Include="Model\UsersModel.cs" />
+    <Compile Include="NHA.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLND_DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLND_DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLND_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLND_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLND_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AddNewAgencyDialogViewModel.cs" />
     <Compile Include="ViewModel\AddNewEmployeeDialogViewModel.cs" />
     <Compile Include="ViewModel\AgenciesViewModel.cs" />
@@ -284,6 +344,9 @@
     </Compile>
     <Compile Include="View\NhanVienScreens\NhanVienMain.xaml.cs">
       <DependentUpon>NhanVienMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="YEUCAU.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
     <Page Include="Resources\ResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -395,6 +458,13 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="QLND_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLND_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="QLND_DB.edmx.diagram">
+      <DependentUpon>QLND_DB.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -405,7 +475,21 @@
   <ItemGroup>
     <Resource Include="Resources\Icon\asset.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="QLND_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLND_DB.edmx</DependentUpon>
+      <LastGenOutput>QLND_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="QLND_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLND_DB.edmx</DependentUpon>
+      <LastGenOutput>QLND_DB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0-ci2265\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0-ci2265\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -416,7 +500,10 @@
     <Error Condition="!Exists('..\packages\StrongNamer.0.2.5\build\StrongNamer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StrongNamer.0.2.5\build\StrongNamer.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.6.3.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.3.0\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\StrongNamer.0.2.5\build\StrongNamer.targets" Condition="Exists('..\packages\StrongNamer.0.2.5\build\StrongNamer.targets')" />
   <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
