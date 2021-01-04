@@ -10,15 +10,19 @@
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Collections.ObjectModel;
+    using PropertyChanged;
+
+    [AddINotifyPropertyChangedInterface]
+
+
     public partial class CHINHANH
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CHINHANH()
         {
-            this.KHACHHANGs = new HashSet<KHACHHANG>();
-            this.NHANVIENs = new HashSet<NHANVIEN>();
+            this.KHACHHANGs = new ObservableCollection<KHACHHANG>();
+            this.NHANVIENs = new ObservableCollection<NHANVIEN>();
         }
     
         public int MACN { get; set; }
@@ -27,8 +31,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         public string DIACHI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
+        public virtual ObservableCollection<KHACHHANG> KHACHHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
+        public virtual ObservableCollection<NHANVIEN> NHANVIENs { get; set; }
     }
 }
