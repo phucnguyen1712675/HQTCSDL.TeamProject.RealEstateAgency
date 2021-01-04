@@ -10,14 +10,17 @@
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Collections.ObjectModel;
+    using PropertyChanged;
+
+    [AddINotifyPropertyChangedInterface]
+
     public partial class CHUNHA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CHUNHA()
         {
-            this.NHAs = new HashSet<NHA>();
+            this.NHAs = new ObservableCollection<NHA>();
         }
     
         public int MACNHA { get; set; }
@@ -26,6 +29,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         public string DIACHI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHA> NHAs { get; set; }
+        public virtual ObservableCollection<NHA> NHAs { get; set; }
     }
 }

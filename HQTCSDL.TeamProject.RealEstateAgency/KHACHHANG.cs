@@ -10,16 +10,19 @@
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Collections.ObjectModel;
+    using PropertyChanged;
+
+    [AddINotifyPropertyChangedInterface]
+
     public partial class KHACHHANG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KHACHHANG()
         {
-            this.HOPDONGs = new HashSet<HOPDONG>();
-            this.KEHOACHXEMNHAs = new HashSet<KEHOACHXEMNHA>();
-            this.YEUCAUs = new HashSet<YEUCAU>();
+            this.HOPDONGs = new ObservableCollection<HOPDONG>();
+            this.KEHOACHXEMNHAs = new ObservableCollection<KEHOACHXEMNHA>();
+            this.YEUCAUs = new ObservableCollection<YEUCAU>();
         }
     
         public int MAKH { get; set; }
@@ -31,10 +34,10 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
     
         public virtual CHINHANH CHINHANH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOPDONG> HOPDONGs { get; set; }
+        public virtual ObservableCollection<HOPDONG> HOPDONGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KEHOACHXEMNHA> KEHOACHXEMNHAs { get; set; }
+        public virtual ObservableCollection<KEHOACHXEMNHA> KEHOACHXEMNHAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<YEUCAU> YEUCAUs { get; set; }
+        public virtual ObservableCollection<YEUCAU> YEUCAUs { get; set; }
     }
 }

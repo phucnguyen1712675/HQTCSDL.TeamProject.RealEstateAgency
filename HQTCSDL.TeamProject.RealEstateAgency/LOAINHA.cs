@@ -10,20 +10,23 @@
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Collections.ObjectModel;
+    using PropertyChanged;
+
+    [AddINotifyPropertyChangedInterface]
+
     public partial class LOAINHA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LOAINHA()
         {
-            this.NHAs = new HashSet<NHA>();
+            this.NHAs = new ObservableCollection<NHA>();
         }
     
         public int MALOAI { get; set; }
         public string TEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHA> NHAs { get; set; }
+        public virtual ObservableCollection<NHA> NHAs { get; set; }
     }
 }
