@@ -89,7 +89,9 @@
                                     Height="500"
                                     Margin="5,20,5,20"
                                     VerticalAlignment="Center"
-                                    Background="White" />
+                                    Background="White"
+                                    ItemsSource="{Binding HouseOwners}" />
+
                                 <!--  TODO Binding tất cả chủ nhà  -->
                             </StackPanel>
                         </TabItem>
@@ -244,6 +246,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
+
             <!--  Quản lý nhả TODO  -->
             <TabItem
                 Name="House"
@@ -334,7 +337,8 @@
                                     Height="500"
                                     Margin="5,20,5,20"
                                     VerticalAlignment="Center"
-                                    Background="White" />
+                                    Background="White"
+                                    ItemsSource="{Binding Houses}" />
                                 <!--  TODO Binding itemsource tất cả nhà là được  -->
                             </StackPanel>
                         </TabItem>
@@ -364,21 +368,21 @@
                                         Grid.Column="1"
                                         Height="40"
                                         Background="White">
-                                        <!--<ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding MANHA}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding DUONG}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding QUAN}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding KHUVUC}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding THANHPHO}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>-->
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding MANHA}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding DUONG}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding QUAN}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding KHUVUC}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding THANHPHO}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </Grid>
 
@@ -399,6 +403,7 @@
                                             <Label
                                                 Name="HouseCodeLable"
                                                 Grid.Column="1"
+                                                Content="{Binding SelectedHouse.MANHA}"
                                                 FontSize="20"
                                                 Style="{StaticResource fontStyle}" />
                                         </Grid>
@@ -417,6 +422,7 @@
                                             <Label
                                                 Name="HouseViewLable"
                                                 Grid.Column="1"
+                                                Content="{Binding SelectedHouse.SOLUONGXEM}"
                                                 FontSize="20"
                                                 Style="{StaticResource fontStyle}" />
 
@@ -442,18 +448,19 @@
                                                 Background="White"
                                                 FontFamily="Segeo ui light"
                                                 FontSize="15"
-                                                IsEditable="True">
-                                                <!--<ComboBox.ItemTemplate>
+                                                IsEditable="True"
+                                                SelectedItem="{Binding SelectedHouse.CHUNHA}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding MACNHA}"/>
-                                                            <TextBlock Text=" - "/>
-                                                            <TextBlock Text="{Binding TEN}"/>
-                                                            <TextBlock Text=" - "/>
-                                                            <TextBlock Text="{Binding SDT}"/>
+                                                            <TextBlock Text="{Binding MACNHA}" />
+                                                            <TextBlock Text=" - " />
+                                                            <TextBlock Text="{Binding TEN}" />
+                                                            <TextBlock Text=" - " />
+                                                            <TextBlock Text="{Binding SDT}" />
                                                         </StackPanel>
                                                     </DataTemplate>
-                                                </ComboBox.ItemTemplate>-->
+                                                </ComboBox.ItemTemplate>
                                             </ComboBox>
                                         </Grid>
                                         <Grid Margin="10">
@@ -468,12 +475,16 @@
                                                 FontSize="15"
                                                 Style="{StaticResource fontStyle}" />
                                             <!--  TODO Binding tình trạng  -->
-                                            <CheckBox
+                                            <TextBox
+                                                x:Name="HouseStateTextBox"
                                                 Grid.Column="1"
-                                                materialDesign:CheckBoxAssist.CheckBoxSize="30"
-                                                Content="Còn trống"
-                                                FontFamily="Segeo Ui light"
-                                                FontSize="15" />
+                                                Margin="5"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="(0: Trống/ 1: hết trống)"
+                                                Background="White"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                Text="{Binding SelectedHouse.TINHTRANG}" />
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
@@ -497,7 +508,9 @@
                                                     materialDesign:HintAssist.Hint="MM/dd/YYYY"
                                                     FontFamily="Segeo Ui light"
                                                     FontSize="15"
-                                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                    Text="{Binding SelectedHouse.NGAYDANG}" />
+
                                             </StackPanel>
                                         </Grid>
                                         <Grid Margin="10">
@@ -522,7 +535,9 @@
                                                     materialDesign:HintAssist.Hint="MM/dd/YYYY"
                                                     FontFamily="Segeo Ui light"
                                                     FontSize="15"
-                                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                    Text="{Binding SelectedHouse.NGAYHETHAN}" />
+
                                             </StackPanel>
                                         </Grid>
                                         <Grid Margin="10">
@@ -545,10 +560,15 @@
                                                 materialDesign:HintAssist.Hint="số lượng"
                                                 Background="White"
                                                 FontSize="15"
-                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                Text="{Binding SelectedHouse.SOLUONGPHONGO}" />
                                         </Grid>
                                         <StackPanel Margin="10">
-                                            <Label VerticalAlignment="Center" Style="{StaticResource fontStyle}" />
+                                            <Label
+                                                VerticalAlignment="Center"
+                                                Content="Định vị"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
                                             <!--  binding địa chỉ các kiểu  -->
                                             <Grid Margin="5,0,5,0">
                                                 <Grid.ColumnDefinitions>
@@ -565,7 +585,9 @@
                                                     materialDesign:HintAssist.Hint="Đường"
                                                     Background="White"
                                                     FontSize="15"
-                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.DUONG}" />
+
                                                 <TextBox
                                                     x:Name="HouseLocationDistrictTextBox"
                                                     Grid.Column="1"
@@ -574,7 +596,8 @@
                                                     materialDesign:HintAssist.Hint="Quận"
                                                     Background="White"
                                                     FontSize="15"
-                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.QUAN}" />
                                                 <TextBox
                                                     x:Name="HouseLocationAreaTextBox"
                                                     Grid.Column="2"
@@ -583,7 +606,9 @@
                                                     materialDesign:HintAssist.Hint="Khu vực"
                                                     Background="White"
                                                     FontSize="15"
-                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.KHUVUC}" />
+
                                                 <TextBox
                                                     x:Name="HouseLocationCityTextBox"
                                                     Grid.Column="3"
@@ -592,7 +617,9 @@
                                                     materialDesign:HintAssist.Hint="Thành phố"
                                                     Background="White"
                                                     FontSize="15"
-                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.THANHPHO}" />
+
                                             </Grid>
                                         </StackPanel>
                                         <Grid Margin="10">
@@ -612,16 +639,17 @@
                                                 Name="HouseTypeCombox"
                                                 Grid.Column="1"
                                                 Height="40"
-                                                Background="White">
-                                                <!--<ComboBox.ItemTemplate>
+                                                Background="White"
+                                                SelectedItem="{Binding SelectedHouse.LOAINHA}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding MALOAI}" Foreground="Blue"/>
-                                                            <TextBlock Text=" - "/>
+                                                            <TextBlock Foreground="Blue" Text="{Binding MALOAI}" />
+                                                            <TextBlock Text=" - " />
                                                             <TextBlock Text="{Binding TEN}" />
                                                         </StackPanel>
                                                     </DataTemplate>
-                                                </ComboBox.ItemTemplate>-->
+                                                </ComboBox.ItemTemplate>
                                             </ComboBox>
                                         </Grid>
                                         <Grid Margin="10">

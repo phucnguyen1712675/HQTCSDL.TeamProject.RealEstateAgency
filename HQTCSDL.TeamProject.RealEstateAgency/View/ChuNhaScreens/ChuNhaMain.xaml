@@ -11,6 +11,7 @@
     Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
     Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
     mc:Ignorable="d">
+
     <metro:MetroWindow.Resources>
         <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml" />
     </metro:MetroWindow.Resources>
@@ -281,7 +282,11 @@
                                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                         </Grid>
                                         <StackPanel Margin="10">
-                                            <Label VerticalAlignment="Center" Style="{StaticResource fontStyle}" />
+                                            <Label
+                                                VerticalAlignment="Center"
+                                                Content="Định vị"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
                                             <!--  binding địa chỉ các kiểu  -->
                                             <Grid Margin="5,0,5,0">
                                                 <Grid.ColumnDefinitions>

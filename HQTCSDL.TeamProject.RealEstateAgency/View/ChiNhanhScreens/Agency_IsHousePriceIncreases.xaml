@@ -1,38 +1,42 @@
-﻿<metro:MetroWindow x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.Agency_IsHousePriceIncreases"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
-        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
-        mc:Ignorable="d"
-        Title="thống kê số lượng nhà tăng giá" 
-        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-        Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}">
+﻿<metro:MetroWindow
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.Agency_IsHousePriceIncreases"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+    Title="thống kê số lượng nhà tăng giá"
+    Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+    Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+    mc:Ignorable="d">
     <metro:MetroWindow.Resources>
-        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml"/>
+        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml" />
     </metro:MetroWindow.Resources>
 
     <StackPanel Background="AliceBlue">
 
-        <Label Content="Các loại nhà - số lượng nhà Tăng giá" 
-               Margin="20,10"
-               FontSize="20"
-               Style="{StaticResource fontStyle}"/>
-        <StackPanel Orientation="Horizontal" Margin="20,10" TextElement.FontSize="15">
-            <Label
-             Content="Mã chi nhánh:       "/>
-            <!-- binding mã chi nhánh để test-->
+        <Label
+            Margin="20,10"
+            Content="Các loại nhà - số lượng nhà Tăng giá"
+            FontSize="20"
+            Style="{StaticResource fontStyle}" />
+        <StackPanel
+            Margin="20,10"
+            Orientation="Horizontal"
+            TextElement.FontSize="15">
+            <Label Content="Mã chi nhánh:       " />
+            <!--  binding mã chi nhánh để test  -->
             <Label />
         </StackPanel>
 
-        <!--Binding danh sách truyền vào-->
-        <DataGrid Margin="15" Height="529"
-                  Name="ResultDataGrid"
-                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto">
-
-        </DataGrid>
+        <!--  Binding danh sách truyền vào  -->
+        <DataGrid
+            Name="ResultDataGrid"
+            Height="529"
+            Margin="15"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" />
     </StackPanel>
 </metro:MetroWindow>

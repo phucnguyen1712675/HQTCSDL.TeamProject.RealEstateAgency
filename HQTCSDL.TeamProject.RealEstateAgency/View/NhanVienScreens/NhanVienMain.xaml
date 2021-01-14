@@ -22,19 +22,22 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <metro:MetroTabControl
+        <TabControl
             Grid.ColumnSpan="2"
             Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
             Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
             Margin="-3,7,-3.4,7.2"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignTabControl}">
+
             <TabItem Header="Tác vụ">
                 <Grid>
-                    <metro:MetroTabControl
+                    <TabControl
                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
                         Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-                        VerticalAlignment="Top">
+                        VerticalAlignment="Top"
+                        Style="{StaticResource MaterialDesignTabControl}">
                         <!--  Xem Danh sách nhà trong công ty  -->
                         <TabItem Header="Danh sách">
                             <Grid Background="AliceBlue">
@@ -509,7 +512,7 @@
                             </Grid>
                         </TabItem>
 
-                    </metro:MetroTabControl>
+                    </TabControl>
                 </Grid>
             </TabItem>
             <TabItem VerticalAlignment="Bottom" Header="Tài khoản">
@@ -641,7 +644,7 @@
                 </StackPanel>
 
             </TabItem>
-        </metro:MetroTabControl>
+        </TabControl>
 
     </Grid>
 </metro:MetroWindow>
