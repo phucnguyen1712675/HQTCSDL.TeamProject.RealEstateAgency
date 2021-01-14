@@ -211,7 +211,6 @@
     <Compile Include="CHUNHA.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Converters\AgencyIdentifierToStringConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
     <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
     <Compile Include="Converters\IntegerToPercentConverter.cs" />
@@ -394,14 +393,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\Dialogs\AddNewEmployeeDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\AddNewEmployeeDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\AgenciesContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
