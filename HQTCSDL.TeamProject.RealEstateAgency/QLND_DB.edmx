@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QUANLYNHADATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QUANLYNHADATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHINHANH">
           <Key>
             <PropertyRef Name="MACN" />
@@ -306,6 +306,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="QUANLYNHADATModelStoreContainer">
           <EntitySet Name="CHINHANH" EntityType="Self.CHINHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHITIETNHABAN" EntityType="Self.CHITIETNHABAN" Schema="dbo" store:Type="Tables" />
@@ -363,8 +364,7 @@
             <End Role="YEUCAU" EntitySet="YEUCAU" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QUANLYNHADATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -746,6 +746,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="USP_Temp" ReturnType="Collection(QUANLYNHADATModel.USP_Temp_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -757,6 +758,22 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="USP_Temp_Result">
+          <Property Type="Int32" Name="MANHA" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="MACNHA" Nullable="true" />
+          <Property Type="Int32" Name="MANV" Nullable="true" />
+          <Property Type="Int32" Name="MALOAI" Nullable="true" />
+          <Property Type="Int32" Name="SOLUONGPHONGO" Nullable="true" />
+          <Property Type="DateTime" Name="NGAYHETHAN" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NGAYDANG" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DUONG" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="QUAN" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="KHUVUC" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="THANHPHO" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="TINHTRANG" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SOLUOTXEM" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -914,6 +931,26 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QUANLYNHADATModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QUANLYNHADATModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="USP_Temp" FunctionName="QUANLYNHADATModel.Store.USP_Temp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_Temp_Result">
+                <ScalarProperty Name="MANHA" ColumnName="MANHA" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="MACNHA" ColumnName="MACNHA" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+                <ScalarProperty Name="SOLUONGPHONGO" ColumnName="SOLUONGPHONGO" />
+                <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="DUONG" ColumnName="DUONG" />
+                <ScalarProperty Name="QUAN" ColumnName="QUAN" />
+                <ScalarProperty Name="KHUVUC" ColumnName="KHUVUC" />
+                <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="SOLUOTXEM" ColumnName="SOLUOTXEM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

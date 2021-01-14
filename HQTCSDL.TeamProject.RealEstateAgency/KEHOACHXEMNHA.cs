@@ -11,10 +11,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
 {
     using System;
     using System.Collections.ObjectModel;
-    using PropertyChanged;
-
-    [AddINotifyPropertyChangedInterface]
-
+    
     public partial class KEHOACHXEMNHA
     {
         public int MAKH { get; set; }

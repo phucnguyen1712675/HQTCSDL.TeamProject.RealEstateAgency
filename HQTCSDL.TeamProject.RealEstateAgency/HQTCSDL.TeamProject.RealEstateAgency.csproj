@@ -255,6 +255,9 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="USP_Temp_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml.cs">
       <DependentUpon>Agency_IsHousePriceIncreases.xaml</DependentUpon>
     </Compile>

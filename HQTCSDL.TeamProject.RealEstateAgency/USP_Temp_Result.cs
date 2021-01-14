@@ -10,9 +10,8 @@
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
     using System;
-    using System.Collections.ObjectModel;
     
-    public partial class NHA
+    public partial class USP_Temp_Result
     {
         public int MANHA { get; set; }
         public int MACN { get; set; }
@@ -28,11 +27,5 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         public string THANHPHO { get; set; }
         public string TINHTRANG { get; set; }
         public Nullable<int> SOLUOTXEM { get; set; }
-    
-        public virtual CHITIETNHABAN CHITIETNHABAN { get; set; }
-        public virtual CHITIETNHATHUE CHITIETNHATHUE { get; set; }
-        public virtual CHUNHA CHUNHA { get; set; }
-        public virtual LOAINHA LOAINHA { get; set; }
-        public virtual NHANVIEN NHANVIEN { get; set; }
     }
 }

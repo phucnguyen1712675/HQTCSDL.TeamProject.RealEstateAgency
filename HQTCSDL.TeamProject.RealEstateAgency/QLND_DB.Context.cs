@@ -141,5 +141,10 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<USP_Temp_Result> USP_Temp()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Temp_Result>("USP_Temp");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentControls;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentControls
@@ -11,30 +12,19 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentContr
         /*//mảng tạm lưu thông tin đổi yêu cầu nhà của khách hàng
          * Dictionary<int,int> Old_newHouseTypeDemandCustomer
          */
-        /*public ObservableCollection<NHA> Houses { get; set; }
-        public ObservableCollection<CHUNHA> HouseOwners { get; set; }*/
 
 
         public HomeScreenContentControl()
         {
             InitializeComponent();
-            /*LoadAll();
-            DataContext = this;*/
-            //DataContext = ChiNhanhMainViewModel.Instance;
-        }
-
-        public void LoadAll()
-        {
-            /* using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
-             {
-                 Houses = new ObservableCollection<NHA>(db.NHAs.ToList());
-                 HouseOwners = new ObservableCollection<CHUNHA>(db.CHUNHAs.ToList());
-             }*/
+            DataContext = HomeScreenViewModel.Instance;
         }
 
         private void HouseSearchButton_Click(object sender, RoutedEventArgs e)
         {
             /*gọi refresh lại danh sách nhà*/
+            GetHouseByStateComboBox.SelectedIndex = 0;
+            HomeScreenViewModel.Instance.GetHousesByIndex(0);
         }
 
         private void OKUpdatePriceAllHouseOfTypeButton_Click(object sender, RoutedEventArgs e)
@@ -74,6 +64,44 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentContr
              * update lương nhân viên thôi
              * gọi procedure_UpdateSalaryStaff
              */
+        }
+
+        private void HouseListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*get selected house*/
+            NHA selectedNha = HouseListComboBox.SelectedItem as NHA;
+            HomeScreenViewModel.Instance.SetSelectedHouse(selectedNha);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = GetHouseByStateComboBox.SelectedIndex;
+            HomeScreenViewModel.Instance.GetHousesByIndex(index);
+        }
+
+        private void ClearSelectedHouseButton_Click(object sender, RoutedEventArgs e)
+        {
+            NHA selectedNha = new NHA();
+            HomeScreenViewModel.Instance.SetSelectedHouse(selectedNha);
+            HouseListComboBox.SelectedItem = null;
+        }
+
+        private void StaffSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomeScreenViewModel.Instance.GetAllStaffs();
+        }
+
+        private void StaffListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NHANVIEN seletedStaff = StaffListComboBox.SelectedItem as NHANVIEN;
+            HomeScreenViewModel.Instance.SetSelectedStaff(seletedStaff);
+        }
+
+        private void ClearSelectedStaffButton_Click(object sender, RoutedEventArgs e)
+        {
+            NHANVIEN selectedStaff = new NHANVIEN();
+            HomeScreenViewModel.Instance.SetSelectedStaff(selectedStaff);
+            StaffListComboBox.SelectedItem = null;
         }
     }
 }
