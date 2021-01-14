@@ -1,24 +1,21 @@
-﻿<metro:MetroWindow
-    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ChiNhanhMain"
+﻿<UserControl
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentControls.HomeScreenContentControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-    Title="CHI NHANH"
-    Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-    Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+    d:DesignWidth="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+    Background="{DynamicResource MaterialDesignBackground}"
     mc:Ignorable="d">
 
-    <metro:MetroWindow.Resources>
+    <UserControl.Resources>
         <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml" />
-    </metro:MetroWindow.Resources>
+    </UserControl.Resources>
 
-    <Canvas>
+    <Grid>
         <TabControl
             Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
             Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
@@ -91,7 +88,6 @@
                                     VerticalAlignment="Center"
                                     Background="White"
                                     ItemsSource="{Binding HouseOwners}" />
-
                                 <!--  TODO Binding tất cả chủ nhà  -->
                             </StackPanel>
                         </TabItem>
@@ -510,7 +506,6 @@
                                                     FontSize="15"
                                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                                     Text="{Binding SelectedHouse.NGAYDANG}" />
-
                                             </StackPanel>
                                         </Grid>
                                         <Grid Margin="10">
@@ -537,7 +532,6 @@
                                                     FontSize="15"
                                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                                     Text="{Binding SelectedHouse.NGAYHETHAN}" />
-
                                             </StackPanel>
                                         </Grid>
                                         <Grid Margin="10">
@@ -587,7 +581,6 @@
                                                     FontSize="15"
                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                     Text="{Binding SelectedHouse.DUONG}" />
-
                                                 <TextBox
                                                     x:Name="HouseLocationDistrictTextBox"
                                                     Grid.Column="1"
@@ -608,7 +601,6 @@
                                                     FontSize="15"
                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                     Text="{Binding SelectedHouse.KHUVUC}" />
-
                                                 <TextBox
                                                     x:Name="HouseLocationCityTextBox"
                                                     Grid.Column="3"
@@ -619,7 +611,6 @@
                                                     FontSize="15"
                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                     Text="{Binding SelectedHouse.THANHPHO}" />
-
                                             </Grid>
                                         </StackPanel>
                                         <Grid Margin="10">
@@ -1164,6 +1155,7 @@
                                             Grid.Column="1"
                                             Margin="0,5,0,5"
                                             Background="White">
+                                            <!--  Binding ngày sinh  -->
                                             <DatePicker
                                                 Name="StaffDateOfBirthDatePicker"
                                                 VerticalAlignment="Center"
@@ -1775,5 +1767,5 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-    </Canvas>
-</metro:MetroWindow>
+    </Grid>
+</UserControl>
