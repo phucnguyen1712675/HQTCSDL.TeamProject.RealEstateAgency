@@ -1,6 +1,8 @@
-﻿using MahApps.Metro.Controls;
+﻿using HQTCSDL.TeamProject.RealEstateAgency.ViewModel.ChiNhanhViewModel;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +25,25 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens
         /*//mảng tạm lưu thông tin đổi yêu cầu nhà của khách hàng
          * Dictionary<int,int> Old_newHouseTypeDemandCustomer 
          */
+        public ObservableCollection<NHA> Houses { get; set; }
+        public ObservableCollection<CHUNHA> HouseOwners { get; set; }
+
+
         public ChiNhanhMain()
         {
             InitializeComponent();
-            DataContext = this;
+            /*LoadAll();
+            DataContext = this;*/
+            DataContext = ChiNhanhMainViewModel.Instance;
+        }
+
+        public void LoadAll()
+        {
+            using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
+            {
+                Houses = new ObservableCollection<NHA>(db.NHAs.ToList());
+                HouseOwners = new ObservableCollection<CHUNHA>(db.CHUNHAs.ToList());
+            }
         }
 
         private void HouseSearchButton_Click(object sender, RoutedEventArgs e)

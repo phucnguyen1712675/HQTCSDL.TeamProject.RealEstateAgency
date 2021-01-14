@@ -1,109 +1,119 @@
 ﻿<metro:MetroWindow
-        xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
-        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-        x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ChiNhanhMain"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
-        Title="CHI NHANH" 
-        WindowStartupLocation="CenterScreen"
-       Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-        Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-        >
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ChiNhanhMain"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+    Title="CHI NHANH"
+    Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+    Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
     <metro:MetroWindow.Resources>
-        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml"/>
+        <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml" />
     </metro:MetroWindow.Resources>
 
     <Canvas>
-        <metro:MetroTabControl HorizontalAlignment="Center" VerticalAlignment="Center"
+        <TabControl
             Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
             Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-                                >
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Style="{StaticResource MaterialDesignTabControl}">
 
-            <!-- Quản lý chủ nhả: không có gì cần thiết trong này-->
-            <TabItem Header="Chủ nhà" Name="HouseOwner">
+            <!--  Quản lý chủ nhả: không có gì cần thiết trong này  -->
+            <TabItem Name="HouseOwner" Header="Chủ nhà">
                 <Grid>
-                    <metro:MetroTabControl 
+                    <TabControl
                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
                         Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-                        VerticalAlignment="Top">
-                        <!--tất cả chủ nhà-->
+                        VerticalAlignment="Top"
+                        Style="{StaticResource MaterialDesignTabControl}">
+                        <!--  tất cả chủ nhà  -->
                         <TabItem Header="Danh sách">
                             <StackPanel Background="AliceBlue">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="7*"/>
-                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="3*" />
                                     </Grid.ColumnDefinitions>
-                                    <Grid   Margin="10,0,0,0" Background="White" Grid.Column="0"
-                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Grid
+                                        Grid.Column="0"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Background="White">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Button  
-                                            Name="SearchHouseOwnerButton"
-                                            Style="{DynamicResource MaterialDesignToolButton}">
-                                            <materialDesign:PackIcon
-                                              Kind="Search"
-                                              Opacity=".56" 
-                                              />
+                                        <Button Name="SearchHouseOwnerButton" Style="{DynamicResource MaterialDesignToolButton}">
+                                            <materialDesign:PackIcon Kind="Search" Opacity=".56" />
                                         </Button>
-                                        <TextBox Name="SearchHouseOwnerTextBox"
-                                        Grid.Column="1"
-                                        Margin="8 0 0 0"
-                                        FontSize="15"
-                                        FontFamily="Segeo ui light"
-                                        materialDesign:HintAssist.Hint="Search here"
-                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                        BorderThickness="0"
-                                        MinWidth="400"
-                                        VerticalAlignment="Center" />
-                                        <Button
-                                        Style="{DynamicResource MaterialDesignToolButton}"
-                                        Grid.Column="2">
+                                        <TextBox
+                                            Name="SearchHouseOwnerTextBox"
+                                            Grid.Column="1"
+                                            MinWidth="400"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Search here"
+                                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                            BorderThickness="0"
+                                            FontFamily="Segeo ui light"
+                                            FontSize="15" />
+                                        <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
                                             <materialDesign:PackIcon
-                                              Kind="Microphone"
-                                              Opacity=".56"
-                                              Margin="8 0 0 0" />
+                                                Margin="8,0,0,0"
+                                                Kind="Microphone"
+                                                Opacity=".56" />
                                         </Button>
                                     </Grid>
 
-                                    <Label Content="tất cả chủ nhà"
-                                       Style="{StaticResource fontStyle}"
-                                       Grid.Column="1"
-                                       FontSize="20"
-                                       Margin="20,10,10,10"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Center"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        Margin="20,10,10,10"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Content="tất cả chủ nhà"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
                                 </Grid>
-                                <DataGrid Name="HouseOwnerListDataGrid" Background="White"
-                                    VerticalAlignment="Center" Margin="5,20,5,20" Height="500"/>
-                                <!-- TODO Binding tất cả chủ nhà-->
+                                <DataGrid
+                                    Name="HouseOwnerListDataGrid"
+                                    Height="500"
+                                    Margin="5,20,5,20"
+                                    VerticalAlignment="Center"
+                                    Background="White"
+                                    ItemsSource="{Binding HouseOwners}" />
+                                <!--  TODO Binding tất cả chủ nhà  -->
                             </StackPanel>
                         </TabItem>
 
-                        <!--Thêm xóa sửa chủ nhà-->
+                        <!--  Thêm xóa sửa chủ nhà  -->
                         <TabItem Header="Thêm/ sửa/ xóa">
                             <StackPanel Background="AliceBlue">
                                 <Grid Margin="10,10,20,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Chọn chủ nhà"
-                                           VerticalAlignment="Center"
-                                           Grid.Column="0"
-                                           FontSize="20"
-                                           Style="{StaticResource fontStyle}"/>
-                                    <ComboBox  Name="HouseOwnerListComboBox"
-                                        Grid.Column="1" Height="40"  Background="White" >
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Chọn chủ nhà"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="HouseOwnerListComboBox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
                                         <!--<ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -125,142 +135,175 @@
                                 <StackPanel Margin="10">
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Mã chủ nhà : "
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Margin="0,0,10,0"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!--TODO binding mã-->
-                                        <Label Name="HouseOwnerCodeLable"
-                                            Grid.Column="1" Content="ABCDWE" Style="{StaticResource fontStyle}" FontSize="20"/>
+                                        <Label
+                                            Grid.Column="0"
+                                            Margin="0,0,10,0"
+                                            VerticalAlignment="Center"
+                                            Content="Mã chủ nhà : "
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  TODO binding mã  -->
+                                        <Label
+                                            Name="HouseOwnerCodeLable"
+                                            Grid.Column="1"
+                                            Content="ABCDWE"
+                                            FontSize="20"
+                                            Style="{StaticResource fontStyle}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Họ và tên"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <TextBox x:Name="HouseOwnerNameTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Họ và tên"
                                             FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <TextBox
+                                            x:Name="HouseOwnerNameTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
                                             materialDesign:HintAssist.Hint="Họ và tên"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Số điện thoại"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <TextBox x:Name="HouseOwnerPhoneNumberTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Số điện thoại"
                                             FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <TextBox
+                                            x:Name="HouseOwnerPhoneNumberTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
                                             materialDesign:HintAssist.Hint="Số điện thoại"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Địa chỉ"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <TextBox x:Name="HouseOwnerAdressTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Địa chỉ"
                                             FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <TextBox
+                                            x:Name="HouseOwnerAdressTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
                                             materialDesign:HintAssist.Hint="Địa chỉ"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                 </StackPanel>
                                 <Grid Margin="10,30,10,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0"
-    Command="{Binding RunDialogCommand}"
-    Width="128"
-    Content="RUN CODE" />
+                                    <Button
+                                        Grid.Column="0"
+                                        Width="128"
+                                        Command="{Binding RunDialogCommand}"
+                                        Content="RUN CODE" />
                                     <!--<Button Name="HouseOwnerAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>-->
-                                    <Button Name="HouseOwnerUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150"/>
-                                    <Button Name="HouseOwnerDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button
+                                        Name="HouseOwnerUpdateButon"
+                                        Grid.Column="1"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Sửa" />
+                                    <Button
+                                        Name="HouseOwnerDeteleButon"
+                                        Grid.Column="2"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Xóa" />
                                 </Grid>
                             </StackPanel>
                         </TabItem>
 
-                    </metro:MetroTabControl>
+                    </TabControl>
                 </Grid>
             </TabItem>
 
-            <!-- Quản lý nhả TODO-->
-            <TabItem Header="Nhà" VerticalAlignment="Bottom" Name="House">
+            <!--  Quản lý nhả TODO  -->
+            <TabItem
+                Name="House"
+                VerticalAlignment="Bottom"
+                Header="Nhà">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="482*"/>
-                        <ColumnDefinition Width="201*"/>
+                        <ColumnDefinition Width="482*" />
+                        <ColumnDefinition Width="201*" />
                     </Grid.ColumnDefinitions>
-                    <metro:MetroTabControl 
-                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+                    <TabControl
+                        Grid.ColumnSpan="2"
+                        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
                         Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
-                        VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,0,-8">
-                        <!--tất cả nhà : hiện tất cả nhà TODO-->
+                        Margin="0,0,0,-8"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource MaterialDesignTabControl}">
+                        <!--  tất cả nhà : hiện tất cả nhà TODO  -->
                         <TabItem Header="Danh sách">
                             <StackPanel Background="AliceBlue">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="7*"/>
-                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="3*" />
                                     </Grid.ColumnDefinitions>
-                                    <Grid   Margin="10,0,0,0" Background="White" Grid.Column="0"
-                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Grid
+                                        Grid.Column="0"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Background="White">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Button 
+                                        <Button
                                             Name="HouseSearchButton"
                                             Click="HouseSearchButton_Click"
                                             Style="{DynamicResource MaterialDesignToolButton}">
-                                            <materialDesign:PackIcon
-                                          Kind="Search"
-                                          Opacity=".56" />
+                                            <materialDesign:PackIcon Kind="Search" Opacity=".56" />
                                         </Button>
-                                        <TextBox x:Name="HouseSearchTextBox"
-                                        Grid.Column="1"
-                                        Margin="8 0 0 0"
-                                        FontSize="15"
-                                        FontFamily="Segeo ui light"
-                                        materialDesign:HintAssist.Hint="Search here"
-                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                        BorderThickness="0"
-                                        MinWidth="400"
-                                        VerticalAlignment="Center" />
-                                        <Button
-                                        Style="{DynamicResource MaterialDesignToolButton}"
-                                        Grid.Column="2">
+                                        <TextBox
+                                            x:Name="HouseSearchTextBox"
+                                            Grid.Column="1"
+                                            MinWidth="400"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Search here"
+                                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                            BorderThickness="0"
+                                            FontFamily="Segeo ui light"
+                                            FontSize="15" />
+                                        <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
                                             <materialDesign:PackIcon
-                                              Kind="Microphone"
-                                              Opacity=".56"
-                                              Margin="8 0 0 0" />
+                                                Margin="8,0,0,0"
+                                                Kind="Microphone"
+                                                Opacity=".56" />
                                         </Button>
                                     </Grid>
 
@@ -274,72 +317,71 @@
                                     <ComboBox
                                         Grid.Column="1"
                                         Margin="10,5,10,5"
+                                        materialDesign:ComboBoxAssist.ClassicMode="{Binding ElementName=ClassicModeCheckBox, Path=IsChecked}"
                                         Background="White"
-                                        FontSize="15"
                                         FontFamily="Segeo UI light"
-                                        materialDesign:ComboBoxAssist.ClassicMode="{Binding ElementName=ClassicModeCheckBox, Path=IsChecked}">
+                                        FontSize="15">
                                         <ComboBoxItem
                                             HorizontalAlignment="Center"
-                                            IsSelected="True"
-                                            Content="Tất cả nhà" 
-                                            />
-                                        <ComboBoxItem  
-                                            Content="Nhà đã Bán/Thuê"
-                                            HorizontalAlignment="Center"
-                                            />
-                                        <ComboBoxItem  
-                                            Content="Nhà trống"
-                                            HorizontalAlignment="Center"
-                                            />
-                                        <ComboBoxItem  
-                                            Content="Theo nhân viên "
-                                            HorizontalAlignment="Center"
-                                            />
+                                            Content="Tất cả nhà"
+                                            IsSelected="True" />
+                                        <ComboBoxItem HorizontalAlignment="Center" Content="Nhà đã Bán/Thuê" />
+                                        <ComboBoxItem HorizontalAlignment="Center" Content="Nhà trống" />
+                                        <ComboBoxItem HorizontalAlignment="Center" Content="Theo nhân viên " />
                                     </ComboBox>
 
                                 </Grid>
-                                <DataGrid Name="HouseListDataGrid"
-                                    Background="White" VerticalAlignment="Center" Margin="5,20,5,20" Height="500"/>
-                                <!-- TODO Binding itemsource tất cả nhà là được -->
+                                <DataGrid
+                                    Name="HouseListDataGrid"
+                                    Height="500"
+                                    Margin="5,20,5,20"
+                                    VerticalAlignment="Center"
+                                    Background="White"
+                                    ItemsSource="{Binding Houses}" />
+                                <!--  TODO Binding itemsource tất cả nhà là được  -->
                             </StackPanel>
                         </TabItem>
 
-                        <!--Thêm xóa sửa nhà-->
+                        <!--  Thêm xóa sửa nhà  -->
                         <TabItem Header="Thêm/ sửa/ xóa">
                             <Grid Background="AliceBlue">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <Grid Margin="10,10,20,10" Grid.Row="0">
+                                <Grid Grid.Row="0" Margin="10,10,20,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Chọn nhà"
-                                           VerticalAlignment="Center"
-                                           Grid.Column="0"
-                                           FontSize="15"
-                                           Style="{StaticResource fontStyle}"/>
-                                    <!--Binding nhà đang có-->
-                                    <ComboBox  Name="HouseListComboBox"
-                                        Grid.Column="1" Height="40"  Background="White" >
-                                        <!--<ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding MANHA}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding DUONG}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding QUAN}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding KHUVUC}"/>
-                                                <TextBlock Text=" - "/>
-                                                <TextBlock Text="{Binding THANHPHO}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>-->
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Chọn nhà"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <!--  Binding nhà đang có  -->
+                                    <ComboBox
+                                        Name="HouseListComboBox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding MANHA}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding DUONG}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding QUAN}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding KHUVUC}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding THANHPHO}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
                                     </ComboBox>
                                 </Grid>
 
@@ -347,328 +389,407 @@
                                     <StackPanel>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Mã nhà"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--Binding mã nhà-->
-                                            <Label Name="HouseCodeLable"
-                                               Grid.Column="1"
-                                               FontSize="20"
-                                               Style="{StaticResource fontStyle}"/>
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Mã nhà"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  Binding mã nhà  -->
+                                            <Label
+                                                Name="HouseCodeLable"
+                                                Grid.Column="1"
+                                                Content="{Binding SelectedHouse.MANHA}"
+                                                FontSize="20"
+                                                Style="{StaticResource fontStyle}" />
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="số lượng xem"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--Binding số lượng xem-->
-                                            <Label Name="HouseViewLable"
-                                               Grid.Column="1"
-                                               FontSize="20"
-                                               Style="{StaticResource fontStyle}"/>
-                                            
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="số lượng xem"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  Binding số lượng xem  -->
+                                            <Label
+                                                Name="HouseViewLable"
+                                                Grid.Column="1"
+                                                Content="{Binding SelectedHouse.SOLUONGXEM}"
+                                                FontSize="20"
+                                                Style="{StaticResource fontStyle}" />
+
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Chủ nhà"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--Binding các chủ nhà hiện có-->
-                                            <!-- binding selected value-->
-                                            <ComboBox Name="HouseOwnerNameComboBox"
-                                                  FontFamily="Segeo ui light"
-                                                  FontSize="15"
-                                                  Background="White"
-                                                  Grid.Column="1"
-                                                  materialDesign:HintAssist.Hint="chủ nhà"
-                                                  materialDesign:HintAssist.HintOpacity=".7"
-                                                  IsEditable="True">
-                                                <!--<ComboBox.ItemTemplate>
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Chủ nhà"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  Binding các chủ nhà hiện có  -->
+                                            <!--  binding selected value  -->
+                                            <ComboBox
+                                                Name="HouseOwnerNameComboBox"
+                                                Grid.Column="1"
+                                                materialDesign:HintAssist.Hint="chủ nhà"
+                                                materialDesign:HintAssist.HintOpacity=".7"
+                                                Background="White"
+                                                FontFamily="Segeo ui light"
+                                                FontSize="15"
+                                                IsEditable="True"
+                                                SelectedItem="{Binding SelectedHouse.CHUNHA}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding MACNHA}"/>
-                                                            <TextBlock Text=" - "/>
-                                                            <TextBlock Text="{Binding TEN}"/>
-                                                            <TextBlock Text=" - "/>
-                                                            <TextBlock Text="{Binding SDT}"/>
+                                                            <TextBlock Text="{Binding MACNHA}" />
+                                                            <TextBlock Text=" - " />
+                                                            <TextBlock Text="{Binding TEN}" />
+                                                            <TextBlock Text=" - " />
+                                                            <TextBlock Text="{Binding SDT}" />
                                                         </StackPanel>
                                                     </DataTemplate>
-                                                </ComboBox.ItemTemplate>-->
+                                                </ComboBox.ItemTemplate>
                                             </ComboBox>
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Tình trạng"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--TODO Binding tình trạng-->
-                                            <CheckBox
-                                            Grid.Column="1"
-                                            Content="Còn trống"
-                                            FontFamily="Segeo Ui light"
-                                            FontSize="15"
-                                            materialDesign:CheckBoxAssist.CheckBoxSize="30" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Tình trạng"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  TODO Binding tình trạng  -->
+                                            <TextBox
+                                                x:Name="HouseStateTextBox"
+                                                Grid.Column="1"
+                                                Margin="5"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="(0: Trống/ 1: hết trống)"
+                                                Background="White"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                Text="{Binding SelectedHouse.TINHTRANG}" />
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Ngày đăng"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <StackPanel Background="White" Grid.Column="1" Margin="0,5,0,5">
-                                                <!--Binding ngày đăng-->
-                                                <DatePicker Name="HousePostDatePicker"
-                                            VerticalAlignment="Center"
-                                            FontFamily="Segeo Ui light"
-                                            FontSize="15"
-                                            materialDesign:HintAssist.Hint="MM/dd/YYYY"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Ngày đăng"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <StackPanel
+                                                Grid.Column="1"
+                                                Margin="0,5,0,5"
+                                                Background="White">
+                                                <!--  Binding ngày đăng  -->
+                                                <DatePicker
+                                                    Name="HousePostDatePicker"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="MM/dd/YYYY"
+                                                    FontFamily="Segeo Ui light"
+                                                    FontSize="15"
+                                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                    Text="{Binding SelectedHouse.NGAYDANG}" />
                                             </StackPanel>
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Ngày hết hạn"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <StackPanel Background="White" Grid.Column="1" Margin="0,5,0,5">
-                                                <!--Binding ngày hết hạn-->
-                                                <DatePicker Name="HouseExpirationDatePicker"
-                                            VerticalAlignment="Center"
-                                            FontFamily="Segeo Ui light"
-                                            FontSize="15"
-                                            materialDesign:HintAssist.Hint="MM/dd/YYYY"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Ngày hết hạn"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <StackPanel
+                                                Grid.Column="1"
+                                                Margin="0,5,0,5"
+                                                Background="White">
+                                                <!--  Binding ngày hết hạn  -->
+                                                <DatePicker
+                                                    Name="HouseExpirationDatePicker"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="MM/dd/YYYY"
+                                                    FontFamily="Segeo Ui light"
+                                                    FontSize="15"
+                                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                                    Text="{Binding SelectedHouse.NGAYHETHAN}" />
                                             </StackPanel>
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Số lượng phòng ở"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--binding số lượng phòng ở-->
-                                            <TextBox x:Name="NumberOfRoomsTextBox"
-                                                       Margin="5"
-                                                       Background="White"
-                                                       Grid.Column="1"
-                                                       FontSize="15"
-                                                       materialDesign:HintAssist.Hint="số lượng"
-                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                       VerticalAlignment="Center" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Số lượng phòng ở"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  binding số lượng phòng ở  -->
+                                            <TextBox
+                                                x:Name="NumberOfRoomsTextBox"
+                                                Grid.Column="1"
+                                                Margin="5"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="số lượng"
+                                                Background="White"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                Text="{Binding SelectedHouse.SOLUONGPHONGO}" />
                                         </Grid>
                                         <StackPanel Margin="10">
-                                            <Label Content="Định vị"
-                                                FontSize="15"
+                                            <Label
                                                 VerticalAlignment="Center"
-                                                Style="{StaticResource fontStyle}"/>
-                                            <!--binding địa chỉ các kiểu-->
-                                            <Grid Margin="5,0,5,0" >
+                                                Content="Định vị"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  binding địa chỉ các kiểu  -->
+                                            <Grid Margin="5,0,5,0">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
-                                                <TextBox x:Name="HouseLocationStreetTextBox"
-                                                      Margin="5"
-                                                      Background="White"
-                                                      Grid.Column="0"
-                                                      FontSize="15"
-                                                      materialDesign:HintAssist.Hint="Đường"
-                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                      VerticalAlignment="Center" />
-                                                <TextBox x:Name="HouseLocationDistrictTextBox"
-                                                       Margin="5"
-                                                       Background="White"
-                                                       Grid.Column="1"
-                                                       FontSize="15"
-                                                       materialDesign:HintAssist.Hint="Quận"
-                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                       VerticalAlignment="Center" />
-                                                <TextBox x:Name="HouseLocationAreaTextBox"
-                                                      Margin="5"
-                                                      Background="White"
-                                                      Grid.Column="2"
-                                                      FontSize="15"
-                                                      materialDesign:HintAssist.Hint="Khu vực"
-                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                      VerticalAlignment="Center" />
-                                                <TextBox x:Name="HouseLocationCityTextBox"
-                                                       Margin="5"
-                                                       Background="White"
-                                                       Grid.Column="3"
-                                                       FontSize="15"
-                                                       materialDesign:HintAssist.Hint="Thành phố"
-                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                       VerticalAlignment="Center" />
+                                                <TextBox
+                                                    x:Name="HouseLocationStreetTextBox"
+                                                    Grid.Column="0"
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="Đường"
+                                                    Background="White"
+                                                    FontSize="15"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.DUONG}" />
+                                                <TextBox
+                                                    x:Name="HouseLocationDistrictTextBox"
+                                                    Grid.Column="1"
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="Quận"
+                                                    Background="White"
+                                                    FontSize="15"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.QUAN}" />
+                                                <TextBox
+                                                    x:Name="HouseLocationAreaTextBox"
+                                                    Grid.Column="2"
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="Khu vực"
+                                                    Background="White"
+                                                    FontSize="15"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.KHUVUC}" />
+                                                <TextBox
+                                                    x:Name="HouseLocationCityTextBox"
+                                                    Grid.Column="3"
+                                                    Margin="5"
+                                                    VerticalAlignment="Center"
+                                                    materialDesign:HintAssist.Hint="Thành phố"
+                                                    Background="White"
+                                                    FontSize="15"
+                                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                    Text="{Binding SelectedHouse.THANHPHO}" />
                                             </Grid>
                                         </StackPanel>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Loại nhà"
-                                                       FontSize="15"
-                                                       VerticalAlignment="Center"
-                                                       Style="{StaticResource fontStyle}"/>
-                                            <!--TODO Binding Loại nhà-->
-                                            <!--Binding selected value-->
-                                            <ComboBox Name="HouseTypeCombox" 
-                                                    Grid.Column="1" Height="40"  Background="White" >
-                                                <!--<ComboBox.ItemTemplate>
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Loại nhà"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  TODO Binding Loại nhà  -->
+                                            <!--  Binding selected value  -->
+                                            <ComboBox
+                                                Name="HouseTypeCombox"
+                                                Grid.Column="1"
+                                                Height="40"
+                                                Background="White"
+                                                SelectedItem="{Binding SelectedHouse.LOAINHA}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding MALOAI}" Foreground="Blue"/>
-                                                            <TextBlock Text=" - "/>
+                                                            <TextBlock Foreground="Blue" Text="{Binding MALOAI}" />
+                                                            <TextBlock Text=" - " />
                                                             <TextBlock Text="{Binding TEN}" />
                                                         </StackPanel>
                                                     </DataTemplate>
-                                                </ComboBox.ItemTemplate>-->
+                                                </ComboBox.ItemTemplate>
                                             </ComboBox>
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Phân loại"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            
-                                            <!--Binding loại nhà thuê/hay bán-->
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Phân loại"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+
+                                            <!--  Binding loại nhà thuê/hay bán  -->
                                             <Grid Grid.Column="1">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
                                                 </Grid.ColumnDefinitions>
                                                 <RadioButton
-                                                         x:Name="HouseForSaleRadioButotn"
-                                                        Width="100"
-                                                        HorizontalAlignment="Center"
-                                                        Grid.Column="0"
-                                                        Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
-                                                        GroupName="HouseTypeRatioButton"
-                                                        Content="Nhà bán" />
+                                                    x:Name="HouseForSaleRadioButotn"
+                                                    Grid.Column="0"
+                                                    Width="100"
+                                                    HorizontalAlignment="Center"
+                                                    Content="Nhà bán"
+                                                    GroupName="HouseTypeRatioButton"
+                                                    Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}" />
                                                 <RadioButton
-                                                        Width="100"
-                                                        HorizontalAlignment="Center"
-                                                        Grid.Column="1"
-                                                        Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
-                                                        GroupName="HouseTypeRatioButton"
-                                                        Content="Nhà thuê" />
+                                                    Grid.Column="1"
+                                                    Width="100"
+                                                    HorizontalAlignment="Center"
+                                                    Content="Nhà thuê"
+                                                    GroupName="HouseTypeRatioButton"
+                                                    Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}" />
                                             </Grid>
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Giá thuê/bán"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--Binding giá bán/thuê - này để riêng, ko trong class nhà, do chua wbik nó thêu hay bán-->
-                                            <TextBox Name="HousePriceTextBox"
-                                                      Background="White"
-                                                      Grid.Column="1"
-                                                      FontSize="15"
-                                                      materialDesign:HintAssist.Hint="Giá vnđ"
-                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                      VerticalAlignment="Center" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Giá thuê/bán"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  Binding giá bán/thuê - này để riêng, ko trong class nhà, do chua wbik nó thêu hay bán  -->
+                                            <TextBox
+                                                Name="HousePriceTextBox"
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="Giá vnđ"
+                                                Background="White"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Điều kiện"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <!--Binding điều kiện nếu có là nhà bán-->
-                                            <TextBox x:Name="HouseTermOfSaleTextBox"
-                                                      Background="White"
-                                                      Grid.Column="1"
-                                                      TextWrapping="Wrap"
-                                                      VerticalAlignment="Stretch"
-                                                      AcceptsReturn="True"
-                                                      IsEnabled="{Binding ElementName=HouseForSaleRadioButotn, Path=IsChecked}"
-                                                      VerticalScrollBarVisibility="Auto"
-                                                      materialDesign:HintAssist.Hint="Điều kiện bán"
-                                                      Height="80"
-                                                      />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Điều kiện"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  Binding điều kiện nếu có là nhà bán  -->
+                                            <TextBox
+                                                x:Name="HouseTermOfSaleTextBox"
+                                                Grid.Column="1"
+                                                Height="80"
+                                                VerticalAlignment="Stretch"
+                                                materialDesign:HintAssist.Hint="Điều kiện bán"
+                                                AcceptsReturn="True"
+                                                Background="White"
+                                                IsEnabled="{Binding ElementName=HouseForSaleRadioButotn, Path=IsChecked}"
+                                                TextWrapping="Wrap"
+                                                VerticalScrollBarVisibility="Auto" />
                                         </Grid>
                                     </StackPanel>
                                 </ScrollViewer>
 
-                                <Grid Margin="10,0,10,10" Grid.Row="2">
+                                <Grid Grid.Row="2" Margin="10,0,10,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <Button Name="HouseAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
-                                    <!-- todo, kiểm tra là sửa tình trạng hay sửa loại nhà mà chạy procedure phù hợp-->
-                                    <Button Name="HouseUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150" Click="HouseUpdateButon_Click"/>
-                                    <Button Name="HouseDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button
+                                        Name="HouseAddButon"
+                                        Grid.Column="0"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Thêm" />
+                                    <!--  todo, kiểm tra là sửa tình trạng hay sửa loại nhà mà chạy procedure phù hợp  -->
+                                    <Button
+                                        Name="HouseUpdateButon"
+                                        Grid.Column="1"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Click="HouseUpdateButon_Click"
+                                        Content="Sửa" />
+                                    <Button
+                                        Name="HouseDeteleButon"
+                                        Grid.Column="2"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Xóa" />
                                 </Grid>
                             </Grid>
                         </TabItem>
 
-                        <!-- chức năng nâng cao - update TODO -->
+                        <!--  chức năng nâng cao - update TODO  -->
                         <TabItem Header="Chức năng nâng cao">
                             <StackPanel Background="AliceBlue">
-                                <!-- tăng giá loại nhà nếu cung ít-->
+                                <!--  tăng giá loại nhà nếu cung ít  -->
                                 <Expander
                                     Margin="10,10,20,10"
                                     HorizontalAlignment="Stretch"
-                                    Header="Tăng giá Loại nhà"
+                                    FontFamily="Segeo ui light"
                                     FontSize="15"
-                                    FontFamily="Segeo ui light">
+                                    Header="Tăng giá Loại nhà">
                                     <StackPanel
+                                        Margin="24,8,24,16"
                                         Orientation="Vertical"
-                                        TextBlock.Foreground="#292929"
-                                        Margin="24,8,24,16">
+                                        TextBlock.Foreground="#292929">
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Loại nhà"
-                                                       FontSize="15"
-                                                       VerticalAlignment="Center"
-                                                       Style="{StaticResource fontStyle}"/>
-                                            <!--TODO Binding Loại nhà-->
-                                            <ComboBox Name="HouseTypeAdvanceFunctionCombox" 
-                                                    Grid.Column="1" Height="40"  Background="White" >
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Loại nhà"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <!--  TODO Binding Loại nhà  -->
+                                            <ComboBox
+                                                Name="HouseTypeAdvanceFunctionCombox"
+                                                Grid.Column="1"
+                                                Height="40"
+                                                Background="White">
                                                 <!--<ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
@@ -682,76 +803,95 @@
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="số lượng quy định"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <TextBox x:Name="HouseTypeNumberTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
-                                            FontSize="15"
-                                            materialDesign:HintAssist.Hint="x_number"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="số lượng quy định"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <TextBox
+                                                x:Name="HouseTypeNumberTextBox"
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="x_number"
+                                                Background="White"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                         </Grid>
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Content="Phần trăm tăng lên"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                            <TextBox x:Name="HouseTypePriceUpTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
-                                            FontSize="15"
-                                            materialDesign:HintAssist.Hint="150 (%)"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Phần trăm tăng lên"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+                                            <TextBox
+                                                x:Name="HouseTypePriceUpTextBox"
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="150 (%)"
+                                                Background="White"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                         </Grid>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,20,5">
-                                            <!--TODO bấm ok chạy hàm - có xuất kết quả trả về là số lượng nhà đổi giá - messagebox-->
-                                            <Button x:Name="OKUpdatePriceAllHouseOfTypeButton" Content="OK" Margin="0,0,10,0" Width="60" Click="OKUpdatePriceAllHouseOfTypeButton_Click"/>
-                                            <Button x:Name="CancelUpdateAllHouseOfTypeButton" Content="Hủy" Margin="0,0,10,0" Width="60"/>
+                                        <StackPanel
+                                            Margin="0,10,20,5"
+                                            HorizontalAlignment="Right"
+                                            Orientation="Horizontal">
+                                            <!--  TODO bấm ok chạy hàm - có xuất kết quả trả về là số lượng nhà đổi giá - messagebox  -->
+                                            <Button
+                                                x:Name="OKUpdatePriceAllHouseOfTypeButton"
+                                                Width="60"
+                                                Margin="0,0,10,0"
+                                                Click="OKUpdatePriceAllHouseOfTypeButton_Click"
+                                                Content="OK" />
+                                            <Button
+                                                x:Name="CancelUpdateAllHouseOfTypeButton"
+                                                Width="60"
+                                                Margin="0,0,10,0"
+                                                Content="Hủy" />
                                         </StackPanel>
                                     </StackPanel>
                                 </Expander>
 
-                                <!-- tìm kiếm loại nhà theo nhu cầu-->
+                                <!--  tìm kiếm loại nhà theo nhu cầu  -->
                                 <Expander
                                     Margin="10,10,20,10"
                                     HorizontalAlignment="Stretch"
-                                    Header="Tìm kiếm nhà theo loại nhà"
+                                    FontFamily="Segeo ui light"
                                     FontSize="15"
-                                    FontFamily="Segeo ui light">
+                                    Header="Tìm kiếm nhà theo loại nhà">
                                     <StackPanel
+                                        Margin="24,8,24,16"
                                         Orientation="Vertical"
-                                        TextBlock.Foreground="#292929"
-                                        Margin="24,8,24,16">
+                                        TextBlock.Foreground="#292929">
                                         <Grid Margin="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="7*"/>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="7*" />
                                             </Grid.ColumnDefinitions>
-                                            <Label 
-                                               Grid.Column="0" 
-                                               Content="Chọn loại nhà"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                           
-                                            <!--Binding itemsource các loại nhà hiện có-->
-                                            <!--Binding loại nhà nếu có-->
-                                            <ComboBox Name="HouseType2Combox" 
-                                                       Background="White"
-                                                       Grid.Column="1"
-                                                       Height="40"
-                                                      TextElement.FontSize="14">
+                                            <Label
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Content="Chọn loại nhà"
+                                                FontSize="15"
+                                                Style="{StaticResource fontStyle}" />
+
+                                            <!--  Binding itemsource các loại nhà hiện có  -->
+                                            <!--  Binding loại nhà nếu có  -->
+                                            <ComboBox
+                                                Name="HouseType2Combox"
+                                                Grid.Column="1"
+                                                Height="40"
+                                                Background="White"
+                                                TextElement.FontSize="14">
                                                 <!--<ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
@@ -763,98 +903,119 @@
                                                 </ComboBox.ItemTemplate>-->
                                             </ComboBox>
                                         </Grid>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,20,5">
-                                            <!-- xuất kết quả trong một window khác-->
-                                            <Button x:Name="OKSearchHouseByTypeButton" Content="OK" Margin="0,0,10,0" Width="60" Click="OKSearchHouseByTypeButton_Click"/>
-                                            <Button x:Name="CancelSearchHouseByTypeButton" Content="Hủy" Margin="0,0,10,0" Width="60"/>
+                                        <StackPanel
+                                            Margin="0,10,20,5"
+                                            HorizontalAlignment="Right"
+                                            Orientation="Horizontal">
+                                            <!--  xuất kết quả trong một window khác  -->
+                                            <Button
+                                                x:Name="OKSearchHouseByTypeButton"
+                                                Width="60"
+                                                Margin="0,0,10,0"
+                                                Click="OKSearchHouseByTypeButton_Click"
+                                                Content="OK" />
+                                            <Button
+                                                x:Name="CancelSearchHouseByTypeButton"
+                                                Width="60"
+                                                Margin="0,0,10,0"
+                                                Content="Hủy" />
                                         </StackPanel>
                                     </StackPanel>
                                 </Expander>
 
                             </StackPanel>
                         </TabItem>
-                    </metro:MetroTabControl>
+                    </TabControl>
 
                 </Grid>
             </TabItem>
 
-            <!-- Quản lý Nhân viên-->
-            <TabItem Header="Nhân viên" VerticalAlignment="Bottom">
-                <Grid >
-                    <metro:MetroTabControl
-                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}">
-                        <!--tất cả nhân viên-->
+            <!--  Quản lý Nhân viên  -->
+            <TabItem VerticalAlignment="Bottom" Header="Nhân viên">
+                <Grid>
+                    <TabControl
+                        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+                        Style="{StaticResource MaterialDesignTabControl}">
+                        <!--  tất cả nhân viên  -->
                         <TabItem Header="Danh sách">
                             <StackPanel Background="AliceBlue">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="7*"/>
-                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="3*" />
                                     </Grid.ColumnDefinitions>
-                                    <Grid   Margin="10,0,0,0" Background="White" Grid.Column="0"
-                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Grid
+                                        Grid.Column="0"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Background="White">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Button  x:Name="StaffSearchButton"
-                                            Style="{DynamicResource MaterialDesignToolButton}">
-                                            <materialDesign:PackIcon
-                                          Kind="Search"
-                                          Opacity=".56" />
+                                        <Button x:Name="StaffSearchButton" Style="{DynamicResource MaterialDesignToolButton}">
+                                            <materialDesign:PackIcon Kind="Search" Opacity=".56" />
                                         </Button>
-                                        <TextBox Name="StaffSearchTextBox"
-                                        Grid.Column="1"
-                                        Margin="8 0 0 0"
-                                        FontSize="15"
-                                        FontFamily="Segeo ui light"
-                                        materialDesign:HintAssist.Hint="Search here"
-                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                        BorderThickness="0"
-                                        MinWidth="400"
-                                        VerticalAlignment="Center" />
-                                        <Button
-                                        Style="{DynamicResource MaterialDesignToolButton}"
-                                        Grid.Column="2">
+                                        <TextBox
+                                            Name="StaffSearchTextBox"
+                                            Grid.Column="1"
+                                            MinWidth="400"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Search here"
+                                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                            BorderThickness="0"
+                                            FontFamily="Segeo ui light"
+                                            FontSize="15" />
+                                        <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
                                             <materialDesign:PackIcon
-                                              Kind="Microphone"
-                                              Opacity=".56"
-                                              Margin="8 0 0 0" />
+                                                Margin="8,0,0,0"
+                                                Kind="Microphone"
+                                                Opacity=".56" />
                                         </Button>
                                     </Grid>
 
-                                    <Label Content="Tất cả nhân viên"
-                                       Style="{StaticResource fontStyle}"
-                                       Grid.Column="1"
-                                       FontSize="20"
-                                       Margin="20,10,10,10"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Center"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        Margin="20,10,10,10"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Content="Tất cả nhân viên"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
                                 </Grid>
-                                <DataGrid x:Name="StaffListDataGrid"
-                                    VerticalAlignment="Center" Margin="5,20,5,20" Height="500"/>
-                                <!-- TODO Binding tất cả nhân viên-->
+                                <DataGrid
+                                    x:Name="StaffListDataGrid"
+                                    Height="500"
+                                    Margin="5,20,5,20"
+                                    VerticalAlignment="Center" />
+                                <!--  TODO Binding tất cả nhân viên  -->
                             </StackPanel>
                         </TabItem>
 
-                        <!--Thêm xóa sửa nhân viên-->
+                        <!--  Thêm xóa sửa nhân viên  -->
                         <TabItem Header="Thêm/ sửa/ xóa">
                             <StackPanel Background="AliceBlue">
                                 <Grid Margin="10,10,20,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Chọn nhân viên"
-                                           Grid.Column="0"
-                                           FontSize="20"
-                                           Style="{StaticResource fontStyle}"/>
-                                    <!-- binding các nhân viên đang được quản lý-->
-                                    <!-- binding selectedvalue-->
-                                    <ComboBox  Name="StaffListComboBox"
-                                        Grid.Column="1" Height="40"  Background="White" >
+                                    <Label
+                                        Grid.Column="0"
+                                        Content="Chọn nhân viên"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <!--  binding các nhân viên đang được quản lý  -->
+                                    <!--  binding selectedvalue  -->
+                                    <ComboBox
+                                        Name="StaffListComboBox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
                                         <!--<ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -869,241 +1030,288 @@
                                 <StackPanel>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Mã nhân viên"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!--Binding mã nhân viên-->
-                                        <Label Name="StaffCodeLable"
-                                               Grid.Column="1"
-                                               FontSize="20"
-                                               Style="{StaticResource fontStyle}"/>
-                                        
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Mã nhân viên"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  Binding mã nhân viên  -->
+                                        <Label
+                                            Name="StaffCodeLable"
+                                            Grid.Column="1"
+                                            FontSize="20"
+                                            Style="{StaticResource fontStyle}" />
+
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Họ và tên"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!--binding tên-->
-                                        <TextBox x:Name="StaffNameTextBox"
-                                           Background="White"
-                                           Grid.Column="1"
-                                           FontSize="15"
-                                           materialDesign:HintAssist.Hint="Họ và tên"
-                                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                           VerticalAlignment="Center" />
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Họ và tên"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  binding tên  -->
+                                        <TextBox
+                                            x:Name="StaffNameTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Họ và tên"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Địa chỉ"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!--Binding địa chỉ-->
-                                        <TextBox x:Name="StaffAdressTextBox"
-                                           Background="White"
-                                           Grid.Column="1"
-                                           FontSize="15"
-                                           materialDesign:HintAssist.Hint="địa chỉ"
-                                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                           VerticalAlignment="Center" />
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Địa chỉ"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  Binding địa chỉ  -->
+                                        <TextBox
+                                            x:Name="StaffAdressTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="địa chỉ"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Số điện thoại"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!--Binding sdt-->
-                                        <TextBox x:Name="StaffPhoneNumberTextBox"
-                                           Background="White"
-                                           Grid.Column="1"
-                                           FontSize="15"
-                                           materialDesign:HintAssist.Hint="sđt"
-                                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                           VerticalAlignment="Center" />
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Số điện thoại"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  Binding sdt  -->
+                                        <TextBox
+                                            x:Name="StaffPhoneNumberTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="sđt"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Giới tính"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!-- binding giới tính-->
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Giới tính"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  binding giới tính  -->
                                         <Grid Grid.Column="1">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
                                             </Grid.ColumnDefinitions>
                                             <RadioButton
-                                              Width="100"
-                                              HorizontalAlignment="Center"
-                                              Grid.Column="0"
-                                              Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
-                                              GroupName="SexRatioButton"
-                                              Content="Nam" />
+                                                Grid.Column="0"
+                                                Width="100"
+                                                HorizontalAlignment="Center"
+                                                Content="Nam"
+                                                GroupName="SexRatioButton"
+                                                Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}" />
                                             <RadioButton
-                                             Width="100"
-                                             HorizontalAlignment="Center"
-                                             Grid.Column="1"
-                                             Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}"
-                                             GroupName="SexRatioButton"
-                                             Content="Nữ" />
+                                                Grid.Column="1"
+                                                Width="100"
+                                                HorizontalAlignment="Center"
+                                                Content="Nữ"
+                                                GroupName="SexRatioButton"
+                                                Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineRadioButton}" />
                                         </Grid>
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Ngày Sinh"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <StackPanel Background="White" Grid.Column="1" Margin="0,5,0,5">
-                                            <!--Binding ngày sinh-->
-                                            <DatePicker Name="StaffDateOfBirthDatePicker"
+                                        <Label
+                                            Grid.Column="0"
                                             VerticalAlignment="Center"
-                                            FontFamily="Segeo Ui light"
+                                            Content="Ngày Sinh"
                                             FontSize="15"
-                                            materialDesign:HintAssist.Hint="MM/dd/YYYY"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            Style="{StaticResource fontStyle}" />
+                                        <StackPanel
+                                            Grid.Column="1"
+                                            Margin="0,5,0,5"
+                                            Background="White">
+                                            <!--  Binding ngày sinh  -->
+                                            <DatePicker
+                                                Name="StaffDateOfBirthDatePicker"
+                                                VerticalAlignment="Center"
+                                                materialDesign:HintAssist.Hint="MM/dd/YYYY"
+                                                FontFamily="Segeo Ui light"
+                                                FontSize="15"
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                                         </StackPanel>
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Content="Lương"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                        <!--Binding lương-->
-                                        <TextBox x:Name="StaffSalaryTextBox"
-                                             Background="White"
-                                             Grid.Column="1"
-                                             FontSize="15"
-                                             materialDesign:HintAssist.Hint=" vnđ"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             VerticalAlignment="Center" />
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Lương"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <!--  Binding lương  -->
+                                        <TextBox
+                                            x:Name="StaffSalaryTextBox"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint=" vnđ"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                 </StackPanel>
 
                                 <Grid Margin="10,20,10,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <Button Name="StaffAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
-                                    <!--TODO update lương nhân viên thôi-->
-                                    <Button Name="StaffUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150" Click="StaffUpdateButon_Click"/>
-                                    <Button Name="StaffDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button
+                                        Name="StaffAddButon"
+                                        Grid.Column="0"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Thêm" />
+                                    <!--  TODO update lương nhân viên thôi  -->
+                                    <Button
+                                        Name="StaffUpdateButon"
+                                        Grid.Column="1"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Click="StaffUpdateButon_Click"
+                                        Content="Sửa" />
+                                    <Button
+                                        Name="StaffDeteleButon"
+                                        Grid.Column="2"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Xóa" />
                                 </Grid>
                             </StackPanel>
                         </TabItem>
 
-                        <!--Chức nâng nâng cao-->
+                        <!--  Chức nâng nâng cao  -->
                         <TabItem Header="Chức năng nâng cao">
-                            <StackPanel Background="AliceBlue">
-                            </StackPanel>
+                            <StackPanel Background="AliceBlue" />
                         </TabItem>
-                    </metro:MetroTabControl>
+                    </TabControl>
                 </Grid>
             </TabItem>
 
-            <!-- Quản lý Khách hàng-->
-            <TabItem Header="Khách hàng" VerticalAlignment="Bottom">
+            <!--  Quản lý Khách hàng  -->
+            <TabItem VerticalAlignment="Bottom" Header="Khách hàng">
                 <StackPanel>
-                    <metro:MetroTabControl
-                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}">
-                        <!--Tất cả khách hàng-->
+                    <TabControl
+                        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+                        Style="{StaticResource MaterialDesignTabControl}">
+                        <!--  Tất cả khách hàng  -->
                         <TabItem Header="Danh sách">
                             <StackPanel Background="AliceBlue">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="7*"/>
-                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="3*" />
                                     </Grid.ColumnDefinitions>
-                                    <Grid   Margin="10,0,0,0" Background="White" Grid.Column="0"
-                                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Grid
+                                        Grid.Column="0"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Background="White">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Button  x:Name="CustomerSearchButton"
-                                            Style="{DynamicResource MaterialDesignToolButton}">
-                                            <materialDesign:PackIcon
-                                          Kind="Search"
-                                          Opacity=".56" />
+                                        <Button x:Name="CustomerSearchButton" Style="{DynamicResource MaterialDesignToolButton}">
+                                            <materialDesign:PackIcon Kind="Search" Opacity=".56" />
                                         </Button>
-                                        <TextBox Name="CustomerSearchTextBox"
-                                        Grid.Column="1"
-                                        Margin="8 0 0 0"
-                                        FontSize="15"
-                                        FontFamily="Segeo ui light"
-                                        materialDesign:HintAssist.Hint="Search here"
-                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                        BorderThickness="0"
-                                        MinWidth="400"
-                                        VerticalAlignment="Center" />
-                                        <Button
-                                        Style="{DynamicResource MaterialDesignToolButton}"
-                                        Grid.Column="2">
+                                        <TextBox
+                                            Name="CustomerSearchTextBox"
+                                            Grid.Column="1"
+                                            MinWidth="400"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Search here"
+                                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                            BorderThickness="0"
+                                            FontFamily="Segeo ui light"
+                                            FontSize="15" />
+                                        <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
                                             <materialDesign:PackIcon
-                                              Kind="Microphone"
-                                              Opacity=".56"
-                                              Margin="8 0 0 0" />
+                                                Margin="8,0,0,0"
+                                                Kind="Microphone"
+                                                Opacity=".56" />
                                         </Button>
                                     </Grid>
 
-                                    <Label Content="Tất cả Khách hàng"
-                                       Style="{StaticResource fontStyle}"
-                                       Grid.Column="1"
-                                       FontSize="20"
-                                       Margin="20,10,10,10"
-                                       VerticalAlignment="Top"
-                                       HorizontalAlignment="Center"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        Margin="20,10,10,10"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Content="Tất cả Khách hàng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
                                 </Grid>
-                                <DataGrid x:Name="CustomerListDataGrid"
-                                    VerticalAlignment="Center" Margin="5,20,5,20" Height="500"/>
-                                <!-- TODO Binding tất cả Khách hàng-->
+                                <DataGrid
+                                    x:Name="CustomerListDataGrid"
+                                    Height="500"
+                                    Margin="5,20,5,20"
+                                    VerticalAlignment="Center" />
+                                <!--  TODO Binding tất cả Khách hàng  -->
                             </StackPanel>
                         </TabItem>
-                        <!--Thêm xóa sửa khách hàng-->
+                        <!--  Thêm xóa sửa khách hàng  -->
                         <TabItem Header="Thêm/ xóa/ sửa">
                             <StackPanel Background="AliceBlue">
                                 <Grid Margin="10,10,20,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Chọn Khách hàng"
-                                           Grid.Column="0"
-                                           FontSize="20"
-                                           Style="{StaticResource fontStyle}"/>
-                                    <ComboBox  Name="CustomerListComboBox"
-                                        Grid.Column="1" Height="40"  Background="White" >
+                                    <Label
+                                        Grid.Column="0"
+                                        Content="Chọn Khách hàng"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <ComboBox
+                                        Name="CustomerListComboBox"
+                                        Grid.Column="1"
+                                        Height="40"
+                                        Background="White">
                                         <!--<ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -1124,103 +1332,121 @@
 
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Mã khách hàng"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <Label Name="CustomerCodeLable"
-                                               Grid.Column="1"
-                                               FontSize="20"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <!--Binding mã khách hàng-->
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Mã khách hàng"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <Label
+                                        Name="CustomerCodeLable"
+                                        Grid.Column="1"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
+                                    <!--  Binding mã khách hàng  -->
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Họ và tên"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <TextBox x:Name="CustomerNameTextBox"
-                                           Background="White"
-                                           Grid.Column="1"
-                                           FontSize="15"
-                                           materialDesign:HintAssist.Hint="Họ và tên"
-                                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                           VerticalAlignment="Center" />
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Họ và tên"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox
+                                        x:Name="CustomerNameTextBox"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="Họ và tên"
+                                        Background="White"
+                                        FontSize="15"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Số điện thoại"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <TextBox x:Name="CustomerPhoneNumberTextBox"
-                                           Background="White"
-                                           Grid.Column="1"
-                                           FontSize="15"
-                                           materialDesign:HintAssist.Hint="Sdt"
-                                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                           VerticalAlignment="Center" />
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Số điện thoại"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox
+                                        x:Name="CustomerPhoneNumberTextBox"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="Sdt"
+                                        Background="White"
+                                        FontSize="15"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Địa chỉ"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <TextBox x:Name="CustomerAdressTextBox"
-                                           Background="White"
-                                           Grid.Column="1"
-                                           FontSize="15"
-                                           materialDesign:HintAssist.Hint="Sdt"
-                                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                           VerticalAlignment="Center" />
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Địa chỉ"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox
+                                        x:Name="CustomerAdressTextBox"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="Sdt"
+                                        Background="White"
+                                        FontSize="15"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Chi tiết"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <TextBox x:Name="DetailCustomerTextBox"
-                                                      Background="White"
-                                                      Grid.Column="1"
-                                                      TextWrapping="Wrap"
-                                                      VerticalAlignment="Stretch"
-                                                      AcceptsReturn="True"
-                                                      VerticalScrollBarVisibility="Auto"
-                                                      materialDesign:HintAssist.Hint="Điều kiện bán"
-                                                      Height="80"
-                                                      />
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Chi tiết"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox
+                                        x:Name="DetailCustomerTextBox"
+                                        Grid.Column="1"
+                                        Height="80"
+                                        VerticalAlignment="Stretch"
+                                        materialDesign:HintAssist.Hint="Điều kiện bán"
+                                        AcceptsReturn="True"
+                                        Background="White"
+                                        TextWrapping="Wrap"
+                                        VerticalScrollBarVisibility="Auto" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Loại nhà yêu cầu"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Loại nhà yêu cầu"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
                                     <StackPanel Grid.Column="1">
-                                        <!-- binding các loại nhà khách yêu cầu-->
-                                        <ComboBox  Name="CustomerRequestHouseTypesListComboBox"
-                                         Height="40"  Background="White" >
+                                        <!--  binding các loại nhà khách yêu cầu  -->
+                                        <ComboBox
+                                            Name="CustomerRequestHouseTypesListComboBox"
+                                            Height="40"
+                                            Background="White">
                                             <!--<ComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Orientation="Horizontal">
@@ -1233,21 +1459,21 @@
                                         </ComboBox>
                                         <Grid Margin="5,10,0,0">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="4*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="4*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
                                             </Grid.ColumnDefinitions>
-                                            <!-- BINDING TẤT CẢ LOẠI NHÀ CHƯA CÓ TRONG LIST KHÁCH HÀNG YÊU CẦU-->
-                                            <ComboBox 
-                                                 Name="SelectNewHouseTypeRequestCustomer"
-                                                  Margin="0,0,5,0"
-                                                  FontFamily="Segeo ui light"
-                                                  FontSize="15"
-                                                  Background="White"
-                                                  Grid.Column="0"
-                                                  materialDesign:HintAssist.Hint="Loại nhà mới"
-                                                  materialDesign:HintAssist.HintOpacity=".7"
-                                                  IsEditable="True">
+                                            <!--  BINDING TẤT CẢ LOẠI NHÀ CHƯA CÓ TRONG LIST KHÁCH HÀNG YÊU CẦU  -->
+                                            <ComboBox
+                                                Name="SelectNewHouseTypeRequestCustomer"
+                                                Grid.Column="0"
+                                                Margin="0,0,5,0"
+                                                materialDesign:HintAssist.Hint="Loại nhà mới"
+                                                materialDesign:HintAssist.HintOpacity=".7"
+                                                Background="White"
+                                                FontFamily="Segeo ui light"
+                                                FontSize="15"
+                                                IsEditable="True">
                                                 <!--<ComboBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
@@ -1260,236 +1486,290 @@
                                             </ComboBox>
                                             <Button
                                                 Name="AddNewHouseTypeRequestcustomerButton"
-                                                Content="Thêm"
                                                 Grid.Column="1"
-                                                Margin="5,0,5,0"/>
-                                            <!--TODO chỉ làm cập nhập loại nhà yêu cầu mà thôi-->
+                                                Margin="5,0,5,0"
+                                                Content="Thêm" />
+                                            <!--  TODO chỉ làm cập nhập loại nhà yêu cầu mà thôi  -->
                                             <Button
                                                 Name="UpdateHouseTypeRequestcustomerButton"
-                                                Content="Sửa"
                                                 Grid.Column="2"
-                                                Margin="5,0,5,0"/>
+                                                Margin="5,0,5,0"
+                                                Content="Sửa" />
                                         </Grid>
-                                        
-                                        <StackPanel Margin="5,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                                        <StackPanel
+                                            Margin="5,10,0,0"
+                                            HorizontalAlignment="Center"
+                                            Orientation="Horizontal">
                                             <Button
-                                                HorizontalAlignment="Center"
-                                                Width="100"
                                                 Name="DeleteHouseTypeRequestCustomerButton"
-                                                Content="Xóa"
-                                                Margin="5,0,5,0"/>
-                                            <Button
-                                                Click="UpdateHouseTypeRequestCustomerButton_Click"
-                                                HorizontalAlignment="Center"
                                                 Width="100"
+                                                Margin="5,0,5,0"
+                                                HorizontalAlignment="Center"
+                                                Content="Xóa" />
+                                            <Button
                                                 Name="UpdateHouseTypeRequestCustomerButton"
-                                                Content="OK"
-                                                Margin="5,0,5,0"/>
+                                                Width="100"
+                                                Margin="5,0,5,0"
+                                                HorizontalAlignment="Center"
+                                                Click="UpdateHouseTypeRequestCustomerButton_Click"
+                                                Content="OK" />
                                         </StackPanel>
                                     </StackPanel>
                                 </Grid>
 
                                 <Grid Margin="10,20,10,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <Button Name="CustomerAddButon" Grid.Column="0" Content="Thêm" HorizontalAlignment="Center" Width="150"/>
-                                    <!--TODO chỉ gọi hàm cập nhập yêu cầu loại nhà mới-->
-                                    <Button Name="CustomerUpdateButon" Grid.Column="1" Content="Sửa" HorizontalAlignment="Center" Width="150"/>
-                                    <Button Name="CustomerDeteleButon" Grid.Column="2" Content="Xóa" HorizontalAlignment="Center" Width="150"/>
+                                    <Button
+                                        Name="CustomerAddButon"
+                                        Grid.Column="0"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Thêm" />
+                                    <!--  TODO chỉ gọi hàm cập nhập yêu cầu loại nhà mới  -->
+                                    <Button
+                                        Name="CustomerUpdateButon"
+                                        Grid.Column="1"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Sửa" />
+                                    <Button
+                                        Name="CustomerDeteleButon"
+                                        Grid.Column="2"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Xóa" />
                                 </Grid>
                             </StackPanel>
                         </TabItem>
-                    </metro:MetroTabControl>
+                    </TabControl>
                 </StackPanel>
             </TabItem>
 
-            <!-- Quản lý tài khoản-->
-            <TabItem Header="Tài khoản" VerticalAlignment="Bottom">
+            <!--  Quản lý tài khoản  -->
+            <TabItem VerticalAlignment="Bottom" Header="Tài khoản">
                 <StackPanel>
-                    <metro:MetroTabControl
-                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}">
-                        <!-- thông tin -->
+                    <TabControl
+                        Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+                        Style="{StaticResource MaterialDesignTabControl}">
+                        <!--  thông tin  -->
                         <TabItem Header="Thông tin">
                             <StackPanel Background="AliceBlue">
-                                <Label Content="Thông tin tài khoản"
-                                       FontSize="20"
-                                       HorizontalAlignment="Center"
-                                       Style="{StaticResource fontStyle}"/>
+                                <Label
+                                    HorizontalAlignment="Center"
+                                    Content="Thông tin tài khoản"
+                                    FontSize="20"
+                                    Style="{StaticResource fontStyle}" />
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Mã"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <Label Grid.Column="1" Content="ABSDB"
-                                               FontSize="20"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Mã"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <Label
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        Content="ABSDB"
+                                        FontSize="20"
+                                        Style="{StaticResource fontStyle}" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Số điện thoại"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <TextBox x:Name="AgencyPhoneNumberTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
-                                            FontSize="15"
-                                            materialDesign:HintAssist.Hint="Sdt"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Số điện thoại"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox
+                                        x:Name="AgencyPhoneNumberTextBox"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="Sdt"
+                                        Background="White"
+                                        FontSize="15"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </Grid>
                                 <Grid Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="7*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Số FAX"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               Style="{StaticResource fontStyle}"/>
-                                    <TextBox x:Name="AgencyFaxNumberTextBox"
-                                            Background="White"
-                                            Grid.Column="1"
-                                            FontSize="15"
-                                            materialDesign:HintAssist.Hint="FAX NUMBER"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                    <Label
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Content="Số FAX"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <TextBox
+                                        x:Name="AgencyFaxNumberTextBox"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        materialDesign:HintAssist.Hint="FAX NUMBER"
+                                        Background="White"
+                                        FontSize="15"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                 </Grid>
                                 <StackPanel Margin="10">
-                                    <Label Content="Vị trí"
-                                                FontSize="15"
-                                                VerticalAlignment="Center"
-                                                Style="{StaticResource fontStyle}"/>
-                                    <Grid Margin="5,0,5,0" >
+                                    <Label
+                                        VerticalAlignment="Center"
+                                        Content="Vị trí"
+                                        FontSize="15"
+                                        Style="{StaticResource fontStyle}" />
+                                    <Grid Margin="5,0,5,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBox x:Name="AgencyLocationStreetTextBox"
-                                                      Margin="5"
-                                                      Background="White"
-                                                      Grid.Column="0"
-                                                      FontSize="15"
-                                                      materialDesign:HintAssist.Hint="Đường"
-                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                      VerticalAlignment="Center" />
-                                        <TextBox x:Name="AgencyLocationDistrictTextBox"
-                                                       Margin="5"
-                                                       Background="White"
-                                                       Grid.Column="1"
-                                                       FontSize="15"
-                                                       materialDesign:HintAssist.Hint="Quận"
-                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                       VerticalAlignment="Center" />
-                                        <TextBox x:Name="AgencyLocationAreaTextBox"
-                                                      Margin="5"
-                                                      Background="White"
-                                                      Grid.Column="2"
-                                                      FontSize="15"
-                                                      materialDesign:HintAssist.Hint="Khu vực"
-                                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                      VerticalAlignment="Center" />
-                                        <TextBox x:Name="AgencyLocationCityTextBox"
-                                                       Margin="5"
-                                                       Background="White"
-                                                       Grid.Column="3"
-                                                       FontSize="15"
-                                                       materialDesign:HintAssist.Hint="Thành phố"
-                                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                       VerticalAlignment="Center" />
+                                        <TextBox
+                                            x:Name="AgencyLocationStreetTextBox"
+                                            Grid.Column="0"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Đường"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                        <TextBox
+                                            x:Name="AgencyLocationDistrictTextBox"
+                                            Grid.Column="1"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Quận"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                        <TextBox
+                                            x:Name="AgencyLocationAreaTextBox"
+                                            Grid.Column="2"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Khu vực"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                        <TextBox
+                                            x:Name="AgencyLocationCityTextBox"
+                                            Grid.Column="3"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            materialDesign:HintAssist.Hint="Thành phố"
+                                            Background="White"
+                                            FontSize="15"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                                     </Grid>
                                 </StackPanel>
                                 <Grid Margin="10,20,10,10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
                                     </Grid.ColumnDefinitions>
-                                    <Button Name="AgencyOKButon" Grid.Column="0" Content="OK" HorizontalAlignment="Center" Width="150"/>
-                                    <Button Name="AgencyCancelButon" Grid.Column="1" Content="Hủy" HorizontalAlignment="Center" Width="150"/>
+                                    <Button
+                                        Name="AgencyOKButon"
+                                        Grid.Column="0"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="OK" />
+                                    <Button
+                                        Name="AgencyCancelButon"
+                                        Grid.Column="1"
+                                        Width="150"
+                                        HorizontalAlignment="Center"
+                                        Content="Hủy" />
                                 </Grid>
                             </StackPanel>
                         </TabItem>
-                        
-                        <!-- mật khẩu -->
+
+                        <!--  mật khẩu  -->
                         <TabItem Header="Mật khẩu">
                             <StackPanel Background="AliceBlue">
-                                <Label Content="Đổi mật khẩu"
-                           FontSize="20"
-                           Style="{StaticResource fontStyle}"
-                           Margin="20"
-                           />
+                                <Label
+                                    Margin="20"
+                                    Content="Đổi mật khẩu"
+                                    FontSize="20"
+                                    Style="{StaticResource fontStyle}" />
                                 <StackPanel HorizontalAlignment="Center">
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Content="Mật khẩu cũ"
-                                   Grid.Column="0"
-                                   FontSize="15"
-                                   VerticalAlignment="Center"
-                                   Style="{StaticResource fontStyle}"/>
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Mật khẩu cũ"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
                                         <!--<TextBox Width="300" Margin="10,0,0,0"
                                      Name="OldPassWordTextBox"
                                      Grid.Column="1"
                                      Style="{StaticResource textBoxStyle}"/>-->
-                                        <PasswordBox x:Name="OldPassWordTextBox"
-                                    Width="300"
-                                    Margin="10,0,0,0"
-                                    Grid.Column="1"
-                                    Background="White"
-                                    Style="{StaticResource MaterialDesignFilledPasswordBox}"
-                                    VerticalAlignment="Top"
-                                    materialDesign:HintAssist.Hint="Password" />
+                                        <PasswordBox
+                                            x:Name="OldPassWordTextBox"
+                                            Grid.Column="1"
+                                            Width="300"
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Top"
+                                            materialDesign:HintAssist.Hint="Password"
+                                            Background="White"
+                                            Style="{StaticResource MaterialDesignFilledPasswordBox}" />
                                     </Grid>
                                     <Grid Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="7*" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Content="Mật khẩu mới"
-                                   VerticalAlignment="Center"
-                                   Grid.Column="0"
-                                   FontSize="15"
-                                   Style="{StaticResource fontStyle}"/>
-                                        <PasswordBox x:Name="NewPassWord"
-                                    Width="300"
-                                    Margin="10,0,0,0"
-                                    Grid.Column="1"
-                                    Background="White"
-                                    Style="{StaticResource MaterialDesignFilledPasswordBox}"
-                                    VerticalAlignment="Top"
-                                    materialDesign:HintAssist.Hint="Password" />
+                                        <Label
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            Content="Mật khẩu mới"
+                                            FontSize="15"
+                                            Style="{StaticResource fontStyle}" />
+                                        <PasswordBox
+                                            x:Name="NewPassWord"
+                                            Grid.Column="1"
+                                            Width="300"
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Top"
+                                            materialDesign:HintAssist.Hint="Password"
+                                            Background="White"
+                                            Style="{StaticResource MaterialDesignFilledPasswordBox}" />
                                     </Grid>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Button Content="Ok" Name="OkChangePasswordButton"
-                                    Margin="10" Width="70"/>
-                                        <Button Content="Hủy" 
-                                    Name="CancelChangePasswordButton"
-                                    Margin="10" Width="70"/>
+                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <Button
+                                            Name="OkChangePasswordButton"
+                                            Width="70"
+                                            Margin="10"
+                                            Content="Ok" />
+                                        <Button
+                                            Name="CancelChangePasswordButton"
+                                            Width="70"
+                                            Margin="10"
+                                            Content="Hủy" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </TabItem>
-                        
-                    </metro:MetroTabControl>
+
+                    </TabControl>
                 </StackPanel>
             </TabItem>
-        </metro:MetroTabControl>
+        </TabControl>
 
     </Canvas>
 </metro:MetroWindow>

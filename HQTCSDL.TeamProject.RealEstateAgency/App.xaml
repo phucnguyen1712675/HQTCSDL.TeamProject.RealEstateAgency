@@ -5,8 +5,8 @@
     xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     ShutdownMode="OnLastWindowClose"
-    StartupUri="View/LoginView.xaml">
-    <!--  StartupUri="View/ChuNhaScreens/ChuNhaMain.xaml"  -->
+    StartupUri="View/ChiNhanhScreens/ChiNhanhMain.xaml">
+    <!--  StartupUri="View/LoginView.xaml"  -->
 
     <Application.Resources>
         <ResourceDictionary>

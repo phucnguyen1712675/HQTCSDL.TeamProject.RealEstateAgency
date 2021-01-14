@@ -264,6 +264,7 @@
     <Compile Include="ViewModel\AgenciesViewModel.cs" />
     <Compile Include="ViewModel\ChangeAllSalaryByPercentDialogViewModel.cs" />
     <Compile Include="ViewModel\ChangeSalaryOfAEmployeeByPercentDialogViewModel.cs" />
+    <Compile Include="ViewModel\ChiNhanhViewModel\ChiNhanhMainViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\DeleteAgencyViewModel.cs" />
     <Compile Include="ViewModel\DeleteAKindOfHouseDialogViewModel.cs" />
