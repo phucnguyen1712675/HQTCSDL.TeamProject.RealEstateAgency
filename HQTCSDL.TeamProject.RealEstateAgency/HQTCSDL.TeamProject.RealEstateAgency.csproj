@@ -331,12 +331,6 @@
     <Compile Include="View\CompanyView\Dialogs\OkCancelDialogControl.xaml.cs">
       <DependentUpon>OkCancelDialogControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ChuNhaScreens\ChuNhaMain.xaml.cs">
-      <DependentUpon>ChuNhaMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ChiNhanhScreens\ChiNhanhMain.xaml.cs">
-      <DependentUpon>ChiNhanhMain.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -396,10 +390,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ChuNhaScreens\ChuNhaMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\CompanyView\Dialogs\AddNewHouseCategoryDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -429,10 +419,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\Dialogs\OkCancelDialogControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ChiNhanhScreens\ChiNhanhMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
