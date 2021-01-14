@@ -157,6 +157,7 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PropertyChanged, Version=3.3.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.3.3.1\lib\net40\PropertyChanged.dll</HintPath>
     </Reference>
@@ -189,59 +190,80 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\AgencyIdentifierToStringConverter.cs" />
     <Compile Include="Converters\BooleanToStringConverter.cs" />
     <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
     <Compile Include="Converters\IntegerToPercentConverter.cs" />
     <Compile Include="Converters\NumberToCurrencyConverter.cs" />
     <Compile Include="Converters\RatioConverter.cs" />
-    <Compile Include="Model\AgenciesModel.cs" />
-    <Compile Include="Model\EmployeesModel.cs" />
-    <Compile Include="Model\KindsOfHouseModel.cs" />
-    <Compile Include="Model\UsersModel.cs" />
-    <Compile Include="ViewModel\AddNewAgencyDialogViewModel.cs" />
-    <Compile Include="ViewModel\AddNewEmployeeDialogViewModel.cs" />
-    <Compile Include="ViewModel\AgenciesViewModel.cs" />
-    <Compile Include="ViewModel\ChangeAllSalaryByPercentDialogViewModel.cs" />
-    <Compile Include="ViewModel\ChangeSalaryOfAEmployeeByPercentDialogViewModel.cs" />
-    <Compile Include="ViewModel\CompanyViewModel.cs" />
-    <Compile Include="ViewModel\DeleteAgencyViewModel.cs" />
-    <Compile Include="ViewModel\DeleteAKindOfHouseDialogViewModel.cs" />
-    <Compile Include="ViewModel\DeleteEmployeeViewModel.cs" />
-    <Compile Include="ViewModel\DialogsHelperClasses\AnotherCommandImplementation.cs" />
-    <Compile Include="ViewModel\DialogsViewModel.cs" />
-    <Compile Include="ViewModel\EachMonthCharityMoneyDialogViewModel.cs" />
-    <Compile Include="ViewModel\EmployeesViewModel.cs" />
-    <Compile Include="ViewModel\KindsOfHouseViewModel.cs" />
-    <Compile Include="ViewModel\UpdateAKindOfHouseDialogViewModel.cs" />
-    <Compile Include="ViewModel\UsersViewModel.cs" />
-    <Compile Include="View\CompanyView\AddNewAgencyDialog.xaml.cs">
+    <Compile Include="Domain\NotEmptyValidationRule.cs" />
+    <Compile Include="Model\AgenciesList.cs" />
+    <Compile Include="Model\Agency.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\EmployeesList.cs" />
+    <Compile Include="Model\HouseCategoriesList.cs" />
+    <Compile Include="Model\HouseCategory.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserMainWindowDictinary.cs" />
+    <Compile Include="Model\UsersList.cs" />
+    <Compile Include="Utils\AnotherCommandImplementation.cs" />
+    <Compile Include="Utils\CommandHandler.cs" />
+    <Compile Include="ViewModel\AgencyView\ContentControls\HomeScreenViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\AddNewAgencyDialogViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\AddNewEmployeeDialogViewModel.cs" />
+    <Compile Include="ViewModel\AgencyView\AgencyMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\AddNewHouseCategoryDialogViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\ChangeAllSalaryByPercentDialogViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\ChangeSalaryOfAEmployeeByPercentDialogViewModel.cs" />
+    <Compile Include="ViewModel\Company\CompanyMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Company\ContentControls\AgencyContentViewModel.cs" />
+    <Compile Include="ViewModel\Company\ContentControls\HouseCategoryContentViewModel.cs" />
+    <Compile Include="ViewModel\Company\ContentControls\StaffContentViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\OkCancelDialogViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\DeleteAKindOfHouseDialogViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\EachMonthCharityMoneyDialogViewModel.cs" />
+    <Compile Include="ViewModel\HouseOwnerView\ContentControls\HomeScreenViewModel.cs" />
+    <Compile Include="ViewModel\HouseOwnerView\HouseOwnerMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\BaseMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\StaffView\ContentControls\HomeScreenViewModel.cs" />
+    <Compile Include="ViewModel\StaffView\StaffMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\UpdateAKindOfHouseDialogViewModel.cs" />
+    <Compile Include="View\ChiNhanhScreens\ContentControls\HomeScreenContentControl.xaml.cs">
+      <DependentUpon>HomeScreenContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChuNhaScreens\ContentControls\HomeScreenContentControl.xaml.cs">
+      <DependentUpon>HomeScreenContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\Dialogs\AddNewAgencyDialog.xaml.cs">
       <DependentUpon>AddNewAgencyDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\AddNewEmployeeDialog.xaml.cs">
+    <Compile Include="View\CompanyView\Dialogs\AddNewEmployeeDialog.xaml.cs">
       <DependentUpon>AddNewEmployeeDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\AgenciesContent.xaml.cs">
-      <DependentUpon>AgenciesContent.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\Dialogs\AddNewHouseCategoryDialog.xaml.cs">
+      <DependentUpon>AddNewHouseCategoryDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\ChangeAllSalaryByPercentDialog.xaml.cs">
+    <Compile Include="View\CompanyView\Dialogs\ChangeAllSalaryByPercentDialog.xaml.cs">
       <DependentUpon>ChangeAllSalaryByPercentDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\ChangeSalaryOfAEmployeeByPercentDialog.xaml.cs">
+    <Compile Include="View\CompanyView\Dialogs\ChangeSalaryOfAEmployeeByPercentDialog.xaml.cs">
       <DependentUpon>ChangeSalaryOfAEmployeeByPercentDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\DeleteAgencyDialog.xaml.cs">
-      <DependentUpon>DeleteAgencyDialog.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\ContentControls\AgencyContentControl.xaml.cs">
+      <DependentUpon>AgencyContentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\DeleteEmployeeDialog.xaml.cs">
-      <DependentUpon>DeleteEmployeeDialog.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\ContentControls\HouseCategoryContentControl.xaml.cs">
+      <DependentUpon>HouseCategoryContentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\DialogHelperClasses\NotEmptyValidationRule.cs" />
-    <Compile Include="View\CompanyView\EachMonthCharityMoneyDialog.xaml.cs">
+    <Compile Include="View\CompanyView\ContentControls\StaffContentControl.xaml.cs">
+      <DependentUpon>StaffContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\Dialogs\EachMonthCharityMoneyDialog.xaml.cs">
       <DependentUpon>EachMonthCharityMoneyDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\EmployeesContent.xaml.cs">
-      <DependentUpon>EmployeesContent.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\Dialogs\OkCancelDialogControl.xaml.cs">
+      <DependentUpon>OkCancelDialogControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChiNhanhScreens\StaffNotMeetTarget.xaml.cs">
       <DependentUpon>StaffNotMeetTarget.xaml</DependentUpon>
@@ -249,35 +271,29 @@
     <Compile Include="View\ChuNhaScreens\ChuNhaMain.xaml.cs">
       <DependentUpon>ChuNhaMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\FlyoutContent.xaml.cs">
-      <DependentUpon>FlyoutContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ChiNhanhScreens\ChiNhanhMain.xaml.cs">
       <DependentUpon>ChiNhanhMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CompanyView\HomeScreen.xaml.cs">
-      <DependentUpon>HomeScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\CompanyView\KindsOfHouseContent.xaml.cs">
-      <DependentUpon>KindsOfHouseContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\CompanyView\PagingHelperClasses\PageInfo.cs" />
     <Compile Include="View\CompanyView\PagingHelperClasses\Paging.cs" />
-    <Compile Include="View\CompanyView\SampleProgressDialog.xaml.cs">
-      <DependentUpon>SampleProgressDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CompanyView\UpdateAKindOfHouseDialog.xaml.cs">
+    <Compile Include="View\CompanyView\Dialogs\UpdateAKindOfHouseDialog.xaml.cs">
       <DependentUpon>UpdateAKindOfHouseDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\DeleteAKindOfHouseDialog.xaml.cs">
+    <Compile Include="View\CompanyView\Dialogs\DeleteAKindOfHouseDialog.xaml.cs">
       <DependentUpon>DeleteAKindOfHouseDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NhanVienScreens\ContentControls\HomeScreenContentControl.xaml.cs">
+      <DependentUpon>HomeScreenContentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NhanVienScreens\NhanVienMain.xaml.cs">
       <DependentUpon>NhanVienMain.xaml</DependentUpon>
@@ -286,15 +302,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\CompanyView\AddNewAgencyDialog.xaml">
+    <Page Include="Resources\ResourceDictionary\YoonoScrollViewerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ChiNhanhScreens\ContentControls\HomeScreenContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\AddNewEmployeeDialog.xaml">
+    <Page Include="View\ChuNhaScreens\ContentControls\HomeScreenContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\AgenciesContent.xaml">
+    <Page Include="View\CompanyView\Dialogs\AddNewAgencyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\Dialogs\AddNewEmployeeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,57 +330,59 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\ChangeAllSalaryByPercentDialog.xaml">
+    <Page Include="View\CompanyView\Dialogs\AddNewHouseCategoryDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\ChangeSalaryOfAEmployeeByPercentDialog.xaml">
+    <Page Include="View\CompanyView\Dialogs\ChangeAllSalaryByPercentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\DeleteAgencyDialog.xaml">
+    <Page Include="View\CompanyView\Dialogs\ChangeSalaryOfAEmployeeByPercentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\DeleteEmployeeDialog.xaml">
+    <Page Include="View\CompanyView\ContentControls\AgencyContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\EachMonthCharityMoneyDialog.xaml">
+    <Page Include="View\CompanyView\ContentControls\HouseCategoryContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\EmployeesContent.xaml">
+    <Page Include="View\CompanyView\ContentControls\StaffContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\FlyoutContent.xaml">
+    <Page Include="View\CompanyView\Dialogs\EachMonthCharityMoneyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\Dialogs\OkCancelDialogControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChiNhanhScreens\ChiNhanhMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\HomeScreen.xaml">
+    <Page Include="View\CompanyView\Dialogs\UpdateAKindOfHouseDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\KindsOfHouseContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\SampleProgressDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\UpdateAKindOfHouseDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\DeleteAKindOfHouseDialog.xaml">
+    <Page Include="View\CompanyView\Dialogs\DeleteAKindOfHouseDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NhanVienScreens\ContentControls\HomeScreenContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -398,7 +424,14 @@
   <ItemGroup>
     <Resource Include="Resources\Icon\asset.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\AgencyView\Dialogs\" />
+    <Folder Include="ViewModel\HouseOwnerView\Dialogs\" />
+    <Folder Include="ViewModel\StaffView\Dialogs\" />
+    <Folder Include="View\ChiNhanhScreens\Dialogs\" />
+    <Folder Include="View\ChuNhaScreens\Dialogs\" />
+    <Folder Include="View\NhanVienScreens\Dialogs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0-ci2265\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0-ci2265\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

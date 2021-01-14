@@ -23,7 +23,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens
         public ChiNhanhMain()
         {
             InitializeComponent();
-            IList<int> LongListToTestComboVirtualization = new List<int>(Enumerable.Range(0, 20));
+            var LongListToTestComboVirtualization = new List<int>(Enumerable.Range(0, 20));
             NumberOfRoomsComboBox.ItemsSource = LongListToTestComboVirtualization;
         }
 
