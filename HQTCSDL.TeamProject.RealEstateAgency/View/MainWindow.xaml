@@ -1,0 +1,141 @@
+﻿<mde:MaterialWindow
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:agencyContentCrtl="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentControls"
+    xmlns:agencyContentVm="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentControls"
+    xmlns:companyContentCrtl="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.ContentControls"
+    xmlns:companyContentVm="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls"
+    xmlns:conv="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:houseownerContentCrtl="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChuNhaScreens.ContentControls"
+    xmlns:houseownerContentVm="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+    xmlns:staffContentCrtl="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens.ContentControls"
+    xmlns:staffContentVm="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.ViewModel.StaffView.ContentControls"
+    Title="Main Window"
+    Width="{Binding ConverterParameter=0.5, Converter={conv:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
+    Height="{Binding ConverterParameter=0.95, Converter={conv:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+    AutomationProperties.Name="{Binding Title, RelativeSource={RelativeSource Self}}"
+    Background="{DynamicResource MaterialDesignBackground}"
+    FontFamily="{md:MaterialDesignFont}"
+    TextElement.FontSize="14"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <mde:MaterialWindow.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type companyContentVm:AgencyContentViewModel}">
+                <companyContentCrtl:AgencyContentControl />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type companyContentVm:StaffContentViewModel}">
+                <companyContentCrtl:StaffContentControl />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type companyContentVm:HouseCategoryContentViewModel}">
+                <companyContentCrtl:HouseCategoryContentControl />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type agencyContentVm:HomeScreenViewModel}">
+                <agencyContentCrtl:HomeScreenContentControl />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type staffContentVm:HomeScreenViewModel}">
+                <staffContentCrtl:HomeScreenContentControl />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type houseownerContentVm:HomeScreenViewModel}">
+                <houseownerContentCrtl:HomeScreenContentControl />
+            </DataTemplate>
+        </ResourceDictionary>
+    </mde:MaterialWindow.Resources>
+
+    <mde:MaterialWindow.TitleTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Margin="8,0,0,0"
+                    Style="{StaticResource WindowTitleTextBlockStyle}"
+                    Text="{Binding Path=Title, RelativeSource={RelativeSource AncestorType={x:Type mde:MaterialWindow}}}" />
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Stretch"
+                    Orientation="Horizontal">
+                    <Button Style="{StaticResource WindowButtonStyle}">
+                        <md:PackIcon Kind="Github" Style="{StaticResource WindowButtonIconStyle}" />
+                    </Button>
+                    <Border
+                        Width="1"
+                        Margin="8,4,8,4"
+                        VerticalAlignment="Stretch"
+                        Background="{Binding Path=BorderForegroundBrush, RelativeSource={RelativeSource AncestorType={x:Type mde:MaterialWindow}}}"
+                        SnapsToDevicePixels="True" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </mde:MaterialWindow.TitleTemplate>
+
+    <Grid>
+        <md:DialogHost DialogTheme="Light" Identifier="{Binding Identifier}">
+            <md:DrawerHost IsLeftDrawerOpen="{Binding ElementName=appBar, Path=IsNavigationDrawerOpen}" LeftDrawerBackground="{DynamicResource MaterialDesignBackground}">
+                <md:DrawerHost.LeftDrawerContent>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            Width="250"
+                            Margin="0,0,0,10"
+                            Source="/Resources/Images/ICON4801.png"
+                            Stretch="Uniform" />
+                        <mde:SideNavigation
+                            Grid.Row="1"
+                            Items="{Binding NavigationItems, Mode=OneTime}"
+                            NavigationItemSelected="NavigationItemSelectedHandler"
+                            SelectedItem="{Binding SelectedNavigationItem}" />
+                    </Grid>
+                </md:DrawerHost.LeftDrawerContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <mde:AppBar
+                        x:Name="appBar"
+                        Title="{Binding Title}"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        IsNavigationDrawerOpen="{Binding IsNavigationDrawerOpen}"
+                        OpaqueMode="Transparent"
+                        ShowNavigationDrawerButton="True"
+                        Type="Default">
+                        <DockPanel>
+                            <md:PopupBox
+                                DockPanel.Dock="Right"
+                                PlacementMode="BottomAndAlignRightEdges"
+                                StaysOpen="False">
+                                <StackPanel>
+                                    <Button
+                                        x:Name="logOutButton"
+                                        Click="logOutButton_Click"
+                                        Content="Log out"
+                                        Foreground="{DynamicResource MaterialDesignBody}"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                        ToolTip="Log out" />
+                                    <Separator />
+                                </StackPanel>
+                            </md:PopupBox>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Role}" />
+                        </DockPanel>
+                    </mde:AppBar>
+                    <mde:TransitionContentControl x:Name="contentControl" Grid.Row="1" />
+                </Grid>
+            </md:DrawerHost>
+        </md:DialogHost>
+    </Grid>
+</mde:MaterialWindow>
