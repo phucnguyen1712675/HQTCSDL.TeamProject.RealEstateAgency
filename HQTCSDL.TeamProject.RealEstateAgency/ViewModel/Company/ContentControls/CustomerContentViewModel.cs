@@ -124,7 +124,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
-            KhachHangDAO.GetInstance().EditCustomer(this.ModifiedCustomer);
+            KhachHangDAO.GetInstance().EditCustomer(this.CustomerDetailViewModel.SelectedCustomer);
             Load();
         }
 
@@ -133,7 +133,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
-            KhachHangDAO.GetInstance().DeleteCustomer(this.ModifiedCustomer);
+            KhachHangDAO.GetInstance().DeleteCustomer(this.CustomerDetailViewModel.SelectedCustomer);
             Load();
         }
 

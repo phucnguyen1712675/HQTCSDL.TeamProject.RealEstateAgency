@@ -93,8 +93,8 @@
                     Margin="0,12,0,0"
                     md:HintAssist.Hint="Loại nhà"
                     ItemTemplate="{StaticResource houseCateItemTemplate}"
-                    ItemsSource="{Binding Source={StaticResource sortedHouseCatesSource}}"
-                    SelectedItem="{Binding SelectedHouse.MALOAI}"
+                    ItemsSource="{Binding HouseCatesCollection}"
+                    SelectedIndex="{Binding HouseCateSelectedIndex}"
                     Style="{StaticResource MaterialDesignFilledComboBox}" />
                 <TextBox
                     Grid.Row="4"
