@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentControls
@@ -48,7 +46,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
         {
             using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
             {
-                Houses = new ObservableCollection<NHA>(db.NHAs.Where(item=>item.MACN == MACN));
+                Houses = new ObservableCollection<NHA>(db.NHAs.Where(item => item.MACN == MACN));
                 AllHouses = new ObservableCollection<NHA>(db.NHAs.Where(item => item.MACN == MACN));
                 AllHouseTypes = new ObservableCollection<LOAINHA>(db.LOAINHAs);
                 AllHouseOwners = new ObservableCollection<CHUNHA>(db.CHUNHAs);
@@ -101,7 +99,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
                     db.USP_UpdateHousePrice(MACN, maNha, newPrice);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         internal void updateHouseTypeInHouse()
@@ -115,7 +113,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
                     db.USP_UpdateHouseTypeInHouse(maNha, newLoaiNha);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         internal void UpdateStaffSalary()
@@ -143,12 +141,14 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
                 int newType = OldNewHousetypeRequest[oldType];
                 QUANLYNHADATEntities db = new QUANLYNHADATEntities();
                 var datacontext = db.USP_UpdateCustomerDemand(maKH, newType, oldType, MACN);
-                var screen = new Agency_IsHousePriceIncreases("Sau khi cập nhập thong tin khách hàng") {
+                var screen = new Agency_IsHousePriceIncreases("Sau khi cập nhập thong tin khách hàng")
+                {
                     DataContext = datacontext
                 };
                 screen.Show();
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -156,7 +156,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
         internal void SetSelectedHouse(NHA selectedNha)
         {
             SelectedHouse = selectedNha;
-            if(selectedNha != null)
+            if (selectedNha != null)
             {
                 using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
                 {
@@ -196,8 +196,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
 
         internal void SetSelectedCustomer(KHACHHANG kHACHHANG)
         {
-            
-            if(kHACHHANG != null)
+
+            if (kHACHHANG != null)
             {
                 using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
                 {
@@ -213,7 +213,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
         internal void SetHouseRentOrSale(string text)
         {
             HouseType = int.Parse(text);
-            
+
         }
     }
 }

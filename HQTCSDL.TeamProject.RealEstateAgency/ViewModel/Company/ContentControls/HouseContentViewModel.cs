@@ -8,6 +8,7 @@ using HQTCSDL.TeamProject.RealEstateHouseOwner.DAO;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
@@ -80,9 +81,12 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             var values = (object[])key;
             this.ModifiedHouse = NhaDAO.GetInstance().GetHouseById(values);
             this.ModifiedRentalHouseDetail = ChiTietNhaThueDAO.GetInstance().GetRentalhouseDetailById(values);
+            var selectedhHouseCate = this.allHouseCategories.FirstOrDefault(c => c.MALOAI == this.ModifiedHouse.MALOAI);
+            var cateIndex = this.allHouseCategories.IndexOf(selectedhHouseCate);
 
             this.HouseDetailViewModel = new HouseDetailViewModel
             {
+                HouseCateSelectedIndex = cateIndex,
                 SelectedHouse = this.ModifiedHouse,
                 SelectedRentalHouseDetail = this.ModifiedRentalHouseDetail,
                 AgenciesCollection = this.allAgencies,
@@ -141,6 +145,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
+            var selectHouseCate = this.allHouseCategories[this.HouseDetailViewModel.HouseCateSelectedIndex];
+            this.HouseDetailViewModel.SelectedHouse.MALOAI = selectHouseCate.MALOAI;
             ChiTietNhaThueDAO.GetInstance().EditRentalhouseDetail(this.HouseDetailViewModel.SelectedRentalHouseDetail);
             NhaDAO.GetInstance().EditHouse(this.HouseDetailViewModel.SelectedHouse);
             Load();
@@ -151,6 +157,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
+            var selectHouseCate = this.allHouseCategories[this.HouseDetailViewModel.HouseCateSelectedIndex];
+            this.HouseDetailViewModel.SelectedHouse.MALOAI = selectHouseCate.MALOAI;
             ChiTietNhaThueDAO.GetInstance().DeleteRentalhouseDetail(this.HouseDetailViewModel.SelectedRentalHouseDetail);
             NhaDAO.GetInstance().DeleteHouse(this.HouseDetailViewModel.SelectedHouse);
             Load();

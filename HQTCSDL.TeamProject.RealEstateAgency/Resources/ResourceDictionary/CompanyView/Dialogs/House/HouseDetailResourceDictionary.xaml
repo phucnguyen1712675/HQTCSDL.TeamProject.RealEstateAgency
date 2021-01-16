@@ -26,10 +26,7 @@
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="houseCateItemTemplate">
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <TextBlock Text="Loại nhà " />
-            <TextBlock Text="{Binding TEN}" />
-        </StackPanel>
+        <TextBlock Text="{Binding TEN}" />
     </DataTemplate>
 
     <CollectionViewSource x:Key="sortedAgenciesSource" Source="{Binding AgenciesCollection}">

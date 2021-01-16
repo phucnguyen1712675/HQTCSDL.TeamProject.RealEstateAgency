@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentControls
 {
@@ -15,7 +13,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new HomeScreenViewModel();
                 }
@@ -40,7 +38,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
 
         private HomeScreenViewModel()
         {
-            using(QUANLYNHADATEntities db = new QUANLYNHADATEntities())
+            using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
             {
                 Houses = new ObservableCollection<NHA>(db.NHAs.Where(item => item.MACNHA == MACNHA).ToList());
                 AllHouseTypes = new ObservableCollection<LOAINHA>(db.LOAINHAs);
@@ -58,11 +56,12 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
             string State = SelectedHouse.TINHTRANG;
             try
             {
-                using(QUANLYNHADATEntities db = new QUANLYNHADATEntities())
+                using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
                 {
                     db.USP_TEST_AGENCY_UpdateHouseInformation(Houseid, OutofDate, Date, State);
                 }
-            }catch(Exception ex) { }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         internal void updateHouseHouseType(int maNha, int newLoaiNha)
@@ -76,7 +75,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
         internal void SetSelectedHouse(NHA selectedNha)
         {
             SelectedHouse = selectedNha;
-            if(selectedNha != null)
+            if (selectedNha != null)
             {
                 using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
                 {
@@ -106,12 +105,12 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
                     db.USP_USER_DeleteHouse(maNha);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         internal void AddNewHouseForRent()
         {
-            int MANV = 1;
+            //int MANV = 1;
             int MALOAI = (int)SelectedHouse.LOAINHA.MALOAI;
             int SLPO = (int)SelectedHouse.SOLUONGPHONGO;
             string Duong = SelectedHouse.DUONG;
@@ -120,7 +119,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
             string ThanhPho = SelectedHouse.THANHPHO;
             string TinhTrang = HouseType.ToString();
             int GiaThue = (int)SelectedHouseForRent.GIATHUE;
-            using(QUANLYNHADATEntities db = new QUANLYNHADATEntities())
+            using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
             {
                 db.USP_AddHouseForRent(MACN, MACNHA, 1, MALOAI, SLPO, null, null, Duong, Quan, KhuVuc, ThanhPho, TinhTrang, null, GiaThue);
             }
