@@ -61,7 +61,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
                     db.USP_TEST_AGENCY_UpdateHouseInformation(Houseid, OutofDate, Date, State);
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) {}
         }
 
         internal void updateHouseHouseType(int maNha, int newLoaiNha)
@@ -105,7 +105,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView.ContentC
                     db.USP_USER_DeleteHouse(maNha);
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { }
         }
 
         internal void AddNewHouseForRent()
