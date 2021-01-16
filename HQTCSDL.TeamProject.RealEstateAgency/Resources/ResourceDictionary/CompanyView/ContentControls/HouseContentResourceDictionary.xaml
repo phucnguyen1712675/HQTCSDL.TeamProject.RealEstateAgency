@@ -36,8 +36,8 @@
                     Style="{StaticResource MaterialDesignFlatButton}">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource primaryKeyConverter}">
-                            <Binding Path="MACN" />
                             <Binding Path="MANHA" />
+                            <Binding Path="MACN" />
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
@@ -48,8 +48,8 @@
                     Style="{StaticResource MaterialDesignFlatButton}">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource primaryKeyConverter}">
-                            <Binding Path="MACN" />
                             <Binding Path="MANHA" />
+                            <Binding Path="MACN" />
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
