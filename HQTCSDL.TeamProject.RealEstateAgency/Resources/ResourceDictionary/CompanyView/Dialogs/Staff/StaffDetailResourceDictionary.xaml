@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+    <DataTemplate x:Key="agencyItemTemplate">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Chi nhánh " />
+            <TextBlock Text="{Binding MACN}" />
+        </StackPanel>
+    </DataTemplate>
+    <CollectionViewSource x:Key="sortedAgenciesSource" Source="{Binding AgenciesCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MACN" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+</ResourceDictionary>

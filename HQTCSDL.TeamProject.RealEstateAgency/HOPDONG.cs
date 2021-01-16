@@ -9,12 +9,10 @@
 
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
-    using System;
-    using System.Collections.ObjectModel;
     using PropertyChanged;
+    using System;
 
     [AddINotifyPropertyChangedInterface]
-
     public partial class HOPDONG
     {
         public int MAHD { get; set; }
@@ -23,7 +21,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         public Nullable<int> MACN { get; set; }
         public Nullable<System.DateTime> NGAYLAP { get; set; }
         public string GHICHU { get; set; }
-    
+
         public virtual KHACHHANG KHACHHANG { get; set; }
     }
 }

@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.Converters
 {
-    class RatioConverter : MarkupExtension, IValueConverter
+    public class RatioConverter : MarkupExtension, IValueConverter
     {
         private static RatioConverter _instance;
-        public RatioConverter() { }
+        public RatioConverter() { _instance = null; }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == DependencyProperty.UnsetValue || value == null)
+            {
+                return value;
+            }
             double size = System.Convert.ToDouble(value) * System.Convert.ToDouble(parameter, CultureInfo.InvariantCulture);
             return size.ToString("G0", CultureInfo.InvariantCulture);
         }
@@ -24,9 +25,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.Converters
             throw new NotImplementedException();
         }
 
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return _instance ?? (_instance = new RatioConverter());
-        }
+        public override object ProvideValue(IServiceProvider serviceProvider) => _instance ?? new RatioConverter();
     }
 }

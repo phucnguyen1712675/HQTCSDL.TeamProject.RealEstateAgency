@@ -15,8 +15,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
 
         private const string UserRoleKey = "UserRole";
 
-        private UserMainWindowDictinary UserMainWindowDictinary;
-
         private void ShowLoginView()
         {
             var loginScreen = new LoginView
@@ -48,13 +46,11 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             if (isKeepMeLoggedIn)
             {
                 var result = false;
-                var userRole = ConfigurationManager.AppSettings[UserRoleKey].ToString();
+                var userRole = ConfigurationManager.AppSettings[UserRoleKey];
 
                 if (userRole != null)
                 {
-                    this.UserMainWindowDictinary = new UserMainWindowDictinary();
-
-                    var mainWindowVm = this.UserMainWindowDictinary.GetCorrespondingMainWindowViewModel(userRole);
+                    var mainWindowVm = UserMainWindowDictinary.GetInstance().GetCorrespondingMainWindowViewModel(userRole);
 
                     if (mainWindowVm != null)
                     {

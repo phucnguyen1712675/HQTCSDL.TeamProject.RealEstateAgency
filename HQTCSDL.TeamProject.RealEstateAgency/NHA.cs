@@ -9,12 +9,10 @@
 
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
-    using System;
-    using System.Collections.ObjectModel;
     using PropertyChanged;
+    using System;
 
     [AddINotifyPropertyChangedInterface]
-
     public partial class NHA
     {
         public int MANHA { get; set; }
@@ -31,7 +29,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         public string THANHPHO { get; set; }
         public string TINHTRANG { get; set; }
         public Nullable<int> SOLUOTXEM { get; set; }
-    
+
         public virtual CHITIETNHABAN CHITIETNHABAN { get; set; }
         public virtual CHITIETNHATHUE CHITIETNHATHUE { get; set; }
         public virtual CHUNHA CHUNHA { get; set; }

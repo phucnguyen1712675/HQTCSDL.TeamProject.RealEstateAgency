@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QUANLYNHADATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QUANLYNHADATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHINHANH">
           <Key>
             <PropertyRef Name="MACN" />
@@ -275,37 +275,100 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        <Function Name="USP_AddHouseForRent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaChiNhanh" Type="int" Mode="In" />
+          <Parameter Name="MaChuNha" Type="int" Mode="In" />
+          <Parameter Name="MaNhanVien" Type="int" Mode="In" />
+          <Parameter Name="MaLoai" Type="int" Mode="In" />
+          <Parameter Name="SoLuongPhongO" Type="int" Mode="In" />
+          <Parameter Name="NgayHetHan" Type="datetime" Mode="In" />
+          <Parameter Name="NgayDang" Type="datetime" Mode="In" />
+          <Parameter Name="Duong" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quan" Type="nvarchar" Mode="In" />
+          <Parameter Name="KhuVuc" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThanhPho" Type="nvarchar" Mode="In" />
+          <Parameter Name="TinhTrang" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoLuotXem" Type="int" Mode="In" />
+          <Parameter Name="GiaThue" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        <Function Name="USP_AddHouseForSale" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaChiNhanh" Type="int" Mode="In" />
+          <Parameter Name="MaChuNha" Type="int" Mode="In" />
+          <Parameter Name="MaNhanVien" Type="int" Mode="In" />
+          <Parameter Name="MaLoai" Type="int" Mode="In" />
+          <Parameter Name="SoLuongPhongO" Type="int" Mode="In" />
+          <Parameter Name="NgayHetHan" Type="datetime" Mode="In" />
+          <Parameter Name="NgayDang" Type="datetime" Mode="In" />
+          <Parameter Name="Duong" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quan" Type="nvarchar" Mode="In" />
+          <Parameter Name="KhuVuc" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThanhPho" Type="nvarchar" Mode="In" />
+          <Parameter Name="TinhTrang" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoLuotXem" Type="int" Mode="In" />
+          <Parameter Name="GiaBan" Type="int" Mode="In" />
+          <Parameter Name="DieuKien" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
+        <Function Name="USP_GetCustomerSuitableHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseType" Type="int" Mode="In" />
+          <Parameter Name="agency" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
+        <Function Name="USP_IsPriceIncreases" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ratio" Type="float" Mode="In" />
+          <Parameter Name="minium" Type="int" Mode="In" />
+          <Parameter Name="agency" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
+        <Function Name="USP_TEST_AGENCY_GetHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agency" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        <Function Name="USP_TEST_AGENCY_UpdateHouseInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseID" Type="int" Mode="In" />
+          <Parameter Name="ngayhethan" Type="datetime" Mode="In" />
+          <Parameter Name="ngaydang" Type="datetime" Mode="In" />
+          <Parameter Name="tinhtrang" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_UpdateCustomerDemand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerCode" Type="int" Mode="In" />
+          <Parameter Name="newHouseType" Type="int" Mode="In" />
+          <Parameter Name="oldHouseType" Type="int" Mode="In" />
+          <Parameter Name="agency" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateCustomerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerCode" Type="int" Mode="In" />
+          <Parameter Name="agency" Type="int" Mode="In" />
+          <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+          <Parameter Name="address" Type="nvarchar" Mode="In" />
+          <Parameter Name="detail" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateHouseInHouseType_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseCode" Type="int" Mode="In" />
+          <Parameter Name="newHouseType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateHousePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agency" Type="int" Mode="In" />
+          <Parameter Name="houseId" Type="int" Mode="In" />
+          <Parameter Name="newPrice" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateHouseTypeInHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseCode" Type="int" Mode="In" />
+          <Parameter Name="newHouseType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateRentHouseHouseInPrice_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ratio" Type="float" Mode="In" />
+          <Parameter Name="minium" Type="int" Mode="In" />
+          <Parameter Name="agency" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateSalaryStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="staffCode" Type="int" Mode="In" />
+          <Parameter Name="newSalary" Type="float" Mode="In" />
+        </Function>
+        <Function Name="USP_UpdateSaleHouseHouseInPrice_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ratio" Type="float" Mode="In" />
+          <Parameter Name="minium" Type="int" Mode="In" />
+          <Parameter Name="agency" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_USER_DeleteHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="QUANLYNHADATModelStoreContainer">
           <EntitySet Name="CHINHANH" EntityType="Self.CHINHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHITIETNHABAN" EntityType="Self.CHITIETNHABAN" Schema="dbo" store:Type="Tables" />
@@ -363,8 +426,7 @@
             <End Role="YEUCAU" EntitySet="YEUCAU" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QUANLYNHADATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -746,6 +808,100 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="USP_AddHouseForRent" ReturnType="Collection(Int32)">
+            <Parameter Name="MaChiNhanh" Mode="In" Type="Int32" />
+            <Parameter Name="MaChuNha" Mode="In" Type="Int32" />
+            <Parameter Name="MaNhanVien" Mode="In" Type="Int32" />
+            <Parameter Name="MaLoai" Mode="In" Type="Int32" />
+            <Parameter Name="SoLuongPhongO" Mode="In" Type="Int32" />
+            <Parameter Name="NgayHetHan" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayDang" Mode="In" Type="DateTime" />
+            <Parameter Name="Duong" Mode="In" Type="String" />
+            <Parameter Name="Quan" Mode="In" Type="String" />
+            <Parameter Name="KhuVuc" Mode="In" Type="String" />
+            <Parameter Name="ThanhPho" Mode="In" Type="String" />
+            <Parameter Name="TinhTrang" Mode="In" Type="String" />
+            <Parameter Name="SoLuotXem" Mode="In" Type="Int32" />
+            <Parameter Name="GiaThue" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_AddHouseForSale" ReturnType="Collection(Int32)">
+            <Parameter Name="MaChiNhanh" Mode="In" Type="Int32" />
+            <Parameter Name="MaChuNha" Mode="In" Type="Int32" />
+            <Parameter Name="MaNhanVien" Mode="In" Type="Int32" />
+            <Parameter Name="MaLoai" Mode="In" Type="Int32" />
+            <Parameter Name="SoLuongPhongO" Mode="In" Type="Int32" />
+            <Parameter Name="NgayHetHan" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayDang" Mode="In" Type="DateTime" />
+            <Parameter Name="Duong" Mode="In" Type="String" />
+            <Parameter Name="Quan" Mode="In" Type="String" />
+            <Parameter Name="KhuVuc" Mode="In" Type="String" />
+            <Parameter Name="ThanhPho" Mode="In" Type="String" />
+            <Parameter Name="TinhTrang" Mode="In" Type="String" />
+            <Parameter Name="SoLuotXem" Mode="In" Type="Int32" />
+            <Parameter Name="GiaBan" Mode="In" Type="Int32" />
+            <Parameter Name="DieuKien" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GetCustomerSuitableHouse" ReturnType="Collection(QUANLYNHADATModel.USP_GetCustomerSuitableHouse_Result)">
+            <Parameter Name="houseType" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_IsPriceIncreases" ReturnType="Collection(QUANLYNHADATModel.USP_IsPriceIncreases_Result)">
+            <Parameter Name="ratio" Mode="In" Type="Double" />
+            <Parameter Name="minium" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_TEST_AGENCY_GetHouse" ReturnType="Collection(QUANLYNHADATModel.USP_TEST_AGENCY_GetHouse_Result)">
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_TEST_AGENCY_UpdateHouseInformation">
+            <Parameter Name="houseID" Mode="In" Type="Int32" />
+            <Parameter Name="ngayhethan" Mode="In" Type="DateTime" />
+            <Parameter Name="ngaydang" Mode="In" Type="DateTime" />
+            <Parameter Name="tinhtrang" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateCustomerDemand" ReturnType="Collection(QUANLYNHADATModel.USP_UpdateCustomerDemand_Result)">
+            <Parameter Name="customerCode" Mode="In" Type="Int32" />
+            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
+            <Parameter Name="oldHouseType" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateCustomerDetail" ReturnType="Collection(QUANLYNHADATModel.USP_UpdateCustomerDetail_Result)">
+            <Parameter Name="customerCode" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerName" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="detail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateHouseInHouseType_Test">
+            <Parameter Name="houseCode" Mode="In" Type="Int32" />
+            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateHousePrice">
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+            <Parameter Name="houseId" Mode="In" Type="Int32" />
+            <Parameter Name="newPrice" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateHouseTypeInHouse">
+            <Parameter Name="houseCode" Mode="In" Type="Int32" />
+            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateRentHouseHouseInPrice_Test">
+            <Parameter Name="ratio" Mode="In" Type="Double" />
+            <Parameter Name="minium" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateSalaryStaff">
+            <Parameter Name="staffCode" Mode="In" Type="Int32" />
+            <Parameter Name="newSalary" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateSaleHouseHouseInPrice_Test">
+            <Parameter Name="ratio" Mode="In" Type="Double" />
+            <Parameter Name="minium" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_USER_DeleteHouse">
+            <Parameter Name="houseId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -757,6 +913,64 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="USP_GetCustomerSuitableHouse_Result">
+          <Property Type="Int32" Name="MANHA" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="MACNHA" Nullable="true" />
+          <Property Type="Int32" Name="MANV" Nullable="true" />
+          <Property Type="Int32" Name="MALOAI" Nullable="true" />
+          <Property Type="Int32" Name="SOLUONGPHONGO" Nullable="true" />
+          <Property Type="DateTime" Name="NGAYHETHAN" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NGAYDANG" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DUONG" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="QUAN" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="KHUVUC" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="THANHPHO" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="TINHTRANG" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SOLUOTXEM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_IsPriceIncreases_Result">
+          <Property Type="Int32" Name="SLUONGNHA" Nullable="true" />
+          <Property Type="Int32" Name="MALOAI" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_TEST_AGENCY_GetHouse_Result">
+          <Property Type="Int32" Name="MANHA" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="MACNHA" Nullable="true" />
+          <Property Type="Int32" Name="MANV" Nullable="true" />
+          <Property Type="Int32" Name="MALOAI" Nullable="true" />
+          <Property Type="Int32" Name="SOLUONGPHONGO" Nullable="true" />
+          <Property Type="DateTime" Name="NGAYHETHAN" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NGAYDANG" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DUONG" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="QUAN" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="KHUVUC" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="THANHPHO" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="TINHTRANG" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SOLUOTXEM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_UpdateCustomerDemand_Result">
+          <Property Type="Int32" Name="MAKH" Nullable="false" />
+          <Property Type="Int32" Name="CNQUANLY" Nullable="false" />
+          <Property Type="String" Name="TEN" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CHITIET" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MAKH1" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="LOAINHAYEUCAU" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="USP_UpdateCustomerDetail_Result">
+          <Property Type="Int32" Name="MAKH" Nullable="false" />
+          <Property Type="Int32" Name="CNQUANLY" Nullable="false" />
+          <Property Type="String" Name="TEN" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CHITIET" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="MAKH1" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="LOAINHAYEUCAU" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -890,31 +1104,95 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QUANLYNHADATModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QUANLYNHADATModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QUANLYNHADATModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QUANLYNHADATModel.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="USP_AddHouseForRent" FunctionName="QUANLYNHADATModel.Store.USP_AddHouseForRent" />
+          <FunctionImportMapping FunctionImportName="USP_AddHouseForSale" FunctionName="QUANLYNHADATModel.Store.USP_AddHouseForSale" />
+          <FunctionImportMapping FunctionImportName="USP_GetCustomerSuitableHouse" FunctionName="QUANLYNHADATModel.Store.USP_GetCustomerSuitableHouse">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="QUANLYNHADATModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_GetCustomerSuitableHouse_Result">
+                <ScalarProperty Name="MANHA" ColumnName="MANHA" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="MACNHA" ColumnName="MACNHA" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+                <ScalarProperty Name="SOLUONGPHONGO" ColumnName="SOLUONGPHONGO" />
+                <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="DUONG" ColumnName="DUONG" />
+                <ScalarProperty Name="QUAN" ColumnName="QUAN" />
+                <ScalarProperty Name="KHUVUC" ColumnName="KHUVUC" />
+                <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="SOLUOTXEM" ColumnName="SOLUOTXEM" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QUANLYNHADATModel.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="USP_IsPriceIncreases" FunctionName="QUANLYNHADATModel.Store.USP_IsPriceIncreases">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="QUANLYNHADATModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_IsPriceIncreases_Result">
+                <ScalarProperty Name="SLUONGNHA" ColumnName="SLUONGNHA" />
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QUANLYNHADATModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QUANLYNHADATModel.Store.sp_upgraddiagrams" />
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="USP_TEST_AGENCY_GetHouse" FunctionName="QUANLYNHADATModel.Store.USP_TEST_AGENCY_GetHouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_TEST_AGENCY_GetHouse_Result">
+                <ScalarProperty Name="MANHA" ColumnName="MANHA" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="MACNHA" ColumnName="MACNHA" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+                <ScalarProperty Name="SOLUONGPHONGO" ColumnName="SOLUONGPHONGO" />
+                <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="DUONG" ColumnName="DUONG" />
+                <ScalarProperty Name="QUAN" ColumnName="QUAN" />
+                <ScalarProperty Name="KHUVUC" ColumnName="KHUVUC" />
+                <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="SOLUOTXEM" ColumnName="SOLUOTXEM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_TEST_AGENCY_UpdateHouseInformation" FunctionName="QUANLYNHADATModel.Store.USP_TEST_AGENCY_UpdateHouseInformation" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateCustomerDemand" FunctionName="QUANLYNHADATModel.Store.USP_UpdateCustomerDemand">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_UpdateCustomerDemand_Result">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="CNQUANLY" ColumnName="CNQUANLY" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="CHITIET" ColumnName="CHITIET" />
+                <ScalarProperty Name="MAKH1" ColumnName="MAKH1" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="LOAINHAYEUCAU" ColumnName="LOAINHAYEUCAU" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_UpdateCustomerDetail" FunctionName="QUANLYNHADATModel.Store.USP_UpdateCustomerDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_UpdateCustomerDetail_Result">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="CNQUANLY" ColumnName="CNQUANLY" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="CHITIET" ColumnName="CHITIET" />
+                <ScalarProperty Name="MAKH1" ColumnName="MAKH1" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="LOAINHAYEUCAU" ColumnName="LOAINHAYEUCAU" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_UpdateHouseInHouseType_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHouseInHouseType_Test" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateHousePrice" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHousePrice" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateHouseTypeInHouse" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHouseTypeInHouse" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateRentHouseHouseInPrice_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateRentHouseHouseInPrice_Test" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateSalaryStaff" FunctionName="QUANLYNHADATModel.Store.USP_UpdateSalaryStaff" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateSaleHouseHouseInPrice_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateSaleHouseHouseInPrice_Test" />
+          <FunctionImportMapping FunctionImportName="USP_USER_DeleteHouse" FunctionName="QUANLYNHADATModel.Store.USP_USER_DeleteHouse" />
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

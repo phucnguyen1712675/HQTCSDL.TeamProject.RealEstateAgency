@@ -7,13 +7,13 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.StaffView
 {
     public class StaffMainWindowViewModel : BaseMainWindowViewModel
     {
-        public override string Role => "Role: Nhân viên";
+        public override string Role => "Nhân viên";
 
         protected override void SetNavigationItems()
         {
             NavigationItems = new List<INavigationItem>()
             {
-                new FirstLevelNavigationItem() { Label = "Nhân viên", Icon = PackIconKind.HomeCity, NavigationItemSelectedCallback = item => new HomeScreenViewModel(), IsSelected = true }
+                new FirstLevelNavigationItem() { Label = "Nhân viên", Icon = PackIconKind.HomeCity, NavigationItemSelectedCallback = _ => new HomeScreenViewModel(), IsSelected = true }
             };
             SelectedNavigationItem = NavigationItems[0];
         }

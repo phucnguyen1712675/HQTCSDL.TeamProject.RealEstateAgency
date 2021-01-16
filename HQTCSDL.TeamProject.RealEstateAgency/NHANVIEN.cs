@@ -9,12 +9,11 @@
 
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
+    using PropertyChanged;
     using System;
     using System.Collections.ObjectModel;
-    using PropertyChanged;
 
     [AddINotifyPropertyChangedInterface]
-
     public partial class NHANVIEN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +22,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             this.KEHOACHXEMNHAs = new ObservableCollection<KEHOACHXEMNHA>();
             this.NHAs = new ObservableCollection<NHA>();
         }
-    
+
         public int MACN { get; set; }
         public int MANV { get; set; }
         public string TEN { get; set; }
@@ -32,7 +31,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
         public Nullable<bool> GIOITINH { get; set; }
         public Nullable<System.DateTime> NGAYSINH { get; set; }
         public Nullable<decimal> LUONG { get; set; }
-    
+
         public virtual CHINHANH CHINHANH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableCollection<KEHOACHXEMNHA> KEHOACHXEMNHAs { get; set; }
