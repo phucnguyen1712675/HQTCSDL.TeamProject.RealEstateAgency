@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentControls;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentControls
@@ -8,72 +12,162 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens.ContentContr
     /// </summary>
     public partial class HomeScreenContentControl : UserControl
     {
-        /*//mảng tạm lưu thông tin đổi yêu cầu nhà của khách hàng
-         * Dictionary<int,int> Old_newHouseTypeDemandCustomer
+        /*
+         0 : update loainha
+         1 : update giá thuê
          */
-        /*public ObservableCollection<NHA> Houses { get; set; }
-        public ObservableCollection<CHUNHA> HouseOwners { get; set; }*/
-
+        public int ProcedureUpdateToCall;
 
         public HomeScreenContentControl()
         {
             InitializeComponent();
-            /*LoadAll();
-            DataContext = this;*/
-            //DataContext = ChiNhanhMainViewModel.Instance;
+            DataContext = HomeScreenViewModel.Instance;
         }
 
-        public void LoadAll()
-        {
-            /* using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
-             {
-                 Houses = new ObservableCollection<NHA>(db.NHAs.ToList());
-                 HouseOwners = new ObservableCollection<CHUNHA>(db.CHUNHAs.ToList());
-             }*/
-        }
-
-        private void HouseSearchButton_Click(object sender, RoutedEventArgs e)
-        {
-            /*gọi refresh lại danh sách nhà*/
-        }
-
+        #region HouseTranhChap
         private void OKUpdatePriceAllHouseOfTypeButton_Click(object sender, RoutedEventArgs e)
         {
             /*gọi procedure_ÍPriceIncresases
-             trả kết quả vào window kết quả chạy Agency_IsHosueTypeInscreases*/
+             trả kết quả vào window kết quả chạy Agency_IsHosueTypeInscreases
+             */
+            int SoLuong = int.Parse(HouseTypeNumberTextBox.Text);
+            float PhanTram = int.Parse(HouseTypePriceUpTextBox.Text)/100;
+            int MaCN = HomeScreenViewModel.Instance.MACN;
+            HomeScreenViewModel.Instance.UpdateHousePriceIfYes(SoLuong, PhanTram);
         }
 
         private void OKSearchHouseByTypeButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
-             * var temp = (HouseType2Combox.SelectedValue as LOAINHA).MALOAI
-             * lấy mã loại nhà cần search ra
-             * gọi procedure_GetcustomerSuitableHouse
-             * trả kết quả vào window SearchHouseByHouseType request
-             */
+            //t1: 4, 6
+            int MaLoai = (HouseType2Combox.SelectedItem as LOAINHA).MALOAI;
+            HomeScreenViewModel.Instance.GetHouseSuitable(MaLoai);
         }
 
         private void HouseUpdateButon_Click(object sender, RoutedEventArgs e)
         {
             /*cập nhập nhà
-             nếu tình trạng bị đổi => gọi procedure_updatehosuestate
-             nếu loại nhà đổi => gọi procedure_changeHouseType*/
+             0 => gọi cập nhập loại nhà
+             1 => gọi cập nhập giá thuê
+            TODO*/
+            if (ProcedureUpdateToCall == 0)
+            {
+                HomeScreenViewModel.Instance.updateHouseTypeInHouse();
+            }
+            else if (ProcedureUpdateToCall == 1)
+            {
+                HomeScreenViewModel.Instance.updateHousePriceInHouseRent();
+            }
         }
+        #endregion
 
+        #region StaffTranhChap
+        private void StaffUpdateButon_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+             * update lương nhân viên thôi
+             * gọi procedure_UpdateSalaryStaff
+             * TODO
+             */
+            /*double NewLuong = double.Parse(StaffSalaryTextBox.Text);
+            int MaNV = Convert.ToInt32(StaffCodeLable.Content);*/
+            HomeScreenViewModel.Instance.UpdateStaffSalary();
+        }
+        #endregion
+
+        #region CustomerTranhChap
         private void UpdateHouseTypeRequestCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             /*
              * chạy thằng Old_newHouseTypeDemandCustomer[0]
              * gọi procedure_UpdateCustomerDemand
              */
+            //truyền thẳng vào cửa số mới Agency_customerNewHouseTypeRequest
+            HomeScreenViewModel.Instance.UpdateOldNewHousetypeRequest();
+        }
+        #endregion
+
+        #region supportMethod
+        private void HouseSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            GetHouseByStateComboBox.SelectedIndex = 0;
+            using (QUANLYNHADATEntities db = new QUANLYNHADATEntities())
+            {
+                HouseListDataGrid.ItemsSource = db.USP_TEST_AGENCY_GetHouse(HomeScreenViewModel.Instance.MACN);
+            }
         }
 
-        private void StaffUpdateButon_Click(object sender, RoutedEventArgs e)
+        private void HouseListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*
-             * update lương nhân viên thôi
-             * gọi procedure_UpdateSalaryStaff
-             */
+            /*get selectedHouse trong thêm /xóa/ sửa nhà */
+            NHA selectedNha = HouseListComboBox.SelectedItem as NHA;
+            HomeScreenViewModel.Instance.SetSelectedHouse(selectedNha);
         }
+
+        private void ClearSelectedHouseButton_Click(object sender, RoutedEventArgs e)
+        {
+            /* set selectedHouse null */
+            NHA selectedNha = new NHA();
+            HomeScreenViewModel.Instance.SetSelectedHouse(selectedNha);
+            HouseListComboBox.SelectedItem = null;
+        }
+
+        private void StaffSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            /*gọi refresh get all lại danh sách nhân viên*/
+            HomeScreenViewModel.Instance.GetAllStaffs();
+        }
+
+        private void StaffListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*lấy selectedStaff trong thêm xóa/sửa/thêm */
+            NHANVIEN seletedStaff = StaffListComboBox.SelectedItem as NHANVIEN;
+            HomeScreenViewModel.Instance.SetSelectedStaff(seletedStaff);
+        }
+
+        private void ClearSelectedStaffButton_Click(object sender, RoutedEventArgs e)
+        {
+            /*set selectedStaff = null*/
+            NHANVIEN selectedStaff = new NHANVIEN();
+            HomeScreenViewModel.Instance.SetSelectedStaff(selectedStaff);
+            StaffListComboBox.SelectedItem = null;
+        }
+
+        private void HouseTypeCombox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ProcedureUpdateToCall = 0;
+        }
+
+        private void HouseTypeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ProcedureUpdateToCall = 1;
+        }
+
+        private void UpdateHouseTypeRequestcustomerButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            int oldType = (CustomerRequestHouseTypesListComboBox.SelectedItem as YEUCAU).LOAINHAYEUCAU;
+            int newType = (SelectNewHouseTypeRequestCustomer.SelectedItem as LOAINHA).MALOAI;
+            HomeScreenViewModel.Instance.AddOldNewHouseRequest(oldType, newType);
+        }
+
+        private void ClearSelectedCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerListComboBox.SelectedItem = null;
+            HomeScreenViewModel.Instance.SetSelectedCustomer(new KHACHHANG());
+        }
+
+        private void CustomerListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            KHACHHANG SelectedCustomer = CustomerListComboBox.SelectedItem as KHACHHANG;
+            HomeScreenViewModel.Instance.SetSelectedCustomer(SelectedCustomer);
+        }
+
+        private void HouseTypeTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if (HouseTypeTextBox.Text == "1" || HouseTypeTextBox.Text == "0")
+            {
+                HomeScreenViewModel.Instance.SetHouseRentOrSale(HouseTypeTextBox.Text);
+            }
+        }
+        #endregion
     }
 }

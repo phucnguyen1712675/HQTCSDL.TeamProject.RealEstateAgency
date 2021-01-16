@@ -1,8 +1,7 @@
 ﻿/* DIRTY READ 1 ======================================================*/
 /*t1 :chủ nhà xóa nhà cần bán/thuê*/
-USE QUANLYNHADAT
+USE QUANLYNHADAT2
 GO
-
 CREATE PROC USP_USER_DeleteHouse(@houseId int)
 AS
 begin
@@ -37,7 +36,7 @@ GO
 CREATE PROC USP_TEST_AGENCY_GetHouse(@agency int)
 as
 begin
-	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+	SET TRANSACTION ISOLATION LEVEL READ COMMITTED
     select *
     from NHA N
     where N.MACN = @agency
@@ -77,14 +76,15 @@ end
 GO
 /*t2 Chi nhánh coi thông tin nhà quản lý*/
 go
+
 /* UNREPEATABLE READ 1 / UNREPEATABLE READ 2 ======================================================*/
 -- hàm hỗ trợ
-CREATE  PROCEDURE USP_UpdateSaleHouseHouseInPrice_Test
+CREATE PROCEDURE USP_UpdateSaleHouseHouseInPrice_Test
 @ratio float, @minium int, @agency int
 AS
 BEGIN
 	UPDATE CHITIETNHABAN set GIABAN = GIABAN * @ratio 
-		WHERE MACN =@agency and MANHA in (select MANHA from NHA 
+		WHERE MACN = @agency and MANHA in (select MANHA from NHA 
 						  where MALOAI in (select MALOAI from NHA 
 									      WHERE MACN = @agency
 										  group by MALOAI having MALOAI < @minium));
@@ -96,20 +96,20 @@ CREATE PROCEDURE USP_UpdateRentHouseHouseInPrice_Test
 AS
 BEGIN
 	UPDATE CHITIETNHATHUE set GIATHUE = GIATHUE * @ratio 
-		WHERE MACN =@agency and  MANHA in (select MANHA from NHA 
+		WHERE MACN = @agency and  MANHA in (select MANHA from NHA 
 							where MALOAI in (select MALOAI from NHA 
 											WHERE MACN = @agency
 											group by MALOAI having MALOAI < @minium));
 END
 go
 --UNREPEATABLE READ 1
-/* t1 Chi Nhanh TĂNG GIÁ NHÀ (UNREPEATABLE READ 1)  (PHANTOM 1) */
+/* t1 Chi Nhanh TĂNG GIÁ NHÀ (UNREPEATABLE READ 1) (PHANTOM 1)*/
 CREATE PROCEDURE USP_IsPriceIncreases
 @ratio float, @minium int, @agency INT
 AS
 BEGIN
 	begin Tran
-	SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+	SET TRANSACTION ISOLATION LEVEL serializable --REPEATABLE READ
 	declare @HouseTypeList table(MALOAI int)
 
 	insert into @HouseTypeList
@@ -118,10 +118,11 @@ BEGIN
 
 	if exists (select MALOAI from @HouseTypeList)
 		begin
+		WAITFOR DELAY '00:00:10'
 		EXEC USP_UpdateRentHouseHouseInPrice_Test @ratio , @minium,@agency
 		EXEC USP_UpdateSaleHouseHouseInPrice_Test @ratio , @minium, @agency
 		end
-	WAITFOR DELAY '00:00:10'
+	
 	/* t2 DÔ UPDATE LOẠI NHÀ (NVIEN/CHU NHA)*/
 
 	/* THỐNG KÊ BỊ SAI*/
@@ -135,13 +136,13 @@ END
 GO
 
 -- UNREPEATABLE READ 2
-/*T1 CHI NHÁNH tìm nhà phù hợp loại nhà yêu cầu (UNREPEATABLE READ 2) (PHANTOM 2)*/
+/*T1 CHI NHÁNH tìm nhà phù hợp yêu cầu (UNREPEATABLE READ 2) (PHANTOM 2) */
 CREATE PROCEDURE USP_GetCustomerSuitableHouse
 @houseType int, @agency int
 AS
 BEGIN
 	begin Tran
-	SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+	SET TRANSACTION ISOLATION LEVEL  serializable --REPEATABLE READ
 	if exists (select * from NHA WHERE MALOAI = @houseType and MACN = @agency) /* KIỂM TRA CÓ TỒN TẠI NHA PHU HỢP Ở CHI NHÁNH KO*/
 		begin
 		select * from NHA WHERE MALOAI = @houseType and MACN = @agency
@@ -149,10 +150,9 @@ BEGIN
 	else 
 		begin
 		waitfor delay '00:00:10'
+	/*t2 CAP NHAT LOAI NHA*/
 		select * from NHA WHERE MALOAI = @houseType ORDER BY MACN /* TRẢ RA NHÀ PHÙ HỢP MK CÔNG TY CÓ*/
 		end
-	
-	/*t2 CAP NHAT LOAI NHA*/
 	commit Tran
 END
 GO
@@ -226,7 +226,7 @@ CREATE PROCEDURE USP_UpdateSalaryStaff
 @staffCode int, @newSalary float
 AS
 BEGIN
-    set Tran isolation level serializable
+	set Tran isolation level serializable
 	begin Tran
 	declare @salary float;
 	set @salary = (select LUONG from NHANVIEN where manv = @staffCode)
@@ -286,29 +286,29 @@ CREATE PROCEDURE USP_UpdateCustomerDemand
 @customerCode int, @newHouseType int, @oldHouseType int, @agency int
 AS
 BEGIN
-	set Tran isolation level serializable
 	BEGIN Tran
+	set Tran isolation level serializable
+
 	update YEUCAU set LOAINHAYEUCAU =  @newHouseType where MAKH =  @customerCode and LOAINHAYEUCAU = @oldHouseType and MACN = @agency
 
 	waitfor delay '00:00:10'
-	select kh.MAKH, kh.TEN, kh.DIACHI, kh.SDT , kh.CHITIET, yc.LOAINHAYEUCAU
-	from KHACHHANG kh join YEUCAU yc on kh.MAKH = yc.MAKH and kh.MAKH = @customerCode
+	select * from KHACHHANG kh inner join YEUCAU yc on kh.MAKH = yc.MAKH and kh.MAKH = @customerCode
 	COMMIT Tran
 END
 GO
 
 /* t2 : công ty đổi thông tin khách hàng*/
-CREATE  PROCEDURE USP_UpdateCustomerDetail
+CREATE PROCEDURE USP_UpdateCustomerDetail
 @customerCode int,@agency int, @CustomerName nvarchar(20), @address nvarchar(40), @detail nvarchar(50)
 AS
 BEGIN
-	set Tran isolation level serializable
 	BEGIN Tran
-	update KHACHHANG set TEN =  @CustomerName , DIACHI =  @address ,  CHITIET = @detail where MAKH = @customerCode
+	set Tran isolation level serializable
+
+	update KHACHHANG set TEN =  @CustomerName where DIACHI =  @address and CHITIET = @detail
 
 	waitfor delay '00:00:10'
-	select kh.MAKH, kh.TEN, kh.DIACHI, kh.SDT , kh.CHITIET, yc.LOAINHAYEUCAU
-	from KHACHHANG kh inner join YEUCAU yc on kh.MAKH = yc.MAKH and kh.MAKH = @customerCode
+	select * from KHACHHANG kh inner join YEUCAU yc on kh.MAKH = yc.MAKH and kh.MAKH = @customerCode
 	COMMIT Tran
 END
 GO

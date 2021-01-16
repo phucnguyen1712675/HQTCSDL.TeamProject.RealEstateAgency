@@ -142,6 +142,20 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
+        public virtual ObjectResult<USP_Temp_Result> USP_Temp()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Temp_Result>("USP_Temp");
+        }
+    
+        public virtual ObjectResult<USP_Temp2_Result> USP_Temp2(Nullable<int> @int)
+        {
+            var intParameter = @int.HasValue ?
+                new ObjectParameter("int", @int) :
+                new ObjectParameter("int", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_Temp2_Result>("USP_Temp2", intParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> USP_AddHouseForRent(Nullable<int> maChiNhanh, Nullable<int> maChuNha, Nullable<int> maNhanVien, Nullable<int> maLoai, Nullable<int> soLuongPhongO, Nullable<System.DateTime> ngayHetHan, Nullable<System.DateTime> ngayDang, string duong, string quan, string khuVuc, string thanhPho, string tinhTrang, Nullable<int> soLuotXem, Nullable<int> giaThue)
         {
             var maChiNhanhParameter = maChiNhanh.HasValue ?
@@ -268,19 +282,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("USP_AddHouseForSale", maChiNhanhParameter, maChuNhaParameter, maNhanVienParameter, maLoaiParameter, soLuongPhongOParameter, ngayHetHanParameter, ngayDangParameter, duongParameter, quanParameter, khuVucParameter, thanhPhoParameter, tinhTrangParameter, soLuotXemParameter, giaBanParameter, dieuKienParameter);
         }
     
-        public virtual ObjectResult<USP_GetCustomerSuitableHouse_Result> USP_GetCustomerSuitableHouse(Nullable<int> houseType, Nullable<int> agency)
-        {
-            var houseTypeParameter = houseType.HasValue ?
-                new ObjectParameter("houseType", houseType) :
-                new ObjectParameter("houseType", typeof(int));
-    
-            var agencyParameter = agency.HasValue ?
-                new ObjectParameter("agency", agency) :
-                new ObjectParameter("agency", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GetCustomerSuitableHouse_Result>("USP_GetCustomerSuitableHouse", houseTypeParameter, agencyParameter);
-        }
-    
         public virtual ObjectResult<USP_IsPriceIncreases_Result> USP_IsPriceIncreases(Nullable<double> ratio, Nullable<int> minium, Nullable<int> agency)
         {
             var ratioParameter = ratio.HasValue ?
@@ -296,6 +297,19 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
                 new ObjectParameter("agency", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_IsPriceIncreases_Result>("USP_IsPriceIncreases", ratioParameter, miniumParameter, agencyParameter);
+        }
+		
+        public virtual int USP_UpdateHouseInHouseType_Test(Nullable<int> houseCode, Nullable<int> newHouseType)
+        {
+            var houseCodeParameter = houseCode.HasValue ?
+                new ObjectParameter("houseCode", houseCode) :
+                new ObjectParameter("houseCode", typeof(int));
+    
+            var newHouseTypeParameter = newHouseType.HasValue ?
+                new ObjectParameter("newHouseType", newHouseType) :
+                new ObjectParameter("newHouseType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateHouseInHouseType_Test", houseCodeParameter, newHouseTypeParameter);
         }
     
         public virtual ObjectResult<USP_TEST_AGENCY_GetHouse_Result> USP_TEST_AGENCY_GetHouse(Nullable<int> agency)
@@ -328,63 +342,61 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_TEST_AGENCY_UpdateHouseInformation", houseIDParameter, ngayhethanParameter, ngaydangParameter, tinhtrangParameter);
         }
     
-        public virtual ObjectResult<USP_UpdateCustomerDemand_Result> USP_UpdateCustomerDemand(Nullable<int> customerCode, Nullable<int> newHouseType, Nullable<int> oldHouseType, Nullable<int> agency)
+
+        public virtual int USP_USER_DeleteHouse(Nullable<int> houseId)
         {
-            var customerCodeParameter = customerCode.HasValue ?
-                new ObjectParameter("customerCode", customerCode) :
-                new ObjectParameter("customerCode", typeof(int));
+            var houseIdParameter = houseId.HasValue ?
+                new ObjectParameter("houseId", houseId) :
+                new ObjectParameter("houseId", typeof(int));
     
-            var newHouseTypeParameter = newHouseType.HasValue ?
-                new ObjectParameter("newHouseType", newHouseType) :
-                new ObjectParameter("newHouseType", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_USER_DeleteHouse", houseIdParameter);
+        }
+		 
+        public virtual int USP_UpdateRentHouseHouseInPrice_Test(Nullable<double> ratio, Nullable<int> minium, Nullable<int> agency)
+        {
+            var ratioParameter = ratio.HasValue ?
+                new ObjectParameter("ratio", ratio) :
+                new ObjectParameter("ratio", typeof(double));
     
-            var oldHouseTypeParameter = oldHouseType.HasValue ?
-                new ObjectParameter("oldHouseType", oldHouseType) :
-                new ObjectParameter("oldHouseType", typeof(int));
+            var miniumParameter = minium.HasValue ?
+                new ObjectParameter("minium", minium) :
+                new ObjectParameter("minium", typeof(int));
+
+            var agencyParameter = agency.HasValue ?
+                new ObjectParameter("agency", agency) :
+                new ObjectParameter("agency", typeof(int));
+				
+			return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateRentHouseHouseInPrice_Test", ratioParameter, miniumParameter, agencyParameter);
+        }
+		
+        public virtual int USP_UpdateSaleHouseHouseInPrice_Test(Nullable<double> ratio, Nullable<int> minium, Nullable<int> agency)
+        {
+            var ratioParameter = ratio.HasValue ?
+                new ObjectParameter("ratio", ratio) :
+                new ObjectParameter("ratio", typeof(double));
+    
+            var miniumParameter = minium.HasValue ?
+                new ObjectParameter("minium", minium) :
+                new ObjectParameter("minium", typeof(int));
+
+            var agencyParameter = agency.HasValue ?
+                new ObjectParameter("agency", agency) :
+                new ObjectParameter("agency", typeof(int));
+				
+			return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateSaleHouseHouseInPrice_Test", ratioParameter, miniumParameter, agencyParameter);
+        }
+            
+        public virtual ObjectResult<USP_GetCustomerSuitableHouse_Result> USP_GetCustomerSuitableHouse(Nullable<int> houseType, Nullable<int> agency)
+        {
+            var houseTypeParameter = houseType.HasValue ?
+                new ObjectParameter("houseType", houseType) :
+                new ObjectParameter("houseType", typeof(int));
     
             var agencyParameter = agency.HasValue ?
                 new ObjectParameter("agency", agency) :
                 new ObjectParameter("agency", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_UpdateCustomerDemand_Result>("USP_UpdateCustomerDemand", customerCodeParameter, newHouseTypeParameter, oldHouseTypeParameter, agencyParameter);
-        }
-    
-        public virtual ObjectResult<USP_UpdateCustomerDetail_Result> USP_UpdateCustomerDetail(Nullable<int> customerCode, Nullable<int> agency, string customerName, string address, string detail)
-        {
-            var customerCodeParameter = customerCode.HasValue ?
-                new ObjectParameter("customerCode", customerCode) :
-                new ObjectParameter("customerCode", typeof(int));
-    
-            var agencyParameter = agency.HasValue ?
-                new ObjectParameter("agency", agency) :
-                new ObjectParameter("agency", typeof(int));
-    
-            var customerNameParameter = customerName != null ?
-                new ObjectParameter("CustomerName", customerName) :
-                new ObjectParameter("CustomerName", typeof(string));
-    
-            var addressParameter = address != null ?
-                new ObjectParameter("address", address) :
-                new ObjectParameter("address", typeof(string));
-    
-            var detailParameter = detail != null ?
-                new ObjectParameter("detail", detail) :
-                new ObjectParameter("detail", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_UpdateCustomerDetail_Result>("USP_UpdateCustomerDetail", customerCodeParameter, agencyParameter, customerNameParameter, addressParameter, detailParameter);
-        }
-    
-        public virtual int USP_UpdateHouseInHouseType_Test(Nullable<int> houseCode, Nullable<int> newHouseType)
-        {
-            var houseCodeParameter = houseCode.HasValue ?
-                new ObjectParameter("houseCode", houseCode) :
-                new ObjectParameter("houseCode", typeof(int));
-    
-            var newHouseTypeParameter = newHouseType.HasValue ?
-                new ObjectParameter("newHouseType", newHouseType) :
-                new ObjectParameter("newHouseType", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateHouseInHouseType_Test", houseCodeParameter, newHouseTypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_GetCustomerSuitableHouse_Result>("USP_GetCustomerSuitableHouse", houseTypeParameter, agencyParameter);
         }
     
         public virtual int USP_UpdateHousePrice(Nullable<int> agency, Nullable<int> houseId, Nullable<int> newPrice)
@@ -417,23 +429,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateHouseTypeInHouse", houseCodeParameter, newHouseTypeParameter);
         }
     
-        public virtual int USP_UpdateRentHouseHouseInPrice_Test(Nullable<double> ratio, Nullable<int> minium, Nullable<int> agency)
-        {
-            var ratioParameter = ratio.HasValue ?
-                new ObjectParameter("ratio", ratio) :
-                new ObjectParameter("ratio", typeof(double));
-    
-            var miniumParameter = minium.HasValue ?
-                new ObjectParameter("minium", minium) :
-                new ObjectParameter("minium", typeof(int));
-    
-            var agencyParameter = agency.HasValue ?
-                new ObjectParameter("agency", agency) :
-                new ObjectParameter("agency", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateRentHouseHouseInPrice_Test", ratioParameter, miniumParameter, agencyParameter);
-        }
-    
         public virtual int USP_UpdateSalaryStaff(Nullable<int> staffCode, Nullable<double> newSalary)
         {
             var staffCodeParameter = staffCode.HasValue ?
@@ -447,30 +442,50 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateSalaryStaff", staffCodeParameter, newSalaryParameter);
         }
     
-        public virtual int USP_UpdateSaleHouseHouseInPrice_Test(Nullable<double> ratio, Nullable<int> minium, Nullable<int> agency)
+        public virtual ObjectResult<USP_UpdateCustomerDemand_Result> USP_UpdateCustomerDemand(Nullable<int> customerCode, Nullable<int> newHouseType, Nullable<int> oldHouseType, Nullable<int> agency)
         {
-            var ratioParameter = ratio.HasValue ?
-                new ObjectParameter("ratio", ratio) :
-                new ObjectParameter("ratio", typeof(double));
+            var customerCodeParameter = customerCode.HasValue ?
+                new ObjectParameter("customerCode", customerCode) :
+                new ObjectParameter("customerCode", typeof(int));
     
-            var miniumParameter = minium.HasValue ?
-                new ObjectParameter("minium", minium) :
-                new ObjectParameter("minium", typeof(int));
+            var newHouseTypeParameter = newHouseType.HasValue ?
+                new ObjectParameter("newHouseType", newHouseType) :
+                new ObjectParameter("newHouseType", typeof(int));
+    
+            var oldHouseTypeParameter = oldHouseType.HasValue ?
+                new ObjectParameter("oldHouseType", oldHouseType) :
+                new ObjectParameter("oldHouseType", typeof(int));
+    
+            var agencyParameter = agency.HasValue ?
+                new ObjectParameter("agency", agency) :
+                new ObjectParameter("agency", typeof(int));
+				
+			return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_UpdateCustomerDemand_Result>("USP_UpdateCustomerDemand", customerCodeParameter, newHouseTypeParameter, oldHouseTypeParameter, agencyParameter);
+        }
+    
+        public virtual ObjectResult<USP_UpdateCustomerDetail_Result> USP_UpdateCustomerDetail(Nullable<int> customerCode, Nullable<int> agency, string customerName, string address, string detail)
+        {
+            var customerCodeParameter = customerCode.HasValue ?
+                new ObjectParameter("customerCode", customerCode) :
+                new ObjectParameter("customerCode", typeof(int));
     
             var agencyParameter = agency.HasValue ?
                 new ObjectParameter("agency", agency) :
                 new ObjectParameter("agency", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_UpdateSaleHouseHouseInPrice_Test", ratioParameter, miniumParameter, agencyParameter);
-        }
+            var customerNameParameter = customerName != null ?
+                new ObjectParameter("CustomerName", customerName) :
+                new ObjectParameter("CustomerName", typeof(string));
     
-        public virtual int USP_USER_DeleteHouse(Nullable<int> houseId)
-        {
-            var houseIdParameter = houseId.HasValue ?
-                new ObjectParameter("houseId", houseId) :
-                new ObjectParameter("houseId", typeof(int));
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("USP_USER_DeleteHouse", houseIdParameter);
+            var detailParameter = detail != null ?
+                new ObjectParameter("detail", detail) :
+                new ObjectParameter("detail", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_UpdateCustomerDetail_Result>("USP_UpdateCustomerDetail", customerCodeParameter, agencyParameter, customerNameParameter, addressParameter, detailParameter);
         }
     }
 }

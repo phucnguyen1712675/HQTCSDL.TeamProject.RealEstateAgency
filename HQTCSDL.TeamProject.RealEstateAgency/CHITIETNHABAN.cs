@@ -13,6 +13,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
     using System;
 
     [AddINotifyPropertyChangedInterface]
+
     public partial class CHITIETNHABAN
     {
         public int MANHA { get; set; }

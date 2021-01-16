@@ -12,7 +12,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
     using PropertyChanged;
     using System;
     using System.Collections.ObjectModel;
-
     [AddINotifyPropertyChangedInterface]
     public partial class NHANVIEN
     {

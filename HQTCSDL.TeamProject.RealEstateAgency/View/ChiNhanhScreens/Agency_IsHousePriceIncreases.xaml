@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-    Title="thống kê số lượng nhà tăng giá"
+    Title="Kết quả"
     Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
     Height="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
     mc:Ignorable="d">
@@ -18,24 +18,21 @@
     <StackPanel Background="AliceBlue">
 
         <Label
+            Name="TitleLabel"
             Margin="20,10"
-            Content="Các loại nhà - số lượng nhà Tăng giá"
             FontSize="20"
             Style="{StaticResource fontStyle}" />
         <StackPanel
             Margin="20,10"
             Orientation="Horizontal"
-            TextElement.FontSize="15">
-            <Label Content="Mã chi nhánh:       " />
-            <!--  binding mã chi nhánh để test  -->
-            <Label />
-        </StackPanel>
+            TextElement.FontSize="15" />
 
         <!--  Binding danh sách truyền vào  -->
         <DataGrid
             Name="ResultDataGrid"
             Height="529"
             Margin="15"
+            ItemsSource="{Binding}"
             ScrollViewer.HorizontalScrollBarVisibility="Auto"
             ScrollViewer.VerticalScrollBarVisibility="Auto" />
     </StackPanel>

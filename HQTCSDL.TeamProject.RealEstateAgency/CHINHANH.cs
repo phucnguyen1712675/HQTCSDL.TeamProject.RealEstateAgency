@@ -13,6 +13,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
     using System.Collections.ObjectModel;
 
     [AddINotifyPropertyChangedInterface]
+
     public partial class CHINHANH
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

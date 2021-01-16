@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.View.NhanVienScreens.ContentControls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="{Binding ConverterParameter=0.95, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+    d:DesignHeight="{Binding ConverterParameter=0.8, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
     d:DesignWidth="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
     Background="{DynamicResource MaterialDesignBackground}"
     mc:Ignorable="d">
@@ -24,7 +24,7 @@
         <TabControl
             Grid.ColumnSpan="2"
             Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-            Height="{Binding ConverterParameter=0.9, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+            Height="{Binding ConverterParameter=0.8, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
             Margin="-3,7,-3.4,7.2"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -33,7 +33,7 @@
                 <Grid>
                     <TabControl
                         Width="{Binding ConverterParameter=0.5, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenWidth}}"
-                        Height="{Binding ConverterParameter=0.86, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
+                        Height="{Binding ConverterParameter=0.73, Converter={converter:RatioConverter}, Source={x:Static SystemParameters.PrimaryScreenHeight}}"
                         VerticalAlignment="Top"
                         Style="{StaticResource MaterialDesignTabControl}">
                         <!--  Xem Danh sách nhà trong công ty  -->

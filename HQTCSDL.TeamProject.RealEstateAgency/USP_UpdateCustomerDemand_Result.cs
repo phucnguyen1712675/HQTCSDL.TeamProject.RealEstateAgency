@@ -14,13 +14,10 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
     public partial class USP_UpdateCustomerDemand_Result
     {
         public int MAKH { get; set; }
-        public int CNQUANLY { get; set; }
         public string TEN { get; set; }
         public string DIACHI { get; set; }
         public string SDT { get; set; }
         public string CHITIET { get; set; }
-        public int MAKH1 { get; set; }
-        public int MACN { get; set; }
         public int LOAINHAYEUCAU { get; set; }
     }
 }

@@ -808,6 +808,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="USP_Temp" ReturnType="Collection(QUANLYNHADATModel.USP_Temp_Result)" />
+          <FunctionImport Name="USP_Temp2" ReturnType="Collection(QUANLYNHADATModel.USP_Temp2_Result)">
+          <Parameter Name="int" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="USP_AddHouseForRent" ReturnType="Collection(Int32)">
             <Parameter Name="MaChiNhanh" Mode="In" Type="Int32" />
             <Parameter Name="MaChuNha" Mode="In" Type="Int32" />
@@ -841,23 +845,53 @@
             <Parameter Name="GiaBan" Mode="In" Type="Int32" />
             <Parameter Name="DieuKien" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="USP_GetCustomerSuitableHouse" ReturnType="Collection(QUANLYNHADATModel.USP_GetCustomerSuitableHouse_Result)">
-            <Parameter Name="houseType" Mode="In" Type="Int32" />
-            <Parameter Name="agency" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="USP_IsPriceIncreases" ReturnType="Collection(QUANLYNHADATModel.USP_IsPriceIncreases_Result)">
             <Parameter Name="ratio" Mode="In" Type="Double" />
             <Parameter Name="minium" Mode="In" Type="Int32" />
             <Parameter Name="agency" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="USP_UpdateHouseInHouseType_Test">
+            <Parameter Name="houseCode" Mode="In" Type="Int32" />
+            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="USP_TEST_AGENCY_GetHouse" ReturnType="Collection(QUANLYNHADATModel.USP_TEST_AGENCY_GetHouse_Result)">
-            <Parameter Name="agency" Mode="In" Type="Int32" />
+          <Parameter Name="agency" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="USP_TEST_AGENCY_UpdateHouseInformation">
             <Parameter Name="houseID" Mode="In" Type="Int32" />
             <Parameter Name="ngayhethan" Mode="In" Type="DateTime" />
             <Parameter Name="ngaydang" Mode="In" Type="DateTime" />
             <Parameter Name="tinhtrang" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_USER_DeleteHouse">
+          <Parameter Name="houseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateRentHouseHouseInPrice_Test">
+            <Parameter Name="ratio" Mode="In" Type="Double" />
+            <Parameter Name="minium" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateSaleHouseHouseInPrice_Test">
+            <Parameter Name="ratio" Mode="In" Type="Double" />
+            <Parameter Name="minium" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GetCustomerSuitableHouse" ReturnType="Collection(QUANLYNHADATModel.USP_GetCustomerSuitableHouse_Result)">
+            <Parameter Name="houseType" Mode="In" Type="Int32" />
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateHousePrice">
+            <Parameter Name="agency" Mode="In" Type="Int32" />
+            <Parameter Name="houseId" Mode="In" Type="Int32" />
+            <Parameter Name="newPrice" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateHouseTypeInHouse">
+            <Parameter Name="houseCode" Mode="In" Type="Int32" />
+            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_UpdateSalaryStaff">
+            <Parameter Name="staffCode" Mode="In" Type="Int32" />
+            <Parameter Name="newSalary" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="USP_UpdateCustomerDemand" ReturnType="Collection(QUANLYNHADATModel.USP_UpdateCustomerDemand_Result)">
             <Parameter Name="customerCode" Mode="In" Type="Int32" />
@@ -872,36 +906,6 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="detail" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="USP_UpdateHouseInHouseType_Test">
-            <Parameter Name="houseCode" Mode="In" Type="Int32" />
-            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="USP_UpdateHousePrice">
-            <Parameter Name="agency" Mode="In" Type="Int32" />
-            <Parameter Name="houseId" Mode="In" Type="Int32" />
-            <Parameter Name="newPrice" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="USP_UpdateHouseTypeInHouse">
-            <Parameter Name="houseCode" Mode="In" Type="Int32" />
-            <Parameter Name="newHouseType" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="USP_UpdateRentHouseHouseInPrice_Test">
-            <Parameter Name="ratio" Mode="In" Type="Double" />
-            <Parameter Name="minium" Mode="In" Type="Int32" />
-            <Parameter Name="agency" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="USP_UpdateSalaryStaff">
-            <Parameter Name="staffCode" Mode="In" Type="Int32" />
-            <Parameter Name="newSalary" Mode="In" Type="Double" />
-          </FunctionImport>
-          <FunctionImport Name="USP_UpdateSaleHouseHouseInPrice_Test">
-            <Parameter Name="ratio" Mode="In" Type="Double" />
-            <Parameter Name="minium" Mode="In" Type="Int32" />
-            <Parameter Name="agency" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="USP_USER_DeleteHouse">
-            <Parameter Name="houseId" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -914,7 +918,23 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="USP_GetCustomerSuitableHouse_Result">
+        <ComplexType Name="USP_Temp_Result">
+          <Property Type="Int32" Name="MANHA" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="MACNHA" Nullable="true" />
+          <Property Type="Int32" Name="MANV" Nullable="true" />
+          <Property Type="Int32" Name="MALOAI" Nullable="true" />
+          <Property Type="Int32" Name="SOLUONGPHONGO" Nullable="true" />
+          <Property Type="DateTime" Name="NGAYHETHAN" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NGAYDANG" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DUONG" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="QUAN" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="KHUVUC" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="THANHPHO" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="TINHTRANG" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SOLUOTXEM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="USP_Temp2_Result">
           <Property Type="Int32" Name="MANHA" Nullable="false" />
           <Property Type="Int32" Name="MACN" Nullable="false" />
           <Property Type="Int32" Name="MACNHA" Nullable="true" />
@@ -950,26 +970,36 @@
           <Property Type="String" Name="TINHTRANG" Nullable="true" MaxLength="20" />
           <Property Type="Int32" Name="SOLUOTXEM" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="USP_GetCustomerSuitableHouse_Result">
+          <Property Type="Int32" Name="MANHA" Nullable="false" />
+          <Property Type="Int32" Name="MACN" Nullable="false" />
+          <Property Type="Int32" Name="MACNHA" Nullable="true" />
+          <Property Type="Int32" Name="MANV" Nullable="true" />
+          <Property Type="Int32" Name="MALOAI" Nullable="true" />
+          <Property Type="Int32" Name="SOLUONGPHONGO" Nullable="true" />
+          <Property Type="DateTime" Name="NGAYHETHAN" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NGAYDANG" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DUONG" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="QUAN" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="KHUVUC" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="THANHPHO" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="TINHTRANG" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SOLUOTXEM" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="USP_UpdateCustomerDemand_Result">
           <Property Type="Int32" Name="MAKH" Nullable="false" />
-          <Property Type="Int32" Name="CNQUANLY" Nullable="false" />
           <Property Type="String" Name="TEN" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="CHITIET" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="MAKH1" Nullable="false" />
-          <Property Type="Int32" Name="MACN" Nullable="false" />
           <Property Type="Int32" Name="LOAINHAYEUCAU" Nullable="false" />
         </ComplexType>
         <ComplexType Name="USP_UpdateCustomerDetail_Result">
           <Property Type="Int32" Name="MAKH" Nullable="false" />
-          <Property Type="Int32" Name="CNQUANLY" Nullable="false" />
           <Property Type="String" Name="TEN" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="CHITIET" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="MAKH1" Nullable="false" />
-          <Property Type="Int32" Name="MACN" Nullable="false" />
           <Property Type="Int32" Name="LOAINHAYEUCAU" Nullable="false" />
         </ComplexType>
       </Schema>
@@ -1106,26 +1136,6 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="USP_AddHouseForRent" FunctionName="QUANLYNHADATModel.Store.USP_AddHouseForRent" />
           <FunctionImportMapping FunctionImportName="USP_AddHouseForSale" FunctionName="QUANLYNHADATModel.Store.USP_AddHouseForSale" />
-          <FunctionImportMapping FunctionImportName="USP_GetCustomerSuitableHouse" FunctionName="QUANLYNHADATModel.Store.USP_GetCustomerSuitableHouse">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_GetCustomerSuitableHouse_Result">
-                <ScalarProperty Name="MANHA" ColumnName="MANHA" />
-                <ScalarProperty Name="MACN" ColumnName="MACN" />
-                <ScalarProperty Name="MACNHA" ColumnName="MACNHA" />
-                <ScalarProperty Name="MANV" ColumnName="MANV" />
-                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
-                <ScalarProperty Name="SOLUONGPHONGO" ColumnName="SOLUONGPHONGO" />
-                <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
-                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
-                <ScalarProperty Name="DUONG" ColumnName="DUONG" />
-                <ScalarProperty Name="QUAN" ColumnName="QUAN" />
-                <ScalarProperty Name="KHUVUC" ColumnName="KHUVUC" />
-                <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
-                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
-                <ScalarProperty Name="SOLUOTXEM" ColumnName="SOLUOTXEM" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_IsPriceIncreases" FunctionName="QUANLYNHADATModel.Store.USP_IsPriceIncreases">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_IsPriceIncreases_Result">
@@ -1134,6 +1144,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_UpdateHouseInHouseType_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHouseInHouseType_Test" />
           <FunctionImportMapping FunctionImportName="USP_TEST_AGENCY_GetHouse" FunctionName="QUANLYNHADATModel.Store.USP_TEST_AGENCY_GetHouse">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_TEST_AGENCY_GetHouse_Result">
@@ -1155,17 +1166,40 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="USP_TEST_AGENCY_UpdateHouseInformation" FunctionName="QUANLYNHADATModel.Store.USP_TEST_AGENCY_UpdateHouseInformation" />
+          <FunctionImportMapping FunctionImportName="USP_USER_DeleteHouse" FunctionName="QUANLYNHADATModel.Store.USP_USER_DeleteHouse" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateRentHouseHouseInPrice_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateRentHouseHouseInPrice_Test" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateSaleHouseHouseInPrice_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateSaleHouseHouseInPrice_Test" />
+          <FunctionImportMapping FunctionImportName="USP_GetCustomerSuitableHouse" FunctionName="QUANLYNHADATModel.Store.USP_GetCustomerSuitableHouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_GetCustomerSuitableHouse_Result">
+                <ScalarProperty Name="MANHA" ColumnName="MANHA" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
+                <ScalarProperty Name="MACNHA" ColumnName="MACNHA" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="MALOAI" ColumnName="MALOAI" />
+                <ScalarProperty Name="SOLUONGPHONGO" ColumnName="SOLUONGPHONGO" />
+                <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+                <ScalarProperty Name="NGAYDANG" ColumnName="NGAYDANG" />
+                <ScalarProperty Name="DUONG" ColumnName="DUONG" />
+                <ScalarProperty Name="QUAN" ColumnName="QUAN" />
+                <ScalarProperty Name="KHUVUC" ColumnName="KHUVUC" />
+                <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
+                <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+                <ScalarProperty Name="SOLUOTXEM" ColumnName="SOLUOTXEM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_UpdateHousePrice" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHousePrice" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateHouseTypeInHouse" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHouseTypeInHouse" />
+          <FunctionImportMapping FunctionImportName="USP_UpdateSalaryStaff" FunctionName="QUANLYNHADATModel.Store.USP_UpdateSalaryStaff" />
           <FunctionImportMapping FunctionImportName="USP_UpdateCustomerDemand" FunctionName="QUANLYNHADATModel.Store.USP_UpdateCustomerDemand">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_UpdateCustomerDemand_Result">
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="CNQUANLY" ColumnName="CNQUANLY" />
                 <ScalarProperty Name="TEN" ColumnName="TEN" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="CHITIET" ColumnName="CHITIET" />
-                <ScalarProperty Name="MAKH1" ColumnName="MAKH1" />
-                <ScalarProperty Name="MACN" ColumnName="MACN" />
                 <ScalarProperty Name="LOAINHAYEUCAU" ColumnName="LOAINHAYEUCAU" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1174,25 +1208,15 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="QUANLYNHADATModel.USP_UpdateCustomerDetail_Result">
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="CNQUANLY" ColumnName="CNQUANLY" />
                 <ScalarProperty Name="TEN" ColumnName="TEN" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="CHITIET" ColumnName="CHITIET" />
-                <ScalarProperty Name="MAKH1" ColumnName="MAKH1" />
-                <ScalarProperty Name="MACN" ColumnName="MACN" />
                 <ScalarProperty Name="LOAINHAYEUCAU" ColumnName="LOAINHAYEUCAU" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_UpdateHouseInHouseType_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHouseInHouseType_Test" />
-          <FunctionImportMapping FunctionImportName="USP_UpdateHousePrice" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHousePrice" />
-          <FunctionImportMapping FunctionImportName="USP_UpdateHouseTypeInHouse" FunctionName="QUANLYNHADATModel.Store.USP_UpdateHouseTypeInHouse" />
-          <FunctionImportMapping FunctionImportName="USP_UpdateRentHouseHouseInPrice_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateRentHouseHouseInPrice_Test" />
-          <FunctionImportMapping FunctionImportName="USP_UpdateSalaryStaff" FunctionName="QUANLYNHADATModel.Store.USP_UpdateSalaryStaff" />
-          <FunctionImportMapping FunctionImportName="USP_UpdateSaleHouseHouseInPrice_Test" FunctionName="QUANLYNHADATModel.Store.USP_UpdateSaleHouseHouseInPrice_Test" />
-          <FunctionImportMapping FunctionImportName="USP_USER_DeleteHouse" FunctionName="QUANLYNHADATModel.Store.USP_USER_DeleteHouse" />
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
