@@ -1,0 +1,58 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+
+    <converter:BooleanToHouseStatusConverter x:Key="statusConverter" />
+    <converter:NumberToCurrencyConverter x:Key="moneyConverter" />
+
+    <DataTemplate x:Key="agencyItemTemplate">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Chi nhánh mã " />
+            <TextBlock Text="{Binding MACN}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="houseOwnerItemTemplate">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Chủ nhà mã " />
+            <TextBlock Text="{Binding MACNHA}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="staffItemTemplate">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Nhân viên mã " />
+            <TextBlock Text="{Binding MANV}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="houseCateItemTemplate">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Loại nhà " />
+            <TextBlock Text="{Binding TEN}" />
+        </StackPanel>
+    </DataTemplate>
+
+    <CollectionViewSource x:Key="sortedAgenciesSource" Source="{Binding AgenciesCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MACN" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+
+    <CollectionViewSource x:Key="sortedHouseOwnersSource" Source="{Binding HouseOwnersCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MACNHA" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+
+    <CollectionViewSource x:Key="sortedStaffsSource" Source="{Binding StaffsCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MANV" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+
+    <CollectionViewSource x:Key="sortedHouseCatesSource" Source="{Binding HouseCatesCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MALOAI" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+</ResourceDictionary>

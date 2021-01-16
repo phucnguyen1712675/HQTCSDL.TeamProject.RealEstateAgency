@@ -44,8 +44,14 @@
     <ApplicationIcon>Resources\Icon\asset.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net48\CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="DeepCloner, Version=0.10.0.0, Culture=neutral, PublicKeyToken=dc0b95cf99bf4e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\DeepCloner.0.10.2\lib\net40\DeepCloner.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -53,8 +59,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.2.3.4\lib\net46\MahApps.Metro.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.2.4.3\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro.IconPacks, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.IconPacks.4.8.0\lib\net47\MahApps.Metro.IconPacks.dll</HintPath>
@@ -162,7 +177,19 @@
       <HintPath>..\packages\MaterialDesignThemes.4.0.0-ci2265\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.11.3.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.3\lib\net40\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb, Version=0.11.3.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.3\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb, Version=0.11.3.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.3\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.11.3.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.3\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PropertyChanged, Version=3.3.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
@@ -178,6 +205,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -211,11 +241,21 @@
     <Compile Include="CHUNHA.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Converters\BooleanToStringConverter.cs" />
-    <Compile Include="Converters\EmployeeIdentifierToStringConverter.cs" />
+    <Compile Include="Converters\BooleanToGenderConverter.cs" />
+    <Compile Include="Converters\BooleanToHouseStatusConverter.cs" />
+    <Compile Include="Converters\IntegerToIsEnabledNextButtonConverter.cs" />
+    <Compile Include="Converters\IntegerToIsEnabledPreviousButtonConverter.cs" />
     <Compile Include="Converters\IntegerToPercentConverter.cs" />
     <Compile Include="Converters\NumberToCurrencyConverter.cs" />
+    <Compile Include="Converters\PrimaryKeyConverter.cs" />
     <Compile Include="Converters\RatioConverter.cs" />
+    <Compile Include="DAO\ChiNhanhDAO.cs" />
+    <Compile Include="DAO\ChiTietNhaThueDAO.cs" />
+    <Compile Include="DAO\ChuNhaDAO.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DAO\LoaiNhaDAO.cs" />
+    <Compile Include="DAO\NhaDAO.cs" />
+    <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="HOPDONG.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
@@ -255,6 +295,31 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="USP_GetCustomerSuitableHouse_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_IsPriceIncreases_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_TEST_AGENCY_GetHouse_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_UpdateCustomerDemand_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_UpdateCustomerDetail_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="ViewModel\Company\ContentControls\CustomerContentViewModel.cs" />
+    <Compile Include="ViewModel\Company\ContentControls\HouseContentViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\Agency\AgencyDetailViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\Customer\CustomerDetailViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\HouseCategory\HouseCategoryDetailViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\House\HouseDetailViewModel.cs" />
+    <Compile Include="ViewModel\Company\Dialogs\Staff\StaffDetailViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml.cs">
       <DependentUpon>Agency_IsHousePriceIncreases.xaml</DependentUpon>
     </Compile>
@@ -262,31 +327,20 @@
       <DependentUpon>SearchHouseByTypeRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
-    <Compile Include="Model\AgenciesList.cs" />
-    <Compile Include="Model\Agency.cs" />
-    <Compile Include="Model\Employee.cs" />
-    <Compile Include="Model\EmployeesList.cs" />
-    <Compile Include="Model\HouseCategoriesList.cs" />
-    <Compile Include="Model\HouseCategory.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserMainWindowDictinary.cs" />
     <Compile Include="Model\UsersList.cs" />
     <Compile Include="Utils\AnotherCommandImplementation.cs" />
     <Compile Include="Utils\CommandHandler.cs" />
     <Compile Include="ViewModel\AgencyView\ContentControls\HomeScreenViewModel.cs" />
-    <Compile Include="ViewModel\Company\Dialogs\AddNewAgencyDialogViewModel.cs" />
-    <Compile Include="ViewModel\Company\Dialogs\AddNewEmployeeDialogViewModel.cs" />
     <Compile Include="ViewModel\AgencyView\AgencyMainWindowViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\Company\Dialogs\AddNewHouseCategoryDialogViewModel.cs" />
     <Compile Include="ViewModel\Company\Dialogs\ChangeAllSalaryByPercentDialogViewModel.cs" />
-    <Compile Include="ViewModel\Company\Dialogs\ChangeSalaryOfAEmployeeByPercentDialogViewModel.cs" />
     <Compile Include="ViewModel\Company\CompanyMainWindowViewModel.cs" />
     <Compile Include="ViewModel\Company\ContentControls\AgencyContentViewModel.cs" />
     <Compile Include="ViewModel\Company\ContentControls\HouseCategoryContentViewModel.cs" />
     <Compile Include="ViewModel\Company\ContentControls\StaffContentViewModel.cs" />
     <Compile Include="ViewModel\Company\Dialogs\OkCancelDialogViewModel.cs" />
-    <Compile Include="ViewModel\Company\Dialogs\DeleteAKindOfHouseDialogViewModel.cs" />
     <Compile Include="ViewModel\Company\Dialogs\EachMonthCharityMoneyDialogViewModel.cs" />
     <Compile Include="ViewModel\HouseOwnerView\ContentControls\HomeScreenViewModel.cs" />
     <Compile Include="ViewModel\HouseOwnerView\HouseOwnerMainWindowViewModel.cs" />
@@ -294,27 +348,23 @@
     <Compile Include="ViewModel\BaseMainWindowViewModel.cs" />
     <Compile Include="ViewModel\StaffView\ContentControls\HomeScreenViewModel.cs" />
     <Compile Include="ViewModel\StaffView\StaffMainWindowViewModel.cs" />
-    <Compile Include="ViewModel\Company\Dialogs\UpdateAKindOfHouseDialogViewModel.cs" />
     <Compile Include="View\ChiNhanhScreens\ContentControls\HomeScreenContentControl.xaml.cs">
       <DependentUpon>HomeScreenContentControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChuNhaScreens\ContentControls\HomeScreenContentControl.xaml.cs">
       <DependentUpon>HomeScreenContentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\Dialogs\AddNewAgencyDialog.xaml.cs">
-      <DependentUpon>AddNewAgencyDialog.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\ContentControls\CustomerContentControl.xaml.cs">
+      <DependentUpon>CustomerContentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\Dialogs\AddNewEmployeeDialog.xaml.cs">
-      <DependentUpon>AddNewEmployeeDialog.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\ContentControls\HouseContentControl.xaml.cs">
+      <DependentUpon>HouseContentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompanyView\Dialogs\AddNewHouseCategoryDialog.xaml.cs">
-      <DependentUpon>AddNewHouseCategoryDialog.xaml</DependentUpon>
+    <Compile Include="View\CompanyView\Dialogs\Agency\AgencyDetailDialog.xaml.cs">
+      <DependentUpon>AgencyDetailDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CompanyView\Dialogs\ChangeAllSalaryByPercentDialog.xaml.cs">
       <DependentUpon>ChangeAllSalaryByPercentDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CompanyView\Dialogs\ChangeSalaryOfAEmployeeByPercentDialog.xaml.cs">
-      <DependentUpon>ChangeSalaryOfAEmployeeByPercentDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CompanyView\ContentControls\AgencyContentControl.xaml.cs">
       <DependentUpon>AgencyContentControl.xaml</DependentUpon>
@@ -325,8 +375,17 @@
     <Compile Include="View\CompanyView\ContentControls\StaffContentControl.xaml.cs">
       <DependentUpon>StaffContentControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CompanyView\Dialogs\Customer\CustomerDetailDialog.xaml.cs">
+      <DependentUpon>CustomerDetailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyView\Dialogs\EachMonthCharityMoneyDialog.xaml.cs">
       <DependentUpon>EachMonthCharityMoneyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\Dialogs\HouseCategory\HouseCategoryDetailDialog.xaml.cs">
+      <DependentUpon>HouseCategoryDetailDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompanyView\Dialogs\House\HouseDetailDialog.xaml.cs">
+      <DependentUpon>HouseDetailDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CompanyView\Dialogs\OkCancelDialogControl.xaml.cs">
       <DependentUpon>OkCancelDialogControl.xaml</DependentUpon>
@@ -335,14 +394,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\CompanyView\Dialogs\Staff\StaffDetailDialog.xaml.cs">
+      <DependentUpon>StaffDetailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CompanyView\PagingHelperClasses\PageInfo.cs" />
     <Compile Include="View\CompanyView\PagingHelperClasses\Paging.cs" />
-    <Compile Include="View\CompanyView\Dialogs\UpdateAKindOfHouseDialog.xaml.cs">
-      <DependentUpon>UpdateAKindOfHouseDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\CompanyView\Dialogs\DeleteAKindOfHouseDialog.xaml.cs">
-      <DependentUpon>DeleteAKindOfHouseDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -362,6 +418,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\AgencyContentResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\CustomerContentResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\HouseCategoryContentResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\HouseContentResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\StaffContentResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\Dialogs\Customer\CustomerDetailResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\Dialogs\House\HouseDetailResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\CompanyView\Dialogs\Staff\StaffDetailResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionary\MainWindowResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -369,10 +461,6 @@
     <Page Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ResourceDictionary\YoonoScrollViewerStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ChiNhanhScreens\ContentControls\HomeScreenContentControl.xaml">
       <SubType>Designer</SubType>
@@ -382,23 +470,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\Dialogs\AddNewAgencyDialog.xaml">
+    <Page Include="View\CompanyView\ContentControls\CustomerContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\Dialogs\AddNewEmployeeDialog.xaml">
+    <Page Include="View\CompanyView\ContentControls\HouseContentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\Dialogs\AddNewHouseCategoryDialog.xaml">
+    <Page Include="View\CompanyView\Dialogs\Agency\AgencyDetailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CompanyView\Dialogs\ChangeAllSalaryByPercentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\Dialogs\ChangeSalaryOfAEmployeeByPercentDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -414,7 +498,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CompanyView\Dialogs\Customer\CustomerDetailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CompanyView\Dialogs\EachMonthCharityMoneyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\Dialogs\HouseCategory\HouseCategoryDetailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompanyView\Dialogs\House\HouseDetailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -422,11 +518,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompanyView\Dialogs\UpdateAKindOfHouseDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompanyView\Dialogs\DeleteAKindOfHouseDialog.xaml">
+    <Page Include="View\CompanyView\Dialogs\Staff\StaffDetailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -503,6 +595,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\ResourceDictionary\CompanyView\Dialogs\Agency\" />
+    <Folder Include="Resources\ResourceDictionary\CompanyView\Dialogs\HouseCategory\" />
     <Folder Include="ViewModel\AgencyView\Dialogs\" />
     <Folder Include="ViewModel\HouseOwnerView\Dialogs\" />
     <Folder Include="ViewModel\StaffView\Dialogs\" />

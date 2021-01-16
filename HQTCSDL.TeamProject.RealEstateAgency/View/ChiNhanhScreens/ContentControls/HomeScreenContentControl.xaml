@@ -11,9 +11,9 @@
     Background="{DynamicResource MaterialDesignBackground}"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <ResourceDictionary Source="/HQTCSDL.TeamProject.RealEstateAgency;component/Resources/ResourceDictionary.xaml" />
-    </UserControl.Resources>
+    </UserControl.Resources>-->
 
     <Grid>
         <TabControl

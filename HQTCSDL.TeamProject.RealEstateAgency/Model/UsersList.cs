@@ -2,18 +2,13 @@
 
 namespace HQTCSDL.TeamProject.RealEstateAgency.Model
 {
-    public class UsersList
+    public sealed class UsersList
     {
-        private ObservableCollection<User> Users { get; set; }
-        
-        public UsersList()
-        {
-            GetUserCollection();
-        }
+        private static ObservableCollection<User> Users { get; }
 
-        private void GetUserCollection()
+        static UsersList()
         {
-            this.Users = new ObservableCollection<User>
+            Users = new ObservableCollection<User>
             {
                 new User
                 {
@@ -46,7 +41,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.Model
             };
         }
 
-        internal string GetUserRole(string username, string password)
+        internal static string GetUserRole(string username, string password)
         {
             if (IsContainUser(username, password))
             {
@@ -56,9 +51,9 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.Model
             return null;
         }
 
-        private User GetCorrespondingUser(string username, string password)
+        private static User GetCorrespondingUser(string username, string password)
         {
-            foreach (var user in this.Users)
+            foreach (var user in Users)
             {
                 if (user.IsExist(username, password))
                 {
@@ -68,11 +63,11 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.Model
             return null;
         }
 
-        public bool IsContainUser(string username, string password)
+        public static bool IsContainUser(string username, string password)
         {
             var result = false;
 
-            foreach (var user in this.Users)
+            foreach (var user in Users)
             {
                 if (user.IsExist(username, password))
                 {
@@ -80,7 +75,6 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.Model
                     break;
                 }
             }
-
             return result;
         }
     }

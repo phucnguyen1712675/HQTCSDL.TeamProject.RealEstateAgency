@@ -1,0 +1,93 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+
+    <converter:BooleanToGenderConverter x:Key="genderConverter" />
+    <converter:NumberToCurrencyConverter x:Key="moneyConverter" />
+    <converter:PrimaryKeyConverter x:Key="primaryKeyConverter" />
+
+    <DataTemplate x:Key="staffItemTemplate">
+        <Grid Width="200" Height="256">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <md:ColorZone VerticalAlignment="Stretch" Mode="PrimaryLight">
+                <md:PackIcon
+                    Width="128"
+                    Height="128"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Kind="AccountCircle" />
+            </md:ColorZone>
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Nhân viên mã " />
+                    <TextBlock Text="{Binding MANV}" />
+                </StackPanel>
+                <Button
+                    Margin="0,4,0,0"
+                    Command="{Binding DataContext.RunEditStaffCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                    Content="EDIT"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource primaryKeyConverter}">
+                            <Binding Path="MACN" />
+                            <Binding Path="MANV" />
+                        </MultiBinding>
+                        <!--<model:StaffPrimaryKey MACN="{Binding MACN}" MANV="{Binding MANV}" />-->
+                    </Button.CommandParameter>
+                </Button>
+                <Button
+                    Margin="0,4,0,0"
+                    Command="{Binding DataContext.RunDeleteStaffCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                    Content="DELETE"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource primaryKeyConverter}">
+                            <Binding Path="MACN" />
+                            <Binding Path="MANV" />
+                        </MultiBinding>
+                        <!--<model:StaffPrimaryKey MACN="{Binding MACN}" MANV="{Binding MANV}" />-->
+                    </Button.CommandParameter>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="pageItemTemplate">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Page}" />
+            <TextBlock Text=" of " />
+            <TextBlock Text="{Binding TotalPages}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="agencyComboBoxItemTemplate">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Chi nhánh " />
+            <TextBlock Text="{Binding MACN}" />
+        </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="listViewItemContainerStyle" TargetType="{x:Type ListViewItem}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <CollectionViewSource x:Key="sortedStaffsSource" Source="{Binding StaffsCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MANV" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

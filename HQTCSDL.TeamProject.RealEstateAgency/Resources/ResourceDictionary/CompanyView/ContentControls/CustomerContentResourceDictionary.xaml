@@ -1,0 +1,75 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Converters"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase">
+
+    <converter:PrimaryKeyConverter x:Key="primaryKeyConverter" />
+
+    <DataTemplate x:Key="CustomerItemTemplate">
+        <Grid Width="200" Height="256">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <md:ColorZone VerticalAlignment="Stretch" Mode="PrimaryLight">
+                <md:PackIcon
+                    Width="128"
+                    Height="128"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Kind="AccountSupervisor" />
+            </md:ColorZone>
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Khách hàng mã " />
+                    <TextBlock Text="{Binding MAKH}" />
+                </StackPanel>
+                <Button
+                    Margin="0,4,0,0"
+                    Command="{Binding DataContext.RunEditCustomerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                    Content="EDIT"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource primaryKeyConverter}">
+                            <Binding Path="MAKH" />
+                            <Binding Path="CNQUANLY" />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+                <Button
+                    Margin="0,4,0,0"
+                    Command="{Binding DataContext.RunDeleteCustomerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                    Content="DELETE"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource primaryKeyConverter}">
+                            <Binding Path="MAKH" />
+                            <Binding Path="CNQUANLY" />
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <Style x:Key="listViewItemContainerStyle" TargetType="{x:Type ListViewItem}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <CollectionViewSource x:Key="sortedCustomersSource" Source="{Binding CustomersCollection}">
+        <CollectionViewSource.SortDescriptions>
+            <scm:SortDescription PropertyName="MAKH" />
+        </CollectionViewSource.SortDescriptions>
+    </CollectionViewSource>
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -9,12 +9,10 @@
 
 namespace HQTCSDL.TeamProject.RealEstateAgency
 {
-    using System;
-    using System.Collections.ObjectModel;
     using PropertyChanged;
+    using System.Collections.ObjectModel;
 
     [AddINotifyPropertyChangedInterface]
-
     public partial class KHACHHANG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,14 +22,14 @@ namespace HQTCSDL.TeamProject.RealEstateAgency
             this.KEHOACHXEMNHAs = new ObservableCollection<KEHOACHXEMNHA>();
             this.YEUCAUs = new ObservableCollection<YEUCAU>();
         }
-    
+
         public int MAKH { get; set; }
         public int CNQUANLY { get; set; }
         public string TEN { get; set; }
         public string DIACHI { get; set; }
         public string SDT { get; set; }
         public string CHITIET { get; set; }
-    
+
         public virtual CHINHANH CHINHANH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ObservableCollection<HOPDONG> HOPDONGs { get; set; }

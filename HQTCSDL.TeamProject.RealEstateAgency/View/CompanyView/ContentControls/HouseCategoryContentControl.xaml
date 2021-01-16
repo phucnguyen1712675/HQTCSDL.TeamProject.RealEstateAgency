@@ -14,65 +14,42 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+                <ResourceDictionary Source="/Resources/ResourceDictionary/CompanyView/ContentControls/HouseCategoryContentResourceDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid>
-        <Border
-            Margin="100"
-            HorizontalAlignment="Stretch"
-            BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-            BorderThickness="1"
-            ClipToBounds="True">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <ListBox x:Name="KindsOfHouseListBox" ItemsSource="{Binding HouseCateCollection}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <md:ColorZone
-                    Grid.Row="1"
-                    Effect="{DynamicResource MaterialDesignShadowDepth5}"
-                    Mode="PrimaryMid">
-                    <TextBlock Margin="16" Text="Loại nhà" />
-                </md:ColorZone>
-                <md:PopupBox
-                    Grid.Row="0"
-                    Margin="0,0,28,-20"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
-                    <StackPanel>
-                        <Button Command="{Binding RunDeleteHouseCategoryDialogCommand}" Content="{md:PackIcon Kind=Delete, Size=20}" />
-                        <Button
-                            Background="{DynamicResource PrimaryHueMidBrush}"
-                            Command="{Binding RunUpdateHouseCategoryDialogCommand}"
-                            Content="{md:PackIcon Kind=Edit,
-                                                  Size=20}"
-                            Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
-
-                        <Button Command="{Binding RunAddNewHouseCategoryDialogCommand}" Content="{md:PackIcon Kind=HomePlus, Size=20}">
-                            <!--  mix up the colours by bringing in a named palette (see merged dictionaries at top)  -->
-                            <Button.Background>
-                                <SolidColorBrush Color="{StaticResource GreenPrimary500}" />
-                            </Button.Background>
-
-                            <Button.Foreground>
-                                <SolidColorBrush Color="{StaticResource GreenPrimary500Foreground}" />
-                            </Button.Foreground>
-                        </Button>
-                    </StackPanel>
-                </md:PopupBox>
-            </Grid>
-        </Border>
+        <ListView
+            Width="650"
+            Height="520"
+            ItemContainerStyle="{StaticResource listViewItemContainerStyle}"
+            ItemTemplate="{StaticResource HouseCateItemTemplate}"
+            ItemsSource="{Binding HouseCategoriesCollection}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <md:PopupBox
+            Margin="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+            <StackPanel>
+                <Button Command="{Binding RunAddNewHouseCategoryCommand}" Content="{md:PackIcon Kind=HomePlus, Size=20}">
+                    <!--  mix up the colours by bringing in a named palette (see merged dictionaries at top)  -->
+                    <Button.Background>
+                        <SolidColorBrush Color="{StaticResource GreenPrimary500}" />
+                    </Button.Background>
+                    <Button.Foreground>
+                        <SolidColorBrush Color="{StaticResource GreenPrimary500Foreground}" />
+                    </Button.Foreground>
+                </Button>
+            </StackPanel>
+        </md:PopupBox>
     </Grid>
 </UserControl>

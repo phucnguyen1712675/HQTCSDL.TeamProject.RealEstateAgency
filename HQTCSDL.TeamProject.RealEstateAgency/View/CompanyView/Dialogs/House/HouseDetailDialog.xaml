@@ -1,0 +1,248 @@
+﻿<UserControl
+    x:Class="HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.Dialogs.House.HouseDetailDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:domain="clr-namespace:HQTCSDL.TeamProject.RealEstateAgency.Domain"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Background="{DynamicResource MaterialDesignBackground}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/ResourceDictionary/CompanyView/Dialogs/House/HouseDetailResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Width="200" Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <md:ColorZone Padding="6" Mode="SecondaryMid">
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    HorizontalAlignment="Left"
+                    Content="{md:PackIcon Kind=Add}"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
+                <TextBlock
+                    Margin="8,0,0,0"
+                    VerticalAlignment="Center"
+                    Text="Chi tiết của nhà" />
+            </StackPanel>
+        </md:ColorZone>
+
+        <ScrollViewer
+            Grid.Row="1"
+            Height="500"
+            Margin="0,6,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ComboBox
+                    Width="172"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Chi nhánh"
+                    ItemTemplate="{StaticResource agencyItemTemplate}"
+                    ItemsSource="{Binding Source={StaticResource sortedAgenciesSource}}"
+                    SelectedItem="{Binding SelectedHouse.MACN}"
+                    Style="{StaticResource MaterialDesignFilledComboBox}" />
+                <ComboBox
+                    Grid.Row="1"
+                    Width="172"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Chủ nhà"
+                    ItemTemplate="{StaticResource houseOwnerItemTemplate}"
+                    ItemsSource="{Binding Source={StaticResource sortedHouseOwnersSource}}"
+                    SelectedItem="{Binding SelectedHouse.MACNHA}"
+                    Style="{StaticResource MaterialDesignFilledComboBox}" />
+                <ComboBox
+                    Grid.Row="2"
+                    Width="172"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Nhân viên"
+                    ItemTemplate="{StaticResource staffItemTemplate}"
+                    ItemsSource="{Binding Source={StaticResource sortedStaffsSource}}"
+                    SelectedItem="{Binding SelectedHouse.MANV}"
+                    Style="{StaticResource MaterialDesignFilledComboBox}" />
+                <ComboBox
+                    Grid.Row="3"
+                    Width="172"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Loại nhà"
+                    ItemTemplate="{StaticResource houseCateItemTemplate}"
+                    ItemsSource="{Binding Source={StaticResource sortedHouseCatesSource}}"
+                    SelectedItem="{Binding SelectedHouse.MALOAI}"
+                    Style="{StaticResource MaterialDesignFilledComboBox}" />
+                <TextBox
+                    Grid.Row="4"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Số lượng phòng ở"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedHouse.SOLUONGPHONGO" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <DatePicker
+                    Grid.Row="5"
+                    Width="140"
+                    Margin="0,24,0,0"
+                    md:HintAssist.Hint="Ngày hết hạn"
+                    SelectedDate="{Binding SelectedHouse.NGAYHETHAN}"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <DatePicker
+                    Grid.Row="6"
+                    Width="140"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Ngày đăng"
+                    SelectedDate="{Binding SelectedHouse.NGAYDANG}"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <TextBox
+                    Grid.Row="7"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Đường"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedHouse.DUONG" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    Grid.Row="8"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Quận"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedHouse.QUAN" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    Grid.Row="9"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Khu vực"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedHouse.KHUVUC" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    Grid.Row="10"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Thành phố"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedHouse.THANHPHO" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    Grid.Row="11"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Tình trạng"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding
+                            Converter="{StaticResource statusConverter}"
+                            Path="SelectedHouse.TINHTRANG"
+                            UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    Grid.Row="12"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Số lượt xem"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedHouse.SOLUOTXEM" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox
+                    Grid.Row="13"
+                    Margin="0,12,0,0"
+                    md:HintAssist.Hint="Giá"
+                    md:HintAssist.IsFloating="True">
+                    <TextBox.Text>
+                        <Binding Path="SelectedRentalHouseDetail.GIATHUE" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </ScrollViewer>
+        <StackPanel
+            Grid.Row="3"
+            Margin="0,16,0,0"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Command="{x:Static md:DialogHost.CloseDialogCommand}"
+                IsDefault="True"
+                Style="{DynamicResource MaterialDesignFlatButton}">
+                <Button.CommandParameter>
+                    <system:Boolean>True</system:Boolean>
+                </Button.CommandParameter>
+                ACCEPT
+            </Button>
+            <Button
+                Margin="8,0,0,0"
+                Command="{x:Static md:DialogHost.CloseDialogCommand}"
+                IsCancel="True"
+                Style="{DynamicResource MaterialDesignFlatButton}">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+                CANCEL
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

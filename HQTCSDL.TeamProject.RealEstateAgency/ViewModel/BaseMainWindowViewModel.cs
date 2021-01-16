@@ -11,9 +11,9 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel
         public bool IsNavigationDrawerOpen { get; set; }
         public List<INavigationItem> NavigationItems { get; set; }
         public INavigationItem SelectedNavigationItem { get; set; }
-        public abstract string Role { get;}
+        public abstract string Role { get; }
 
-        public BaseMainWindowViewModel()
+        protected BaseMainWindowViewModel()
         {
             Instance = this;
             Title = "Ứng dụng môi giới nhà đất";

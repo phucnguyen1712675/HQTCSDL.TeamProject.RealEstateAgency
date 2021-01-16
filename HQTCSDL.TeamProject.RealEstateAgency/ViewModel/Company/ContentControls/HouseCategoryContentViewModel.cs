@@ -1,7 +1,9 @@
-﻿using CakeShopApp.Utils;
-using HQTCSDL.TeamProject.RealEstateAgency.Model;
+﻿using GalaSoft.MvvmLight.Command;
+using HQTCSDL.TeamProject.RealEstateAgency.DAO;
 using HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.Dialogs;
+using HQTCSDL.TeamProject.RealEstateAgency.View.CompanyView.Dialogs.HouseCategory;
 using HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.Dialogs;
+using HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.Dialogs.HouseCategory;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.ObjectModel;
@@ -11,17 +13,27 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
 {
     public class HouseCategoryContentViewModel : BaseViewModel
     {
-        public ObservableCollection<HouseCategory> HouseCateCollection {get; set;}
-        public AddNewHouseCategoryDialogViewModel AddNewHouseCategoryDialogViewModel { get; set; }
-        public DeleteAKindOfHouseDialogViewModel DeleteAKindOfHouseDialogViewModel { get; set; }
-        public UpdateAKindOfHouseDialogViewModel UpdateAKindOfHouseDialogViewModel { get; set; }
-        public ICommand RunAddNewHouseCategoryDialogCommand => new AnotherCommandImplementation(ExecuteAddNewHouseCategoryDialog);
-        public ICommand RunDeleteHouseCategoryDialogCommand => new AnotherCommandImplementation(ExecuteDeleteHouseCategoryDialog);
-        public ICommand RunUpdateHouseCategoryDialogCommand => new AnotherCommandImplementation(ExecuteUpdateHouseCategoryDialog);
+        private readonly bool _canExecuteMyCommand;
+        private LOAINHA modifiedHouseCategory;
+
+        public ObservableCollection<LOAINHA> HouseCategoriesCollection { get; set; }
+        public HouseCategoryDetailViewModel HouseCategoryDetailViewModel { get; set; }
+        public ICommand RunAddNewHouseCategoryCommand { get; }
+        public ICommand RunEditHouseCategoryCommand { get; }
+        public ICommand RunDeleteHouseCategoryCommand { get; }
 
         public HouseCategoryContentViewModel()
         {
-            this.HouseCateCollection = (new HouseCategoriesList()).GetHouseCategoriesList();
+            this._canExecuteMyCommand = true;
+            this.RunAddNewHouseCategoryCommand = new RelayCommand(ExecuteAddNewHouseCategoryCommand, () => _canExecuteMyCommand);
+            this.RunEditHouseCategoryCommand = new RelayCommand<int>(a => ExecuteEditHouseCategoryCommand(a), (_) => _canExecuteMyCommand);
+            this.RunDeleteHouseCategoryCommand = new RelayCommand<int>(a => ExecuteDeleteHouseCategoryCommand(a), (_) => _canExecuteMyCommand);
+            Load();
+        }
+
+        private void Load()
+        {
+            this.HouseCategoriesCollection = LoaiNhaDAO.GetInstance().GetAllHouseCategories();
         }
 
         #region Dialogs
@@ -29,49 +41,62 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
         private void ExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
             => Console.WriteLine("You could intercept the open and affect the dialog using eventArgs.Session.");
 
-        private async void ExecuteAddNewHouseCategoryDialog(object obj)
+        private async void ExecuteAddNewHouseCategoryCommand()
         {
-            this.AddNewHouseCategoryDialogViewModel = new AddNewHouseCategoryDialogViewModel();
-
-            var view = new AddNewHouseCategoryDialog
+            this.HouseCategoryDetailViewModel = new HouseCategoryDetailViewModel
             {
-                DataContext = this.AddNewHouseCategoryDialogViewModel
+                SelectedHouseCategory = new LOAINHA()
+            };
+
+            var view = new HouseCategoryDetailDialog
+            {
+                DataContext = this.HouseCategoryDetailViewModel
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, BaseMainWindowViewModel.Instance.Identifier, ExtendedOpenedEventHandler, AddNewHouseCategoryClosingEventHandler);
+            var result = await DialogHost.Show(view, BaseMainWindowViewModel.Instance.Identifier, ExtendedOpenedEventHandler, AddNewHouseCategoryClosingEventHandler).ConfigureAwait(false);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
         }
 
-        private async void ExecuteDeleteHouseCategoryDialog(object obj)
+        private async void ExecuteEditHouseCategoryCommand(int cateId)
         {
-            this.DeleteAKindOfHouseDialogViewModel = new DeleteAKindOfHouseDialogViewModel();
+            this.modifiedHouseCategory = LoaiNhaDAO.GetInstance().GetHouseCategoryById(cateId);
 
-            var view = new DeleteAKindOfHouseDialog
+            this.HouseCategoryDetailViewModel = new HouseCategoryDetailViewModel
             {
-                DataContext = this.DeleteAKindOfHouseDialogViewModel
+                SelectedHouseCategory = this.modifiedHouseCategory
+            };
+
+            var view = new HouseCategoryDetailDialog
+            {
+                DataContext = this.HouseCategoryDetailViewModel
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, BaseMainWindowViewModel.Instance.Identifier, ExtendedOpenedEventHandler, DeleteExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, BaseMainWindowViewModel.Instance.Identifier, ExtendedOpenedEventHandler, EditHouseCategoryClosingEventHandler).ConfigureAwait(false);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
         }
 
-        private async void ExecuteUpdateHouseCategoryDialog(object obj)
+        private async void ExecuteDeleteHouseCategoryCommand(int cateId)
         {
-            this.UpdateAKindOfHouseDialogViewModel = new UpdateAKindOfHouseDialogViewModel();
+            this.modifiedHouseCategory = LoaiNhaDAO.GetInstance().GetHouseCategoryById(cateId);
 
-            var view = new UpdateAKindOfHouseDialog
+            var okeCancelDialogViewModel = new OkCancelDialogViewModel
             {
-                DataContext = this.UpdateAKindOfHouseDialogViewModel
+                Message = "Xóa loại nhà này?"
+            };
+
+            var view = new OkCancelDialogControl
+            {
+                DataContext = okeCancelDialogViewModel
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, BaseMainWindowViewModel.Instance.Identifier, ExtendedOpenedEventHandler, UpdateExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, BaseMainWindowViewModel.Instance.Identifier, ExtendedOpenedEventHandler, DeleteHouseCategoryClosingEventHandler).ConfigureAwait(false);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
@@ -81,18 +106,27 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
         {
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
-        }
 
-        private void DeleteExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+            var houseCate = this.HouseCategoryDetailViewModel.SelectedHouseCategory;
+            LoaiNhaDAO.GetInstance().AddNewHouseCategory(houseCate);
+            Load();
+        }
+        private void EditHouseCategoryClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
+
+            LoaiNhaDAO.GetInstance().EditHouseCategory(this.modifiedHouseCategory);
+            Load();
         }
 
-        private void UpdateExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        private void DeleteHouseCategoryClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
+
+            LoaiNhaDAO.GetInstance().DeleteHouseCategory(this.modifiedHouseCategory);
+            Load();
         }
 
         #endregion
