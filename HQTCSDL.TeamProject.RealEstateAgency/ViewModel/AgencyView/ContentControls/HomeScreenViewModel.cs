@@ -127,7 +127,9 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.AgencyView.ContentContr
                     db.USP_UpdateSalaryStaff(maNV, newLuong);
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch(Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         internal void UpdateOldNewHousetypeRequest()
