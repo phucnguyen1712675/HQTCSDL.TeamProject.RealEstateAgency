@@ -82,8 +82,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.DAO
                 {
                     customer.CNQUANLY = KhachHang.CNQUANLY;
                     customer.SDT = KhachHang.SDT;
-                    if (customer.TEN != KhachHang.TEN &&
-                        customer.DIACHI != KhachHang.DIACHI &&
+                    if (customer.TEN != KhachHang.TEN ||
+                        customer.DIACHI != KhachHang.DIACHI ||
                         customer.CHITIET != KhachHang.CHITIET)
                     {
                         this.UpdateNameAndAddressAndDetail(KhachHang);

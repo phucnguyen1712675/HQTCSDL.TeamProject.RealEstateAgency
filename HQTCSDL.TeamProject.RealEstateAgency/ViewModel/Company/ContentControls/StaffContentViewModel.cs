@@ -197,7 +197,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                parameter == false) return;
 
-            NhanVienDAO.GetInstance().EditStaff(this.modifiedStaff);
+            NhanVienDAO.GetInstance().EditStaff(this.StaffDetailViewModel.SelectedStaff);
             Load();
             ExecuteSelectionFilledPagingComboBoxCommand();
         }
@@ -207,7 +207,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
 
-            NhanVienDAO.GetInstance().DeleteStaff(this.modifiedStaff);
+            NhanVienDAO.GetInstance().DeleteStaff(this.StaffDetailViewModel.SelectedStaff);
             Load();
             ExecuteSelectionFilledPagingComboBoxCommand();
         }

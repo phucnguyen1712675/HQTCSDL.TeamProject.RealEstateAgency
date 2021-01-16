@@ -426,10 +426,6 @@
     </Page>
     <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\HouseCategoryContentResourceDictionary.xaml">
       <SubType>Designer</SubType>
-	  <Generator>MSBuild:Compile</Generator>
-	</Page>
-    <Page Include="Resources\ResourceDictionary\YoonoScrollViewerStyle.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ResourceDictionary\CompanyView\ContentControls\HouseContentResourceDictionary.xaml">
@@ -457,10 +453,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

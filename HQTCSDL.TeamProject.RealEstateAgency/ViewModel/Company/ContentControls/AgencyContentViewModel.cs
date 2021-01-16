@@ -154,7 +154,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
-            ChiNhanhDAO.GetInstance().EditAgency(this.ModifiedAgency);
+            ChiNhanhDAO.GetInstance().EditAgency(this.AgencyDetailViewModel.SelectedAgency);
             Load();
         }
 
@@ -163,7 +163,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
-            ChiNhanhDAO.GetInstance().DeleteAgency(this.ModifiedAgency);
+            ChiNhanhDAO.GetInstance().DeleteAgency(this.AgencyDetailViewModel.SelectedAgency);
             Load();
         }
 

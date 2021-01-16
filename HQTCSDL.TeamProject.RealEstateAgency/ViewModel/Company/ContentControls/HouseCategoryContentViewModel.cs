@@ -116,7 +116,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
 
-            LoaiNhaDAO.GetInstance().EditHouseCategory(this.modifiedHouseCategory);
+            LoaiNhaDAO.GetInstance().EditHouseCategory(this.HouseCategoryDetailViewModel.SelectedHouseCategory);
             Load();
         }
 
@@ -125,7 +125,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 parameter == false) return;
 
-            LoaiNhaDAO.GetInstance().DeleteHouseCategory(this.modifiedHouseCategory);
+            LoaiNhaDAO.GetInstance().DeleteHouseCategory(this.HouseCategoryDetailViewModel.SelectedHouseCategory);
             Load();
         }
 

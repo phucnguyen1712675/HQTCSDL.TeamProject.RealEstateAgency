@@ -141,8 +141,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
-            ChiTietNhaThueDAO.GetInstance().EditRentalhouseDetail(this.ModifiedRentalHouseDetail);
-            NhaDAO.GetInstance().EditHouse(this.ModifiedHouse);
+            ChiTietNhaThueDAO.GetInstance().EditRentalhouseDetail(this.HouseDetailViewModel.SelectedRentalHouseDetail);
+            NhaDAO.GetInstance().EditHouse(this.HouseDetailViewModel.SelectedHouse);
             Load();
         }
 
@@ -151,8 +151,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.Company.ContentControls
             if (eventArgs.Parameter is bool parameter &&
                 !parameter) return;
 
-            ChiTietNhaThueDAO.GetInstance().DeleteRentalhouseDetail(this.ModifiedRentalHouseDetail);
-            NhaDAO.GetInstance().DeleteHouse(this.ModifiedHouse);
+            ChiTietNhaThueDAO.GetInstance().DeleteRentalhouseDetail(this.HouseDetailViewModel.SelectedRentalHouseDetail);
+            NhaDAO.GetInstance().DeleteHouse(this.HouseDetailViewModel.SelectedHouse);
             Load();
         }
 
