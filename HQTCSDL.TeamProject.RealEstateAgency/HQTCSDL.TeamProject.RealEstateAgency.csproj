@@ -239,11 +239,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLND_DB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="QLND_DB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLND_DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="QLND_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,14 +250,29 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="USP_GetCustomerSuitableHouse_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_IsPriceIncreases_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_Temp2_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="USP_Temp_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_TEST_AGENCY_GetHouse_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_UpdateCustomerDemand_Result.cs">
+      <DependentUpon>QLND_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USP_UpdateCustomerDetail_Result.cs">
       <DependentUpon>QLND_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml.cs">
       <DependentUpon>Agency_IsHousePriceIncreases.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml.cs">
-      <DependentUpon>SearchHouseByTypeRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
     <Compile Include="Model\AgenciesList.cs" />
@@ -366,10 +376,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ChiNhanhScreens\Agency_IsHousePriceIncreases.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ChiNhanhScreens\SearchHouseByTypeRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -499,7 +505,6 @@
     <Content Include="QLND_DB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLND_DB.edmx</DependentUpon>
-      <LastGenOutput>QLND_DB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

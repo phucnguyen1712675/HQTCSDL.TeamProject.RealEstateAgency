@@ -12,6 +12,8 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            /*if (value == null)
+                value = 0;*/
             var money = (double)value;
             return $"{money} đồng";
         }

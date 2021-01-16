@@ -20,9 +20,10 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.View.ChiNhanhScreens
     /// </summary>
     public partial class Agency_IsHousePriceIncreases : MetroWindow
     {
-        public Agency_IsHousePriceIncreases()
+        public Agency_IsHousePriceIncreases(string Title)
         {
             InitializeComponent();
+            TitleLabel.Content = Title;
         }
     }
 }

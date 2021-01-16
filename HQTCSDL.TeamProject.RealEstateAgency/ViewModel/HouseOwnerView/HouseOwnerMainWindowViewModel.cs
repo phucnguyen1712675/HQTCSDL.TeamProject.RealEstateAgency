@@ -13,7 +13,7 @@ namespace HQTCSDL.TeamProject.RealEstateAgency.ViewModel.HouseOwnerView
         {
             NavigationItems = new List<INavigationItem>()
             {
-                new FirstLevelNavigationItem() { Label = "Chủ nhà", Icon = PackIconKind.HomeCity, NavigationItemSelectedCallback = item => new HomeScreenViewModel(), IsSelected = true }
+                new FirstLevelNavigationItem() { Label = "Chủ nhà", Icon = PackIconKind.HomeCity, NavigationItemSelectedCallback = item =>  HomeScreenViewModel.Instance, IsSelected = true }
             };
             SelectedNavigationItem = NavigationItems[0];
         }
